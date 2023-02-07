@@ -23,20 +23,36 @@ fetch(url, {
         var locationLat = data.businesses[0].coordinates.latitude;
         var locationLon = data.businesses[0].coordinates.longitude;
 
-        var resultCard = $('<div>')
+        var resultCard = $('<div>');
         var resultTitle = $('<h3>');
-        var imgContainer = $('<div>')
+        var imgContainer = $('<div>');
+        var bodyContainer = $('<div>');
         var resultImg = $('<img>');
+        var imgFigure = $('<figure>');
         var cardImg = data.businesses[0].image_url;
+        resultImg.attr('src', cardImg);
+        
 
        
-        resultCard.addClass('card', 'column', 'is-3', 'm-1');
-        resultImg.addClass('image', 'is-4by3')
+        resultCard.addClass(['card', 'column', 'is-3', 'm-1']);
+        resultImg.addClass(['image']);
+        imgFigure.addClass(['image', 'is-4by3'])
+        imgContainer.addClass('card-image');
+        bodyContainer.addClass('card-content');
+        resultTitle.addClass(['title', 'is-5']);
+        
 
         resultTitle.text(data.businesses[0].name);
-        resultImg.attr('src', cardImg)
+        
+        
 
 
-        imgContainer.append(resultImg);
-        $foodAndDrinkRec.append(resultImg)
+        imgContainer.append(imgFigure);
+        imgFigure.append(resultImg)
+        bodyContainer.append(resultTitle)
+        resultCard.append(imgContainer);
+        resultCard.append(bodyContainer);
+        $foodAndDrinkRec.append(resultCard);
+        
+        // $foodAndDrinkRec.append(resultTitle)
     })
