@@ -16,68 +16,59 @@ fetch(url, {
     .then((data) => {
         console.log(data)
 
-        console.log(data.businesses[0].name)
-        console.log(data.businesses[0].display_phone)
-        console.log(data.businesses[0].rating)
-        console.log(data.businesses[0].image_url)
-
         var locationLat = data.businesses[0].coordinates.latitude;
         var locationLon = data.businesses[0].coordinates.longitude;
 
-        var resultCard = $('<div>');
-        var resultTitle = $('<p>');
-        var titleContainer = $('<div>');
-        var imgContainer = $('<div>');
-        var bodyContainer = $('<div>');
-        var resultImg = $('<img>');
-        var imgFigure = $('<figure>');
-        var phoneNumber = $('<div>');
-        var businessRating = $('<div>');
-        var mediaContainer = $('<div>');
-        var businessPrice = $('<div>');
-        var contentContainer = $('<div>');
-        var businessReviews = $('<div>');
-        var cardImg = data.businesses[0].image_url;
-        resultImg.attr('src', cardImg);
-        
+        for(var i = 0; i < data.businesses.length; i++) {
+            var resultCard = $('<div>');
+            var resultTitle = $('<p>');
+            var titleContainer = $('<div>');
+            var imgContainer = $('<div>');
+            var bodyContainer = $('<div>');
+            var resultImg = $('<img>');
+            var imgFigure = $('<figure>');
+            var phoneNumber = $('<div>');
+            var businessRating = $('<div>');
+            var mediaContainer = $('<div>');
+            var businessPrice = $('<div>');
+            var contentContainer = $('<div>');
+            var businessReviews = $('<div>');
+            var cardImg = data.businesses[i].image_url;
+            resultImg.attr('src', cardImg);
+            
+            resultCard.addClass(['card', 'column', 'is-3', 'm-1']);
+            resultImg.addClass(['image']);
+            imgFigure.addClass(['image', 'is-4by3'])
+            imgContainer.addClass('card-image');
+            bodyContainer.addClass('card-content');
+            titleContainer.addClass(['media-content']);
+            mediaContainer.addClass('media');
+            resultTitle.addClass(['title', 'is-4'])
+            contentContainer.addClass('content');
+            
+            phoneNumber.text('Phone: ' + data.businesses[i].display_phone);
+            businessRating.text('Rating: ' + data.businesses[i].rating + '⭐')
+            businessPrice.text('Price: ' + data.businesses[i].price)
+            businessReviews.text('Number of reviews: ' + data.businesses[i].review_count)
+            resultTitle.text(data.businesses[i].name);
+    
+            imgContainer.append(imgFigure);
+            imgFigure.append(resultImg);
+            bodyContainer.append(mediaContainer);
+            mediaContainer.append(titleContainer);
+            bodyContainer.append(contentContainer);
+            contentContainer.append(phoneNumber);
+            contentContainer.append(businessRating);
+            contentContainer.append(businessReviews);
+            contentContainer.append(businessPrice);
+            titleContainer.append(resultTitle);
+            resultCard.append(imgContainer);
+            resultCard.append(bodyContainer);
+            $foodAndDrinkRec.append(resultCard);
+        }
 
-       
-        resultCard.addClass(['card', 'column', 'is-3', 'm-1']);
-        resultImg.addClass(['image']);
-        imgFigure.addClass(['image', 'is-4by3'])
-        imgContainer.addClass('card-image');
-        bodyContainer.addClass('card-content');
-        titleContainer.addClass(['media-content']);
-        mediaContainer.addClass('media');
-        resultTitle.addClass(['title', 'is-4'])
-        contentContainer.addClass('content');
-        
-
-        
-        phoneNumber.text('Phone: ' + data.businesses[0].display_phone);
-        businessRating.text('Rating: ' + data.businesses[0].rating + '⭐')
-        businessPrice.text('Price: ' + data.businesses[0].price)
-        businessReviews.text('Number of reviews: ' + data.businesses[0].review_count)
-        resultTitle.text(data.businesses[0].name);
         
         
-
-
-        imgContainer.append(imgFigure);
-        imgFigure.append(resultImg);
-        bodyContainer.append(mediaContainer);
-        mediaContainer.append(titleContainer);
-        bodyContainer.append(contentContainer);
-        contentContainer.append(phoneNumber);
-        contentContainer.append(businessRating);
-        contentContainer.append(businessReviews);
-        contentContainer.append(businessPrice);
-        titleContainer.append(resultTitle);
-        resultCard.append(imgContainer);
-        resultCard.append(bodyContainer);
-        $foodAndDrinkRec.append(resultCard);
-        
-        // $foodAndDrinkRec.append(resultTitle)
     })
 
     fetch(url2, {
