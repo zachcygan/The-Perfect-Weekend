@@ -48,4 +48,17 @@
     to {right: 102%; }
 }
 
+/*searchbar styling*/
+.searchbar {
+    color: #1e4fa4;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5 15px;
+    vertical-align: middle;
+    box-shadow: 0 1px 3px;
+    margin-top: 300px;
+}
+
+
       
+
