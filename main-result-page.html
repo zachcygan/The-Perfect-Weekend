@@ -1,41 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
-    <link rel="stylesheet" href="./assets/CSS/resultsPageStyle.css">
-    <title>The Perfect Weekend - Main Result</title>
-</head>
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
-<body class="background-gradient">
-    <header>
-        <h1 id="resultsPageHeader" class="has-text-centered mb-3 p-3 has-background-success has-text-weight-bold is-size-1">The Perfect Weekend</h1>
-    </header>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Ubuntu&family=Abel:wght@500&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="./assets/CSS/style.css">
+      <link rel="stylesheet" type="text/css" href="./assets/CSS/about-style.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+      <link rel="stylesheet" href="./assets/CSS/resultsPageStyle.css">
+      <title>The Perfect Weekend - Main Result</title>
+  </head>
 
-    <div id="resultsPageWeatherForecast" class="columns">
-        <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
-    </div>
+  <body class="background-gradient">
 
-    <div class="">
-        <div class="column is-two-fifths has-background-danger m-3 p-3">Food and Drink Recommendation</div>
-    </div>
+    <!-- nav bar -->
+    <nav>
+      <div class="title"><a href="./index.html">THE PERFECT WEEKEND</a></div>
 
-    <div class="columns is-centered">
-      <section id="foodAndDrinkRec" class="column is-full m-1">
-         
+      <div class="dropdown is-hoverable">
+          <div class="dropdown-trigger">
+            <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
+              <img id="hamburger" src="./assets/images/hamburger.png">
+              <span class="icon is-small">
+                <i aria-hidden="true"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content">
+              <a href="./index.html" class="dropdown-item">
+                Search
+              </a>
+              <a href="./about.html" class="dropdown-item">
+                  About
+              </a>
+              <a href="./favorite.html" class="dropdown-item ">
+                My favorite
+              </a>
+              <a href="#" class="dropdown-item">
+                Something?
+              </a>
+              <hr class="dropdown-divider">
+              <a href="#" class="dropdown-item">
+                  Contact Us
+              </a>
+            </div>
+          </div>
+        </div>
+    </nav>
+    <!-- end nav bar -->
+    <br>  
+
+    <!-- start main result page -->
+      <div id="resultsPageWeatherForecast" class="columns">
+          <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
+      </div>
+
+      <div class="">
+          <div class="column is-two-fifths has-background-danger m-3 p-3">Food and Drink Recommendation</div>
+      </div>
+
+      <div class="columns is-centered">
+        <section id="foodAndDrinkRec" class="column is-full m-1">
+          
+        </section>
+      </div>
+
+      <div id="loadMoreButtonContainer" class="columns is-centered p-1">
+
+      </div>
+      
+      
+      <!-- footer -->
+          
+    <footer>
+      <section id="contact">
+        <div class="contact-wrapper">
+          <hr>
+          <ul class="social-media-list">
+    
+            <a href="#" target="_blank" class="contact-icon">
+              <li>
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </li>
+            </a>
+    
+            <a href="#" target="_blank" class="contact-icon">
+              <li>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+              </li>
+            </a>
+    
+            <a href="#" target="_blank" class="contact-icon">
+              <li>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </li>
+            </a>
+    
+            <a href="#" target="_blank" class="contact-icon">
+              <li>
+                <i class="fa fa-github" aria-hidden="true"></i>
+              </li>
+            </a>
+    
+          </ul>
+          <hr>
+    
+        </div>
+        </div>
+    
       </section>
-    </div>
+    </footer>
+    <!-- end footer -->
 
-    <div id="loadMoreButtonContainer" class="columns is-centered p-1">
+  
+    
 
-    </div>
+      <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
+      crossorigin="anonymous"></script>
+      <script src="./assets/JS/resultsPagejs.js"></script>
+      <scrip src="./assets/JS/script.js"></scrip>
+      <scrip src="./assets/JS/about-contact.js"></scrip>  
 
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
-    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
-    crossorigin="anonymous"></script>
-    <script src="./assets/JS/resultsPagejs.js"></script>
-</body>
+  </body>
 </html>
