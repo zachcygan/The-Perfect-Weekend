@@ -1,0 +1,8 @@
+.card-img-custom {
+    width: 960px;
+}
+
+.custom-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
