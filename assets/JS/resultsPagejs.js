@@ -36,7 +36,8 @@ fetch(url, {
             var cardImg = data.businesses[i].image_url;
             resultImg.attr('src', cardImg);
             
-            resultCard.addClass(['card', 'column', 'is-3', 'm-1']);
+            $foodAndDrinkRec.addClass(['custom-flex'])
+            resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1']);
             resultImg.addClass(['image']);
             imgFigure.addClass(['image', 'is-4by3'])
             imgContainer.addClass('card-image');
