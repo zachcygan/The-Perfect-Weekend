@@ -72,13 +72,15 @@ function fetchSearchResults(data) {
     bodyContainer.append(mediaContainer);
     mediaContainer.append(titleContainer);
     bodyContainer.append(contentContainer);
+    
+// FIX THIS: Append more business info + create cards for reviews
 
     contentContainer.append(businessAddress);
     contentContainer.append(phoneNumber);
     contentContainer.append(businessRating);
     contentContainer.append(businessReviews);
     contentContainer.append(businessPrice);
-    
+
     titleContainer.append(resultTitle);
     resultCard.append(imgContainer);
     resultCard.append(bodyContainer);
