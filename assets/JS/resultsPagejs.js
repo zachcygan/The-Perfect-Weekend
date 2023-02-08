@@ -80,12 +80,10 @@ function fetchSearchResults(data) {
     $loadMoreContainer.append(loadMoreButton);
 }
 
-var index = 20;
-var url2 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=' + index;
-
+var offset = 20;
 loadMoreButton.on('click', function() {
-    index += 20;
-
+    url2 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20&offset=' + offset;
+    
     fetch(url2, {
         method: 'GET',
         headers: {
@@ -96,9 +94,9 @@ loadMoreButton.on('click', function() {
         .then((response) => response.json())
         .then((data) => {
             console.log(data)
-            index = 20;
+            offset += 20;
 
-            for(var i = index; i < data.businesses.length; i++) {               
+            for(var i = 0; i < data.businesses.length; i++) {              
                 var resultCard = $('<div>');
                 var resultTitle = $('<p>');
                 var titleContainer = $('<div>');
@@ -154,7 +152,6 @@ loadMoreButton.on('click', function() {
                 resultCard.append(imgContainer);
                 resultCard.append(bodyContainer);
                 $foodAndDrinkRec.append(resultCard);
-                $loadMoreContainer.append(loadMoreButton);
             }
         }) 
 })
