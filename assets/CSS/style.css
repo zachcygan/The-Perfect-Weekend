@@ -1,29 +1,52 @@
 * {
+    max-width: auto;
+    max-height: fit-content;
     margin: auto;
     padding: auto;
     box-sizing: border-box;
     
 }
 
-h1 {
-    font-family: 'Ubuntu', 'san serif';
-    font-size: 30px;
-    text-align: center;
-    display: inline;
-    justify-content: center;
+.background-gradient {
+  width: 100%;
+  background: linear-gradient(-45deg, #eea791, #f1c7d6, rgb(238, 238, 195), #a9ddf1, #abedde);
+  animation: gradient 15s ease-in-out infinite;
+}
+
+.title {
+  color: #5072A7;
+  font-size: 40px;
+  font-weight: bold;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+  padding: 10px;
+  display: inline-block;
+  margin: 1%;
+  
 }
 
 #hamburger {
-    width: 50px;
+    width: 80px;
+    margin-left: 30%;
 }
 
 .button {
-    width: inherit;
-    height: inherit;
-    
+  border: none;
+  background-color: transparent;
+}
+
+.button:hover{
+  border: none;
+}
+
+.dropdown-content {
+  margin-top: 15%;
+  margin-left: 10%;
+  background-color: transparent;
 }
 
 .dropdown {
+    display: inline;
     float: right;
     border-style: none;
     font-family: 'Ubuntu', 'san serif';
@@ -35,6 +58,10 @@ footer {
     text-align: center;
     margin: 10%;
 }
+
+#contact {
+  max-width: 100%;
+}
 .social-media-list {
     margin-top: 10%;
     position: relative;
@@ -42,7 +69,9 @@ footer {
     text-align: center;
     width: 100%;
     margin: 0 auto;
-    margin-left: 100px;
+
+    /* margin-left: 100px; */
+
     padding: 0;
   }
   
@@ -91,15 +120,11 @@ footer {
   .social-media-list li:hover a {
     color: #000;
   }
-  
-  .copyright {
-    font: 200 14px 'Oswald', sans-serif;
-    color: #555;
-    letter-spacing: 1px;
-    text-align: center;
-  }
+
   
   hr {
     border-color: rgba(255,255,255,.6);
-    margin-left: 200px;
+
+    /* margin-left: 200px; */
+
   }
