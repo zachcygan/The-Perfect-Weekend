@@ -36,19 +36,25 @@ fetch(url, {
             resultImg.attr('src', cardImg);
             
             $foodAndDrinkRec.addClass(['custom-flex'])
-            resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1']);
+            resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
             resultImg.addClass(['image']);
             imgFigure.addClass(['image', 'is-4by3'])
             imgContainer.addClass('card-image');
             bodyContainer.addClass('card-content');
             titleContainer.addClass(['media-content']);
-            mediaContainer.addClass('media');
+            titleContainer.css('min-height', '30%')
+            mediaContainer.addClass(['media']);
             resultTitle.addClass(['title', 'is-4'])
             contentContainer.addClass('content');
             
             phoneNumber.text('Phone: ' + data.businesses[i].display_phone);
             businessRating.text('Rating: ' + data.businesses[i].rating + '⭐')
-            businessPrice.text('Price: ' + data.businesses[i].price)
+
+            if (data.businesses[i].price === undefined) {
+                businessPrice.text('Price: N/A')
+            } else {
+                businessPrice.text('Price: ' + data.businesses[i].price)
+            }
             businessReviews.text('Number of reviews: ' + data.businesses[i].review_count)
             resultTitle.text(data.businesses[i].name);
     
@@ -67,3 +73,4 @@ fetch(url, {
             $foodAndDrinkRec.append(resultCard);
         }
     })
+
