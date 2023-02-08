@@ -1,0 +1,64 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*adding colors and animation to background*/
+.background-gradient {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(-45deg, #eea791, #f1c7d6, rgb(238, 238, 195), #a9ddf1, #abedde);
+	background-size: 400% 400%;
+    animation: gradient 15s ease-in-out infinite;
+}
+/*adding keyframes to change the gradient styles*/
+@keyframes gradient {
+    0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.title {
+    color: #5072A7;
+    font-size: 65px;
+    font-weight: bold;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    padding: 70px;
+}
+
+/*adding plane animation*/
+.plane {
+        position: absolute;
+        top: 50px;
+        right: -500px;
+        z-index: 99;
+        animation: plane 30s linear 0s infinite reverse;
+        opacity: .7;
+      }
+@keyframes plane {
+    from { right: -500px; }
+    to {right: 102%; }
+}
+
+/*searchbar styling*/
+.searchbar {
+    color: #1e4fa4;
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5 15px;
+    vertical-align: middle;
+    box-shadow: 0 1px 3px;
+    margin-top: 300px;
+}
+
+
+      
+
