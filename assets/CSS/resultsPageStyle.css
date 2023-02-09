@@ -1,0 +1,13 @@
+.card-img-custom {
+    width: 960px;
+}
+
+.custom-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.custom-card:hover {
+    cursor: pointer;
+    transform: scale(1.02);
+}
