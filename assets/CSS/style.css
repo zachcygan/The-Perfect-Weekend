@@ -70,6 +70,9 @@ footer {
     text-align: center;
     width: 100%;
     margin: 0 auto;
+
+    /* margin-left: 100px; */
+
     padding: 0;
   }
   
@@ -122,4 +125,7 @@ footer {
   
   hr {
     border-color: rgba(255,255,255,.6);
+
+    /* margin-left: 200px; */
+
   }
