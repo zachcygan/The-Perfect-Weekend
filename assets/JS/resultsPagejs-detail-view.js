@@ -1,3 +1,4 @@
+
 var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
@@ -30,19 +31,24 @@ function fetchSearchResults(data) {
     var bodyContainer = $('<div>');
     var resultImg = $('<img>');
     var imgFigure = $('<figure>');
-    var phoneNumber = $('<div>');
-    var businessRating = $('<div>');
-    var mediaContainer = $('<div>');
-    var businessPrice = $('<div>');
+    // detail-view
     var contentContainer = $('<div>');
-    var businessReviews = $('<div>');
-    var businessAddress = $('<div>');
+    var mediaContainer = $('<div>');
     var cardImg = data.image_url;
+
+    var businessAddress = $('<div>');
+    var phoneNumber = $('<div>');
+    var businessHours = $('<div>');
+    var businessWebsite = $('<div>');
+    var businessReviews = $('<div>');
+    var businessRating = $('<div>');
+    var businessPrice = $('<div>');
     resultImg.attr('src', cardImg);
    
     
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+    resultCard.addId(['resultCard']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -55,15 +61,19 @@ function fetchSearchResults(data) {
         
     businessAddress.text('Address: ' + data.location.display_address[0] + ' ' + data.location.display_address[1] + ' ' + data.location.display_address[2] )
     phoneNumber.text('Phone: ' + data.display_phone);
-    businessRating.text('Rating: ' + data.rating + '⭐')
+    businessHours.text('Hours: ' );
+    businessWebsite.text('Website: ' );
+    
 
+    
+    businessRating.text('Rating: ' + data.rating + '⭐')
+    businessReviews.text('Number of reviews: ' + data.review_count)
     if (data.price === undefined) {
         businessPrice.text('Price: N/A')
     } else {
         businessPrice.text('Price: ' + data.price)
     }
     
-    businessReviews.text('Number of reviews: ' + data.review_count)
     resultTitle.text(data.name);
 
 
@@ -77,6 +87,8 @@ function fetchSearchResults(data) {
 
     contentContainer.append(businessAddress);
     contentContainer.append(phoneNumber);
+    contentContainer.append(businessHours);
+    contentContainer.append(businessWebsite);
     contentContainer.append(businessRating);
     contentContainer.append(businessReviews);
     contentContainer.append(businessPrice);
@@ -86,6 +98,65 @@ function fetchSearchResults(data) {
     resultCard.append(bodyContainer);
     $foodAndDrinkRec.append(resultCard);
 }
+
+
+const url7 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/9R9odrlCdPfppSuN1nIwuw/reviews?limit=20&sort_by=yelp_sort';
+// const options = {
+//     method: 'GET',
+//     headers: {
+//       accept: 'application/json',
+//       Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+//     }
+//   };
+  
+// const options = {
+//     method: 'GET',
+//     headers: {
+//       accept: 'application/json',
+//       Authorization: 'Bearer Q6RVffAA9x9KUy8rP_jAPoVaANtiJFxGwNXpp9i6gkX9FN1OTDrj1z2fScWav1vxFCsK69eJj4t_CfjbhxhFPX1joqyW8Nn9MZKOvu3pIMm7WhW4YlhH3HtIN13kY3Yx'
+//     }
+//   };
+  
+  fetch(url7, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+    }
+  })
+    .then(response => response.json())
+    .then(response => console.log(response))
+    .catch(err => console.error(err));
+
+
+
+
+// ADD TO MAIN RESULT
+// access card elements from result page
+var resultsEl = document.getElementsByClassName('custom-card');
+
+    function resultCardClick(event) {
+        var cardEl = event.target;
+        var businessId = cardEl.id;
+      
+        // check if user clicked card w/o business ID
+        if (!businessId){
+            return;
+        } else {
+          // open detail view
+          window.location.href = 'main-result-page-detail-view.html';
+        }
+    }
+
+// user clicks on card element containing choices
+resultsEl.onclick = resultCardClick;
+    
+
+
+
+
+
+
 
 // var offset = 20;
 //     url2 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20&offset=' + offset;
