@@ -20,7 +20,6 @@
     <!-- nav bar -->
     <nav>
       <div class="title"><a href="./index.html">THE PERFECT WEEKEND</a></div>
-
       <div class="dropdown is-hoverable">
           <div class="dropdown-trigger">
             <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
@@ -51,18 +50,47 @@
             </div>
           </div>
         </div>
+      </div>
     </nav>
     <!-- end nav bar -->
     <br>  
+    <!-- Displays current weather and forecast -->
+    <div class="City-Weather-ctn">
+      <div class="current-card">
+        <h2 id="cityName">San Diego</h2>
+        <img id="weatherIcon"></img>
+        <div id="currentWeather"></div>
+      </div>
+    <div class="fc-ctn">
+        <div class="forecast-card" id="fc1">
+          <h2 class="fcItems" id="fcDate-1">02/22/23</h2>
+          <img class="fcItems" id="fcIcon-1">
+          <div class="fcItems" id="fcDescription-1">Cloudy</div>
+          <div class="fcItems" id="fcTemp-1">60 oF</div> 
+        </div>
 
+        <div class="forecast-card" id="fc2">
+            <h2 class="fcItems" id="fcDate-2"></h2>
+            <img class="fcItems" id="fcIcon-2">
+            <div class="fcItems" id="fcDescription-2"></div>
+            <div class="fcItems" id="fcTemp-2">fdf</div>  
+        </div>
+        <div class="forecast-card" id="fc3">
+          <h2 class="fcItems" id="fcDate-3"></h2>
+          <img class="fcItems" id="fcIcon-3">
+          <div class="fcItems" id="fcDescription-3"></div>
+          <div class="fcItems" id="fcTemp-3">fdf</div>  
+      </div>
+      </div>
+    </div>
     <!-- start main result page -->
-      <div id="resultsPageWeatherForecast" class="columns">
+      <!-- <div id="resultsPageWeatherForecast" class="columns">
           <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
-      </div>
+      </div> -->
 
-      <div class="">
+      <div class="test">
           <div class="column is-two-fifths has-background-danger m-3 p-3">Food and Drink Recommendation</div>
-      </div>
+        </div>
 
       <div class="columns is-centered">
         <section id="foodAndDrinkRec" class="column is-full m-1">
@@ -119,13 +147,14 @@
 
   
     
-
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
       integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
       crossorigin="anonymous"></script>
+      <script src="./assets/JS/weatherapi.js"></script>
       <script src="./assets/JS/resultsPagejs.js"></script>
-      <scrip src="./assets/JS/script.js"></scrip>
-      <scrip src="./assets/JS/about-contact.js"></scrip>  
-
+      <script src="./assets/JS/script.js"></script>
+      <script src="./assets/JS/about-contact.js"></script>  
+      
   </body>
 </html>
