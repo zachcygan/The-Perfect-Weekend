@@ -58,59 +58,80 @@
 
 
     <div id="resultsPageWeatherForecast" class="columns">
-        <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
-    </div>
+        <!-- <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div> -->
+        <div class="City-Weather-ctn">
+          <div class="current-card">
+            <h2 id="cityName"></h2>
+            <img id="weatherIcon"></img>
+            <div id="currentWeather"></div>
+          </div>
+        </div>
+      </div>
 
    
     <!-- Displays current weather and forecast -->
-    <div class="City-Weather-ctn">
-      <div class="current-card">
-        <h2 id="cityName">San Diego</h2>
-        <img id="weatherIcon"></img>
-        <div id="currentWeather"></div>
-      </div>
-    <div class="fc-ctn">
-        <div class="forecast-card" id="fc1">
-          <h2 class="fcItems" id="fcDate-1">02/22/23</h2>
-          <img class="fcItems" id="fcIcon-1">
-          <div class="fcItems" id="fcDescription-1">Cloudy</div>
-          <div class="fcItems" id="fcTemp-1">60 oF</div> 
-        </div>
-
-        <div class="forecast-card" id="fc2">
-            <h2 class="fcItems" id="fcDate-2"></h2>
-            <img class="fcItems" id="fcIcon-2">
-            <div class="fcItems" id="fcDescription-2"></div>
-            <div class="fcItems" id="fcTemp-2">fdf</div>  
-        </div>
-        <div class="forecast-card" id="fc3">
-          <h2 class="fcItems" id="fcDate-3"></h2>
-          <img class="fcItems" id="fcIcon-3">
-          <div class="fcItems" id="fcDescription-3"></div>
-          <div class="fcItems" id="fcTemp-3">fdf</div>  
-      </div>
-      </div>
-    </div>
+    
     <!-- start main result page -->
       <!-- <div id="resultsPageWeatherForecast" class="columns">
           <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
       </div> -->
 
       <div class="test">
-          <div class="column is-two-fifths has-background-danger m-3 p-3">Food and Drink Recommendation</div>
-        </div>
-
-
-    <section class="section">
-       
-    </section>
-    
-     <div class="columns is-centered">
-        <section id="foodAndDrinkRec" class="column is-full m-1">
-          
-        </section>
+          <div class="column is-two-fifths has-background-danger m-3 p-3">Results</div>
       </div>
 
+
+      <section class="section"></section>
+    
+     <div class="columns is-centered">
+
+        <div class="wrapper">
+          <div class="search_box">
+            <div class="dropdown1">
+              <div class="default_option">Filter</div>
+              <ul>
+                <li>All</li>
+                <li>Recent</li>
+                <li>Popular</li>
+              </ul>
+            </div>
+            <div class="search_field">
+              <input type="text" class="input" placeholder="Search">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+        </div>
+        </div>
+        <div class="side-forecast">
+          <section id="foodAndDrinkRec" class="column is-full m-1 results-ctns "></section>
+          <div class="fc-ctn">
+          <div class="forecast-card" id="fc1">
+            <h2 class="fcItems" id="fcDate-1"></h2>
+            <img class="fcItems" id="fcIcon-1">
+            <br>
+            <br>
+            <div class="fcItems" id="fcDescription-1"></div>
+            <div class="fcItems" id="fcTemp-1"></div> 
+          </div>
+  
+          <div class="forecast-card" id="fc2">
+              <h2 class="fcItems" id="fcDate-2"></h2>
+              <img class="fcItems" id="fcIcon-2">
+              <br>
+              <br>
+              <div class="fcItems" id="fcDescription-2"></div>
+              <div class="fcItems" id="fcTemp-2"></div>  
+          </div>
+          <div class="forecast-card" id="fc3">
+            <h2 class="fcItems" id="fcDate-3"></h2>
+            <img class="fcItems" id="fcIcon-3">
+            <br>
+            <br>
+            <div class="fcItems" id="fcDescription-3"></div>
+            <div class="fcItems" id="fcTemp-3"></div>  
+        </div>
+        </div>
+      </div>
       <div id="loadMoreButtonContainer" class="columns is-centered p-1">
 
       </div>
@@ -119,22 +140,7 @@
      <!-- Right side search bar with filter -->
       
 
-    <div class="wrapper">
-      <div class="search_box">
-        <div class="dropdown1">
-          <div class="default_option">Filter</div>
-          <ul>
-            <li>All</li>
-            <li>Recent</li>
-            <li>Popular</li>
-          </ul>
-        </div>
-        <div class="search_field">
-          <input type="text" class="input" placeholder="Search">
-          <i class="fas fa-search"></i>
-        </div>
-      </div>
-    </div>
+    
       <!-- End Right side search bar with filter-->
     
      
@@ -188,7 +194,6 @@
       <script src="./assets/JS/weatherapi.js"></script>
       <script src="./assets/JS/script.js"></script>
       <script src="./assets/JS/about-contact.js"></script>  
-      <script src="./assets/JS/homepagejs.js"></script>
       <script src="./assets/JS/resultsPagejs.js"></script>
       
   </body>
