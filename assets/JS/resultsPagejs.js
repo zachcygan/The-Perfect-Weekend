@@ -45,8 +45,11 @@ function fetchSearchResults(data) {
     var contentContainer = $('<div>');
     var businessReviews = $('<div>');
     var heartButton = $('<button>');
+    var cardFooter = $('<footer>');
+    var aTag = $('<a>');
     var cardImg = data.image_url;
     resultImg.attr('src', cardImg);
+    aTag.attr('href', '#');
         
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
@@ -63,11 +66,13 @@ function fetchSearchResults(data) {
     contentContainer.addClass('content');
     loadMoreButton.addClass(['button', 'is-normal', 'is-focus', 'is-success'])
     heartButton.addClass(['button', 'is-regular', 'border']);
+    cardFooter.addClass('card-footer');
+    aTag.addClass(['card-footer-item']);
         
     phoneNumber.text('Phone: ' + data.display_phone);
     businessRating.text('Rating: ' + data.rating + '⭐');
     loadMoreButton.text('Load More');
-    heartButton.text('❤️');
+    aTag.text('♡');
     heartButton.css('background-color', 'transparent');
 
     if (data.price === undefined) {
@@ -84,14 +89,16 @@ function fetchSearchResults(data) {
     bodyContainer.append(mediaContainer);
     mediaContainer.append(titleContainer);
     bodyContainer.append(contentContainer);
-    bodyContainer.append(heartButton)
+    // bodyContainer.append(heartButton)
     contentContainer.append(phoneNumber);
     contentContainer.append(businessRating);
     contentContainer.append(businessReviews);
     contentContainer.append(businessPrice);
     titleContainer.append(resultTitle);
+    cardFooter.append(aTag);
     resultCard.append(imgContainer);
     resultCard.append(bodyContainer);
+    resultCard.append(cardFooter);
     $foodAndDrinkRec.append(resultCard);
     loadMoreContainer.append(loadMoreButton);    
 }
