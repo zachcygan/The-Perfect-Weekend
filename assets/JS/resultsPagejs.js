@@ -1,13 +1,9 @@
-var city = localStorage.getItem('searchedCity');
-var activity = localStorage.getItem('searchedActivity')
-
-var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=' + activity + '&sort_by=best_match&limit=20'
+var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
 var $loadMoreContainer = $('#loadMoreButtonContainer')
 var $resultCard = $('#result')
-
 
 
 fetch(url, {
@@ -54,13 +50,17 @@ function fetchSearchResults(data) {
     titleContainer.addClass(['media-content']);
     titleContainer.css('min-height', '30%')
     mediaContainer.addClass(['media']);
-    resultTitle.addClass(['title', 'is-5'])
+    resultTitle.addClass(['title', 'is-4'])
     contentContainer.addClass('content');
     loadMoreButton.add(['button', 'is-normal', 'is-focus', 'is-success'])
         
     phoneNumber.text('Phone: ' + data.display_phone);
     businessRating.text('Rating: ' + data.rating + '⭐')
     loadMoreButton.text('Load More');
+
+    resultCard.on('click', function() {
+        location.href = '/main-result-page-detail-view.html'
+    })
 
     if (data.price === undefined) {
         businessPrice.text('Price: N/A')
@@ -89,6 +89,8 @@ function fetchSearchResults(data) {
 
 
 var resultCard = $('<button>');
+
+
 
 var offset = 20;
 loadMoreButton.on('click', function() {
@@ -174,7 +176,7 @@ loadMoreButton.on('click', function() {
     
     // function resultCardClick(event) {
     //     // var cardEl = event.target;
-        
+    //     var bid_clicked localStorage.setItem('business-id', businessId); //set
     //     console.log(event);
     // }
     
