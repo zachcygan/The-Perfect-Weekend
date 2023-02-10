@@ -23,7 +23,11 @@ fcDescription.push(document.getElementById("fcDescription-1"));
 fcDescription.push(document.getElementById("fcDescription-2"));
 fcDescription.push(document.getElementById("fcDescription-3"));
 
-const weatherAPI = fetch('https://api.openweathermap.org/data/2.5/weather?q=San Diego&units=imperial&appid=6b2fe1f5e9c799498a3cb8dcfcab7b18')
+var city = localStorage.getItem('searchedCity');
+
+
+
+const weatherAPI = fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=6b2fe1f5e9c799498a3cb8dcfcab7b18')
 .then(function(response){
     if(response.ok){
     return response.json()
@@ -38,7 +42,7 @@ const weatherAPI = fetch('https://api.openweathermap.org/data/2.5/weather?q=San 
     weatherIcon.src = "http://openweathermap.org/img/wn/" + icon + "@2x.png";
     currentTemp.innerHTML = temp + "°F";
 })
-fetch('https://api.openweathermap.org/data/2.5/forecast?q=San Diego&units=imperial&appid=6b2fe1f5e9c799498a3cb8dcfcab7b18')
+fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=6b2fe1f5e9c799498a3cb8dcfcab7b18')
 .then(function(response){
     return response.json()
 
@@ -57,3 +61,5 @@ for(i=0; i<data.list.length; i=i+8) {
     fcEL++
 };
 });
+
+
