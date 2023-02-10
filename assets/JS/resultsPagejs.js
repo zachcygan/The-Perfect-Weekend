@@ -3,6 +3,7 @@ var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
 var $loadMoreContainer = $('#loadMoreButtonContainer')
+var $resultCard = $('#result')
 
 
 fetch(url, {
@@ -40,6 +41,8 @@ function fetchSearchResults(data) {
         
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
+   // //TEST
+// resultCard.add('id'. resultBtn)
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -117,11 +120,8 @@ loadMoreButton.on('click', function() {
                 resultImg.attr('src', cardImg);
                     
                 $foodAndDrinkRec.addClass(['custom-flex'])
-// //TEST
-// var choiceNode = document.createElement('button');
-//     choiceNode.setAttribute('class', 'choice');
+
                 resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
-                resultCard.setAttribute('id'. resultBtn)
                 resultImg.addClass(['image']);
                 imgFigure.addClass(['image', 'is-4by3'])
                 imgContainer.addClass('card-image');
@@ -168,12 +168,17 @@ loadMoreButton.on('click', function() {
     // access card elements from result page
     // var resultsEl = document.getElementsByClassName('custom-card');
     
-    function resultCardClick(event) {
-        // var cardEl = event.target;
+    // function resultCardClick(event) {
+    //     // var cardEl = event.target;
         
-        console.log(event);
-    }
+    //     console.log(event);
+    // }
     
     // user clicks on card element containing choices
-    resultCard.on('click', resultCardClick());    
-    
+    // resultCard.onclick = resultCardClick;    
+    // resultCard.on('click', resultCardClick());    
+
+
+    resultCard.on('click', function() {
+        console.log("clicked");
+    })
