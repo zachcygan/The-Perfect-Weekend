@@ -1,26 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link href="https://fonts.googleapis.com/css2?family=Ubuntu&family=Abel:wght@500&display=swap" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="./assets/CSS/style.css">
-      <link rel="stylesheet" type="text/css" href="./assets/CSS/about-style.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
-      <link rel="stylesheet" href="./assets/CSS/resultsPageStyle.css">
-      <title>The Perfect Weekend - Main Result</title>
-  </head>
-
-  <body class="background-gradient">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&family=Abel:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./assets/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/CSS/about-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./assets/CSS/resultsPageStyle.css">
+    <title>The Perfect Weekend - Main Result</title>
+</head>
+<body class="background-gradient">
 
     <!-- nav bar -->
     <nav>
       <div class="title"><a href="./index.html">THE PERFECT WEEKEND</a></div>
-
       <div class="dropdown is-hoverable">
           <div class="dropdown-trigger">
             <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
@@ -51,20 +49,63 @@
             </div>
           </div>
         </div>
-    </nav>
-    <!-- end nav bar -->
-    <br>  
+      </div>
+</nav>
+<!-- end nav bar -->
+<br>  
 
+<!-- start main result page -->
+
+
+    <div id="resultsPageWeatherForecast" class="columns">
+        <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
+    </div>
+
+   
+    <!-- Displays current weather and forecast -->
+    <div class="City-Weather-ctn">
+      <div class="current-card">
+        <h2 id="cityName">San Diego</h2>
+        <img id="weatherIcon"></img>
+        <div id="currentWeather"></div>
+      </div>
+    <div class="fc-ctn">
+        <div class="forecast-card" id="fc1">
+          <h2 class="fcItems" id="fcDate-1">02/22/23</h2>
+          <img class="fcItems" id="fcIcon-1">
+          <div class="fcItems" id="fcDescription-1">Cloudy</div>
+          <div class="fcItems" id="fcTemp-1">60 oF</div> 
+        </div>
+
+        <div class="forecast-card" id="fc2">
+            <h2 class="fcItems" id="fcDate-2"></h2>
+            <img class="fcItems" id="fcIcon-2">
+            <div class="fcItems" id="fcDescription-2"></div>
+            <div class="fcItems" id="fcTemp-2">fdf</div>  
+        </div>
+        <div class="forecast-card" id="fc3">
+          <h2 class="fcItems" id="fcDate-3"></h2>
+          <img class="fcItems" id="fcIcon-3">
+          <div class="fcItems" id="fcDescription-3"></div>
+          <div class="fcItems" id="fcTemp-3">fdf</div>  
+      </div>
+      </div>
+    </div>
     <!-- start main result page -->
-      <div id="resultsPageWeatherForecast" class="columns">
+      <!-- <div id="resultsPageWeatherForecast" class="columns">
           <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
-      </div>
+      </div> -->
 
-      <div class="">
+      <div class="test">
           <div class="column is-two-fifths has-background-danger m-3 p-3">Food and Drink Recommendation</div>
-      </div>
+        </div>
 
-      <div class="columns is-centered">
+
+    <section class="section">
+       
+    </section>
+    
+     <div class="columns is-centered">
         <section id="foodAndDrinkRec" class="column is-full m-1">
           
         </section>
@@ -74,8 +115,29 @@
 
       </div>
       
+    
+     <!-- Right side search bar with filter -->
       
-      <!-- footer -->
+
+    <div class="wrapper">
+      <div class="search_box">
+        <div class="dropdown1">
+          <div class="default_option">Filter</div>
+          <ul>
+            <li>All</li>
+            <li>Recent</li>
+            <li>Popular</li>
+          </ul>
+        </div>
+        <div class="search_field">
+          <input type="text" class="input" placeholder="Search">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+      <!-- End Right side search bar with filter-->
+    
+     
           
     <footer>
       <section id="contact">
@@ -119,13 +181,15 @@
 
   
     
-
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
       integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
       crossorigin="anonymous"></script>
+      <script src="./assets/JS/weatherapi.js"></script>
+      <script src="./assets/JS/script.js"></script>
+      <script src="./assets/JS/about-contact.js"></script>  
+      <script src="./assets/JS/homepagejs.js"></script>
       <script src="./assets/JS/resultsPagejs.js"></script>
-      <scrip src="./assets/JS/script.js"></scrip>
-      <scrip src="./assets/JS/about-contact.js"></scrip>  
-
+      
   </body>
 </html>
