@@ -5,7 +5,7 @@ var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
-var $loadMoreContainer = $('#loadMoreButtonContainer')
+var loadMoreContainer = $('#loadMoreButtonContainer')
 var $resultCard = $('#result')
 
 
@@ -24,7 +24,11 @@ fetch(url, {
         for(var i = 0; i < data.businesses.length; i++) {
             fetchSearchResults(data.businesses[i])
         }
-    })
+        
+        if(data.businesses.length < 20) {
+            loadMoreContainer.addClass('is-hidden')
+        }
+})
 
 function fetchSearchResults(data) {
     var resultCard = $('<button>');
@@ -40,13 +44,14 @@ function fetchSearchResults(data) {
     var businessPrice = $('<div>');
     var contentContainer = $('<div>');
     var businessReviews = $('<div>');
+    var heartButton = $('<button>');
     var cardImg = data.image_url;
     resultImg.attr('src', cardImg);
         
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
-   // //TEST
-// resultCard.add('id'. resultBtn)
+    //TEST
+    // resultCard.add('id'. resultBtn)
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -56,11 +61,13 @@ function fetchSearchResults(data) {
     mediaContainer.addClass(['media']);
     resultTitle.addClass(['title', 'is-5'])
     contentContainer.addClass('content');
-    loadMoreButton.add(['button', 'is-normal', 'is-focus', 'is-success'])
+    loadMoreButton.addClass(['button', 'is-normal', 'is-focus', 'is-success'])
         
     phoneNumber.text('Phone: ' + data.display_phone);
     businessRating.text('Rating: ' + data.rating + '⭐')
     loadMoreButton.text('Load More');
+    heartButton.text('❤️')
+    heartButton.css('background-color', 'transparent')
 
     if (data.price === undefined) {
         businessPrice.text('Price: N/A')
@@ -76,6 +83,7 @@ function fetchSearchResults(data) {
     bodyContainer.append(mediaContainer);
     mediaContainer.append(titleContainer);
     bodyContainer.append(contentContainer);
+    bodyContainer.append(heartButton)
     contentContainer.append(phoneNumber);
     contentContainer.append(businessRating);
     contentContainer.append(businessReviews);
@@ -84,7 +92,7 @@ function fetchSearchResults(data) {
     resultCard.append(imgContainer);
     resultCard.append(bodyContainer);
     $foodAndDrinkRec.append(resultCard);
-    $loadMoreContainer.append(loadMoreButton);
+    loadMoreContainer.append(loadMoreButton);    
 }
 
 
@@ -164,6 +172,7 @@ loadMoreButton.on('click', function() {
                 resultCard.append(bodyContainer);
                 $foodAndDrinkRec.append(resultCard);
 
+            
             }
         }) 
     })
