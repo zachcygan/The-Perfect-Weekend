@@ -6,6 +6,7 @@ var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
 var $loadMoreContainer = $('#loadMoreButtonContainer')
+var $resultCard = $('#result')
 
 
 
@@ -26,7 +27,7 @@ fetch(url, {
     })
 
 function fetchSearchResults(data) {
-    var resultCard = $('<div>');
+    var resultCard = $('<button>');
     var resultTitle = $('<p>');
     var titleContainer = $('<div>');
     var imgContainer = $('<div>');
@@ -44,6 +45,8 @@ function fetchSearchResults(data) {
         
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
+   // //TEST
+// resultCard.add('id'. resultBtn)
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -84,6 +87,9 @@ function fetchSearchResults(data) {
     $loadMoreContainer.append(loadMoreButton);
 }
 
+
+var resultCard = $('<button>');
+
 var offset = 20;
 loadMoreButton.on('click', function() {
     url2 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20&offset=' + offset;
@@ -101,7 +107,7 @@ loadMoreButton.on('click', function() {
             offset += 20;
 
             for(var i = 0; i < data.businesses.length; i++) {              
-                var resultCard = $('<div>');
+                var resultCard = $('<button>');
                 var resultTitle = $('<p>');
                 var titleContainer = $('<div>');
                 var imgContainer = $('<div>');
@@ -118,6 +124,7 @@ loadMoreButton.on('click', function() {
                 resultImg.attr('src', cardImg);
                     
                 $foodAndDrinkRec.addClass(['custom-flex'])
+
                 resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
                 resultImg.addClass(['image']);
                 imgFigure.addClass(['image', 'is-4by3'])
@@ -156,6 +163,26 @@ loadMoreButton.on('click', function() {
                 resultCard.append(imgContainer);
                 resultCard.append(bodyContainer);
                 $foodAndDrinkRec.append(resultCard);
+
             }
         }) 
-})
+    })
+    
+    // ADD TO MAIN RESULT
+    // access card elements from result page
+    // var resultsEl = document.getElementsByClassName('custom-card');
+    
+    // function resultCardClick(event) {
+    //     // var cardEl = event.target;
+        
+    //     console.log(event);
+    // }
+    
+    // user clicks on card element containing choices
+    // resultCard.onclick = resultCardClick;    
+    // resultCard.on('click', resultCardClick());    
+
+
+    // resultCard.on('click', function() {
+    //     console.log("clicked");
+    // })
