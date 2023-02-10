@@ -5,7 +5,7 @@ var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
-var $loadMoreContainer = $('#loadMoreButtonContainer')
+var loadMoreContainer = $('#loadMoreButtonContainer')
 var $resultCard = $('#result')
 
 
@@ -24,7 +24,11 @@ fetch(url, {
         for(var i = 0; i < data.businesses.length; i++) {
             fetchSearchResults(data.businesses[i])
         }
-    })
+        
+        if(data.businesses.length < 20) {
+            loadMoreContainer.addClass('is-hidden')
+        }
+})
 
 function fetchSearchResults(data) {
     var resultCard = $('<button>');
@@ -45,8 +49,8 @@ function fetchSearchResults(data) {
         
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
-   // //TEST
-// resultCard.add('id'. resultBtn)
+    //TEST
+    // resultCard.add('id'. resultBtn)
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -84,7 +88,7 @@ function fetchSearchResults(data) {
     resultCard.append(imgContainer);
     resultCard.append(bodyContainer);
     $foodAndDrinkRec.append(resultCard);
-    $loadMoreContainer.append(loadMoreButton);
+    loadMoreContainer.append(loadMoreButton);    
 }
 
 
@@ -164,6 +168,7 @@ loadMoreButton.on('click', function() {
                 resultCard.append(bodyContainer);
                 $foodAndDrinkRec.append(resultCard);
 
+            
             }
         }) 
     })
