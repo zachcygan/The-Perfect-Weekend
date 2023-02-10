@@ -179,6 +179,6 @@ loadMoreButton.on('click', function() {
     // resultCard.on('click', resultCardClick());    
 
 
-    resultCard.on('click', function() {
-        console.log("clicked");
-    })
+    // resultCard.on('click', function() {
+    //     console.log("clicked");
+    // })

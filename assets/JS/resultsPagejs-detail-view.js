@@ -2,9 +2,9 @@
 var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
+var $resultCard = $('#result')
 
-
-fetch(url, {
+fetch(url, { 
     method: 'GET',
     headers: {
         accept: 'application/json',
@@ -31,6 +31,7 @@ function fetchSearchResults(data) {
     var bodyContainer = $('<div>');
     var resultImg = $('<img>');
     var imgFigure = $('<figure>');
+
     // detail-view
     var contentContainer = $('<div>');
     var mediaContainer = $('<div>');
@@ -48,7 +49,6 @@ function fetchSearchResults(data) {
     
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
-    resultCard.addId(['resultCard']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -76,7 +76,6 @@ function fetchSearchResults(data) {
     
     resultTitle.text(data.name);
 
-
     imgContainer.append(imgFigure);
     imgFigure.append(resultImg);
     bodyContainer.append(mediaContainer);
@@ -100,7 +99,80 @@ function fetchSearchResults(data) {
 }
 
 
-const url7 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/9R9odrlCdPfppSuN1nIwuw/reviews?limit=20&sort_by=yelp_sort';
+
+//*************** USE THIS TO PULL REVIEWS BY BUSINESS ID ***************// 
+// replace location fetch result above with business ID fetch 
+// static fetch
+var url_bid = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/9R9odrlCdPfppSuN1nIwuw/reviews?limit=20&sort_by=yelp_sort';
+
+// const options = {
+//     method: 'GET',
+//     headers: {
+//         accept: 'application/json',
+//         Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+//     }
+// }
+
+// fetch(url_bid, options)
+// .then(response => response.json())
+// .then(response => console.log(response))
+// .catch(err => console.error(err));
+
+
+
+
+// dynamic fetch
+var url_bid_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked + '/reviews?limit=20&sort_by=yelp_sort';
+var bid_clicked = '9R9odrlCdPfppSuN1nIwuw' // use: localStorage.getItem('business-id');
+const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+    }
+}
+
+fetch(url_bid, options)
+.then(response => response.json())
+.then(response => console.log(response))
+.catch(err => console.error(err));
+
+
+
+
+
+
+
+// vvv ************* ADD TO MAIN RESULT *************** //
+// access card elements from result page
+
+// var resultsEl = document.getElementsByClassName('custom-card');
+
+//     function resultCardClick(event) {
+//         var cardEl = event.target;
+//         var businessId = cardEl.id;
+      
+//         // check if user clicked card w/o business ID
+//         if (!businessId){
+//             return;
+//         } else {
+//           // open detail view
+//           window.location.href = 'main-result-page-detail-view.html';
+//         }
+//     }
+
+// user clicks on card element containing choices
+// resultsEl.onclick = resultCardClick;
+
+// ^^^ ************* ADD TO MAIN RESULT *************** //    
+
+
+
+
+
+
+// **************************** NOTES BELOW ****************************** //
+
 // const options = {
 //     method: 'GET',
 //     headers: {
@@ -117,43 +189,6 @@ const url7 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.co
 //     }
 //   };
   
-  fetch(url7, {
-    method: 'GET',
-    headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
-    }
-  })
-    .then(response => response.json())
-    .then(response => console.log(response))
-    .catch(err => console.error(err));
-
-
-
-
-// ADD TO MAIN RESULT
-// access card elements from result page
-var resultsEl = document.getElementsByClassName('custom-card');
-
-    function resultCardClick(event) {
-        var cardEl = event.target;
-        var businessId = cardEl.id;
-      
-        // check if user clicked card w/o business ID
-        if (!businessId){
-            return;
-        } else {
-          // open detail view
-          window.location.href = 'main-result-page-detail-view.html';
-        }
-    }
-
-// user clicks on card element containing choices
-resultsEl.onclick = resultCardClick;
-    
-
-
-
 
 
 
