@@ -57,6 +57,87 @@
 
 
     <div id="resultsPageWeatherForecast" class="columns">
+        <!-- <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div> -->
+        <div class="City-Weather-ctn">
+          <div class="current-card">
+            <h2 id="cityName">San Diego</h2>
+            <img id="weatherIcon"></img>
+            <div id="currentWeather"></div>
+          </div>
+        <div class="fc-ctn">
+            <div class="forecast-card" id="fc1">
+              <h2 class="fcItems" id="fcDate-1">02/22/23</h2>
+              <img class="fcItems" id="fcIcon-1">
+              <div class="fcItems" id="fcDescription-1">Cloudy</div>
+              <div class="fcItems" id="fcTemp-1">60 oF</div> 
+            </div>
+    
+            <div class="forecast-card" id="fc2">
+                <h2 class="fcItems" id="fcDate-2"></h2>
+                <img class="fcItems" id="fcIcon-2">
+                <div class="fcItems" id="fcDescription-2"></div>
+                <div class="fcItems" id="fcTemp-2">fdf</div>  
+            </div>
+            <div class="forecast-card" id="fc3">
+              <h2 class="fcItems" id="fcDate-3"></h2>
+              <img class="fcItems" id="fcIcon-3">
+              <div class="fcItems" id="fcDescription-3"></div>
+              <div class="fcItems" id="fcTemp-3">fdf</div>  
+          </div>
+          </div>
+        </div>
+      </div>
+
+   
+    <!-- Displays current weather and forecast -->
+    
+    <!-- start main result page -->
+      <!-- <div id="resultsPageWeatherForecast" class="columns">
+          <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
+      </div> -->
+
+      <div class="test">
+          <div class="column is-two-fifths has-background-danger m-3 p-3">Results</div>
+      </div>
+
+
+      <section class="section"></section>
+    
+     <div class="columns is-centered">
+
+        <div class="wrapper">
+          <div class="search_box">
+            <div class="dropdown1">
+              <div class="default_option">Filter</div>
+              <ul>
+                <li>All</li>
+                <li>Recent</li>
+                <li>Popular</li>
+              </ul>
+            </div>
+            <div class="search_field">
+              <input type="text" class="input" placeholder="Search">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <section id="foodAndDrinkRec" class="column is-full m-1"></section>
+
+      <div id="loadMoreButtonContainer" class="columns is-centered p-1">
+
+      </div>
+      
+    
+     <!-- Right side search bar with filter -->
+      
+
+    
+      <!-- End Right side search bar with filter-->
+    
+     
+          
         <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
     </div>
 
@@ -118,13 +199,18 @@
       </section>
     </footer>
     <!-- end footer -->
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
-    integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
-    crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <script src="./assets/JS/resultsPagejs.js"></script>
-    <scrip src="./assets/JS/script.js"></scrip>
-    <scrip src="./assets/JS/about-contact.js"></scrip>  
 
-</body>
+  
+    
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
+      integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
+      crossorigin="anonymous"></script>
+      <script src="./assets/JS/weatherapi.js"></script>
+      <script src="./assets/JS/script.js"></script>
+      <script src="./assets/JS/about-contact.js"></script>  
+      <script src="./assets/JS/homepagejs.js"></script>
+      <script src="./assets/JS/resultsPagejs.js"></script>
+      
+  </body>
 </html>
