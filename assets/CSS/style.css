@@ -28,8 +28,11 @@
 
 
 #hamburger {
+    display: inline;
+    float: left;
     width: 80px;
     margin-left: 30%;
+    
 }
 
 .button {
@@ -180,6 +183,9 @@ footer {
     text-align: center;
     width: 100%;
     margin: 0 auto;
+
+    /* margin-left: 100px; */
+
     padding: 0;
   }
   
@@ -231,9 +237,10 @@ footer {
   
   hr {
     border-color: rgba(255,255,255,.6);
+
+    /* margin-left: 200px; */
+
   }
-
-
 
   /* Weather API Styling */
 .City-Weather-ctn {
@@ -313,11 +320,3 @@ footer {
   }
 
 
-@media screen and (max-width: 950px) {
-  .forecast-card {
-    
-    display: none;
-  }
-
-
-}

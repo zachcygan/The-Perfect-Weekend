@@ -92,16 +92,38 @@
 
 /*searchbar styling*/
 .searchbar {
-    color: #1e4fa4;
+    color: #5072A7;
     display: inline-block;
     margin-right: 5px;
-    padding: 5 15px;
+    padding-top: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
     vertical-align: middle;
     box-shadow: 0 1px 3px;
-    margin-top: 300px;
+    margin-top: 200px;
+    margin-left: 550px;
 }
 
+.question {
+    font-size: 30px;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
 
+#searchBtn {
+    color: #5072A7;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 20px;
+}
+
+#cityInput {
+    padding: auto;
+    font-size: 20px;
+}
       
 
 /* footer Social Media Icons */

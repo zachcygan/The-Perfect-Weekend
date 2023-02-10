@@ -1,14 +1,8 @@
 var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
-var city = localStorage.getItem('searchedCity');
-var activity = localStorage.getItem('searchedActivity')
-
-var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=' + activity + '&sort_by=best_match&limit=20'
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
 var $loadMoreContainer = $('#loadMoreButtonContainer')
-var $resultCard = $('#result')
-
 
 
 fetch(url, {
@@ -21,9 +15,6 @@ fetch(url, {
     .then((response) => response.json())
     .then((data) => {
         console.log(data)
-
-        var locationLat = data.businesses[0].coordinates.latitude;
-        var locationLon = data.businesses[0].coordinates.longitude;
 
         for(var i = 0; i < data.businesses.length; i++) {
             fetchSearchResults(data.businesses[i])
@@ -161,26 +152,6 @@ loadMoreButton.on('click', function() {
                 resultCard.append(imgContainer);
                 resultCard.append(bodyContainer);
                 $foodAndDrinkRec.append(resultCard);
-
             }
         }) 
-    })
-    
-    // ADD TO MAIN RESULT
-    // access card elements from result page
-    // var resultsEl = document.getElementsByClassName('custom-card');
-    
-    // function resultCardClick(event) {
-    //     // var cardEl = event.target;
-        
-    //     console.log(event);
-    // }
-    
-    // user clicks on card element containing choices
-    // resultCard.onclick = resultCardClick;    
-    // resultCard.on('click', resultCardClick());    
-
-
-    // resultCard.on('click', function() {
-    //     console.log("clicked");
-    // })
+})
