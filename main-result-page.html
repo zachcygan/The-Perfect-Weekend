@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link href="https://fonts.googleapis.com/css2?family=Ubuntu&family=Abel:wght@500&display=swap" rel="stylesheet">
-      <link rel="stylesheet" type="text/css" href="./assets/CSS/style.css">
-      <link rel="stylesheet" type="text/css" href="./assets/CSS/about-style.css">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
-      <link rel="stylesheet" href="./assets/CSS/resultsPageStyle.css">
-      <title>The Perfect Weekend - Main Result</title>
-  </head>
-
-  <body class="background-gradient">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&family=Abel:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./assets/CSS/style.css">
+    <link rel="stylesheet" type="text/css" href="./assets/CSS/about-style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./assets/CSS/resultsPageStyle.css">
+    <title>The Perfect Weekend - Main Result</title>
+</head>
+<body class="background-gradient">
 
     <!-- nav bar -->
     <nav>
@@ -51,9 +50,18 @@
           </div>
         </div>
       </div>
-    </nav>
-    <!-- end nav bar -->
-    <br>  
+</nav>
+<!-- end nav bar -->
+<br>  
+
+<!-- start main result page -->
+
+
+    <div id="resultsPageWeatherForecast" class="columns">
+        <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
+    </div>
+
+   
     <!-- Displays current weather and forecast -->
     <div class="City-Weather-ctn">
       <div class="current-card">
@@ -92,7 +100,12 @@
           <div class="column is-two-fifths has-background-danger m-3 p-3">Food and Drink Recommendation</div>
         </div>
 
-      <div class="columns is-centered">
+
+    <section class="section">
+       
+    </section>
+    
+     <div class="columns is-centered">
         <section id="foodAndDrinkRec" class="column is-full m-1">
           
         </section>
@@ -102,8 +115,29 @@
 
       </div>
       
+    
+     <!-- Right side search bar with filter -->
       
-      <!-- footer -->
+
+    <div class="wrapper">
+      <div class="search_box">
+        <div class="dropdown1">
+          <div class="default_option">Filter</div>
+          <ul>
+            <li>All</li>
+            <li>Recent</li>
+            <li>Popular</li>
+          </ul>
+        </div>
+        <div class="search_field">
+          <input type="text" class="input" placeholder="Search">
+          <i class="fas fa-search"></i>
+        </div>
+      </div>
+    </div>
+      <!-- End Right side search bar with filter-->
+    
+     
           
     <footer>
       <section id="contact">
