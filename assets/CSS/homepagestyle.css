@@ -51,16 +51,18 @@
 /*searchbar styling*/
 .searchbar {
     color: #5072A7;
-    display: inline-block;
     margin-right: 5px;
     padding-top: 5px;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
-    vertical-align: middle;
-    box-shadow: 0 1px 3px;
     margin-top: 200px;
-    margin-left: 550px;
+}
+
+.city-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .question {
