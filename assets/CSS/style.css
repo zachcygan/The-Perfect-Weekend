@@ -24,8 +24,8 @@
   padding: 10px;
   display: inline-block;
   margin: 1%;
-  
 }
+
 
 #hamburger {
     width: 80px;
@@ -63,12 +63,12 @@
   font-family: 'Montserrat', sans-serif;
   position: absolute;
   top: 25%;
-  left: 90.5%;
+  left: 90%;
   transform: translate(-50%,-50%);
 }
 
 .wrapper .search_box{
-  width: 420px;
+  width: 500px;
   background: #fff;
   border-radius: 5px;
   height: 65px;
@@ -231,13 +231,9 @@ footer {
   
   hr {
     border-color: rgba(255,255,255,.6);
-<<<<<<< Updated upstream
   }
-=======
 
-    /* margin-left: 200px; */
 
-  }
 
   /* Weather API Styling */
 .City-Weather-ctn {
@@ -325,4 +321,3 @@ footer {
 
 
 }
->>>>>>> Stashed changes
