@@ -320,3 +320,11 @@ footer {
   }
 
 
+@media screen and (max-width: 768px) {
+  .forecast-card {
+    
+    display: none;
+  }
+
+
+}
