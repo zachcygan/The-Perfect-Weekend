@@ -21,17 +21,14 @@ body {
    
 }
 
-.favorite-food-ctn{
+.favorite-ctn{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
 }
 
-.favh3 {
-    color: #fff;
-}
-.favorite-act-ctn{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+@media screen and (max-width: 850px) {
+    .favorite-ctn {
+        flex-direction: column;
+    }
+    
 }
