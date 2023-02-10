@@ -122,8 +122,8 @@ var url_bid = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.c
 
 
 // dynamic fetch
-var url_bid_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked + '/reviews?limit=20&sort_by=yelp_sort';
 var bid_clicked = '9R9odrlCdPfppSuN1nIwuw' // use: localStorage.getItem('business-id');
+var url_bid_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked + '/reviews?limit=20&sort_by=yelp_sort';
 const options = {
     method: 'GET',
     headers: {
