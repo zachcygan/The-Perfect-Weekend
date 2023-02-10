@@ -71,6 +71,14 @@ function fetchSearchResults(data) {
     loadMoreButton.text('Load More');
     heartButton.text('♡')
 
+    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    
+    for(var i = 0; i < favorites.length; i++) {
+        if(data.id === favorites[i]) {
+            heartButton.text('❤️')
+        }
+    }
+
     if (data.price === undefined) {
         businessPrice.text('Price: N/A')
     } else {
@@ -211,10 +219,34 @@ function saveFavorite(event) {
     // console.log(event)
     var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     console.log(typeof favorites)
+    var foundId = false;
+    
+    if(favorites.length >= 1) {
+        for(var i = 0; i < favorites.length; i++) {
+            if(event.data.id === favorites[i]) {
+                console.log('found: ' + favorites[i])
+                favorites.splice(i, 1);   
+                foundId = true;
+                
 
-    favorites.push(event.data.id);
+                break
+            }
+        }
+    }
+
+    if (!foundId) {
+        favorites.push(event.data.id);
+
+        event.currentTarget.textContent = '❤️';
+    } else {
+        event.currentTarget.textContent = '♡';
+    }
+    
+    console.log(event)
 
     localStorage.setItem('favorites', JSON.stringify(favorites))
+
+
 
 }
 
