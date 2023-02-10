@@ -3,7 +3,7 @@ var weatherBaseUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
 // var weatherUrl = 'https://api.openweathermap.org/data/2.5/weather?q=Irvine&appid=b92c7b94ea2bfe103131662778308a84'
 var cityBaseUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=';
 // var cityUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=Irvine&appid=b92c7b94ea2bfe103131662778308a84'
-var city = 'Irvine';
+var city;
 const searchBtn = document.querySelector('#searchBtn');
 const cityInput = document.querySelector('#cityInput');
 
@@ -14,7 +14,7 @@ function getdata() {
         console.log(data)
     })
 
-fetch(`${weatherBaseUrl}${city}&appid=${apikey}`)
+    fetch(`${weatherBaseUrl}${city}&appid=${apikey}`)
     .then((response) => response.json())
     .then((data) => {
         console.log(data)
@@ -22,10 +22,12 @@ fetch(`${weatherBaseUrl}${city}&appid=${apikey}`)
 }
 
 
-searchBtn.addEventListener('click', () => {
-    // location.href='./main-result-page.html'
+searchBtn.addEventListener('click', () => { 
     city = cityInput.value
     getdata()
+    location.href='./main-result-page.html'
+    
+    localStorage.setItem('searchedCity', city);
 });
     
 

@@ -1,8 +1,11 @@
-var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
+var city = localStorage.getItem('searchedCity');
+
+var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=sushi&sort_by=best_match&limit=20'
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
 var $loadMoreContainer = $('#loadMoreButtonContainer')
+
 
 
 fetch(url, {
