@@ -231,4 +231,98 @@ footer {
   
   hr {
     border-color: rgba(255,255,255,.6);
+<<<<<<< Updated upstream
   }
+=======
+
+    /* margin-left: 200px; */
+
+  }
+
+  /* Weather API Styling */
+.City-Weather-ctn {
+  height: 100px;
+}
+
+
+  #cityName {
+    text-align: flex-start;
+    padding: 15px;
+    color: #485fc7;
+    font-size: 60px;
+    font-weight: bold;
+    text-shadow: -1px 1px 2px #000,
+				  1px 1px 2px #000,
+				  1px -1px 0 #000,
+				  -1px -1px 0 #000;
+  }
+
+  #weatherIcon {
+    margin: 8px;
+  }
+
+  #currentWeather{
+    margin: 35px;
+  }
+
+  #currentWeather{
+    font-weight: bold;
+    font-size: 30px;
+  }
+
+  .current-card {
+    float: left;
+    display: flex;
+    width: 1050px;
+  }
+
+  .fc-ctn {
+    display: flex;
+    margin: -3em;
+    
+  }
+
+  #fc1 {
+    margin: 8px;
+  }
+
+  #fc2 {
+    margin: 8px;
+  }
+
+  #fc3 {
+    margin: 8px;
+  }
+
+  .forecast-card {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: capitalize;
+    color: #000;
+    background-color: rgba(253, 249, 249, 0.3);
+    border: 1px solid rgb(215, 211, 211);
+    border-radius: 30px;
+    height: 160px;
+    width: 275px;
+    padding: 1em;
+  }
+
+  .forecast-card h2 {
+    float: left;
+    color: #000;
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+
+@media screen and (max-width: 768px) {
+  .forecast-card {
+    
+    display: none;
+  }
+
+
+}
+>>>>>>> Stashed changes
