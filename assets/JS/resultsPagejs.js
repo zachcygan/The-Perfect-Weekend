@@ -44,6 +44,7 @@ function fetchSearchResults(data) {
     var businessPrice = $('<div>');
     var contentContainer = $('<div>');
     var businessReviews = $('<div>');
+    var heartContainer = $('<div>');
     var heartButton = $('<button>');
     var cardImg = data.image_url;
     resultImg.attr('src', cardImg);
@@ -62,13 +63,21 @@ function fetchSearchResults(data) {
     resultTitle.addClass(['title', 'is-5'])
     contentContainer.addClass('content');
     loadMoreButton.addClass(['button', 'is-normal', 'is-focus', 'is-success'])
-    heartButton.addClass(['button', 'is-regular', 'border']);
+    heartContainer.addClass('h-7');
+    heartButton.addClass('custom-heart');
         
     phoneNumber.text('Phone: ' + data.display_phone);
     businessRating.text('Rating: ' + data.rating + '⭐');
     loadMoreButton.text('Load More');
-    heartButton.text('❤️');
-    heartButton.css('background-color', 'transparent');
+    heartButton.text('♡')
+
+    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    
+    for(var i = 0; i < favorites.length; i++) {
+        if(data.id === favorites[i]) {
+            heartButton.text('❤️')
+        }
+    }
 
     if (data.price === undefined) {
         businessPrice.text('Price: N/A')
@@ -78,22 +87,33 @@ function fetchSearchResults(data) {
     
     businessReviews.text('Number of reviews: ' + data.review_count)
     resultTitle.text(data.name);
+    resultCard.attr('id', data.id)
+    heartButton.attr('id', data.id)
 
     imgContainer.append(imgFigure);
     imgFigure.append(resultImg);
     bodyContainer.append(mediaContainer);
     mediaContainer.append(titleContainer);
     bodyContainer.append(contentContainer);
-    bodyContainer.append(heartButton)
     contentContainer.append(phoneNumber);
     contentContainer.append(businessRating);
     contentContainer.append(businessReviews);
     contentContainer.append(businessPrice);
     titleContainer.append(resultTitle);
+    heartContainer.append(heartButton);
     resultCard.append(imgContainer);
     resultCard.append(bodyContainer);
+    resultCard.append(heartContainer);
     $foodAndDrinkRec.append(resultCard);
-    loadMoreContainer.append(loadMoreButton);    
+    loadMoreContainer.append(loadMoreButton);
+
+    heartButton.click({id: data.id}, saveFavorite)
+    resultCard.on('click', function(event) {
+        console.log(data)
+        var singleCard = data.id;
+
+        localStorage.setItem('singleCard', singleCard);
+    })
 }
 
 
@@ -101,7 +121,7 @@ var resultCard = $('<button>');
 
 var offset = 20;
 loadMoreButton.on('click', function() {
-    url2 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20&offset=' + offset;
+    url2 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=' + activity + '&sort_by=best_match&limit=20&offset=' + offset;
     
     fetch(url2, {
         method: 'GET',
@@ -172,8 +192,6 @@ loadMoreButton.on('click', function() {
                 resultCard.append(imgContainer);
                 resultCard.append(bodyContainer);
                 $foodAndDrinkRec.append(resultCard);
-
-            
             }
         }) 
     })
@@ -199,3 +217,41 @@ loadMoreButton.on('click', function() {
     // resultCard.on('click', function() {
     //     console.log("clicked");
     // })
+
+function saveFavorite(event) {
+    // console.log(event)
+    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    console.log(typeof favorites)
+    var foundId = false;
+    
+    if(favorites.length >= 1) {
+        for(var i = 0; i < favorites.length; i++) {
+            if(event.data.id === favorites[i]) {
+                console.log('found: ' + favorites[i])
+                favorites.splice(i, 1);   
+                foundId = true;
+                
+
+                break
+            }
+        }
+    }
+
+    if (!foundId) {
+        favorites.push(event.data.id);
+
+        event.currentTarget.textContent = '❤️';
+    } else {
+        event.currentTarget.textContent = '♡';
+    }
+    
+    console.log(event)
+
+    localStorage.setItem('favorites', JSON.stringify(favorites))
+
+
+
+}
+
+   
+    
