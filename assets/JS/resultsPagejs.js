@@ -1,8 +1,13 @@
-var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
+var city = localStorage.getItem('searchedCity');
+var activity = localStorage.getItem('searchedActivity')
+
+var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=' + activity + '&sort_by=best_match&limit=20'
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
-var $loadMoreContainer = $('#loadMoreButtonContainer')
+var loadMoreContainer = $('#loadMoreButtonContainer')
+var $resultCard = $('#result')
+
 
 
 fetch(url, {
@@ -19,10 +24,14 @@ fetch(url, {
         for(var i = 0; i < data.businesses.length; i++) {
             fetchSearchResults(data.businesses[i])
         }
-    })
+        
+        if(data.businesses.length < 20) {
+            loadMoreContainer.addClass('is-hidden')
+        }
+})
 
 function fetchSearchResults(data) {
-    var resultCard = $('<div>');
+    var resultCard = $('<button>');
     var resultTitle = $('<p>');
     var titleContainer = $('<div>');
     var imgContainer = $('<div>');
@@ -35,11 +44,14 @@ function fetchSearchResults(data) {
     var businessPrice = $('<div>');
     var contentContainer = $('<div>');
     var businessReviews = $('<div>');
+    var heartButton = $('<button>');
     var cardImg = data.image_url;
     resultImg.attr('src', cardImg);
         
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
+    //TEST
+    // resultCard.add('id'. resultBtn)
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -47,13 +59,16 @@ function fetchSearchResults(data) {
     titleContainer.addClass(['media-content']);
     titleContainer.css('min-height', '30%')
     mediaContainer.addClass(['media']);
-    resultTitle.addClass(['title', 'is-4'])
+    resultTitle.addClass(['title', 'is-5'])
     contentContainer.addClass('content');
-    loadMoreButton.add(['button', 'is-normal', 'is-focus', 'is-success'])
+    loadMoreButton.addClass(['button', 'is-normal', 'is-focus', 'is-success'])
+    heartButton.addClass(['button', 'is-regular', 'border']);
         
     phoneNumber.text('Phone: ' + data.display_phone);
-    businessRating.text('Rating: ' + data.rating + '⭐')
+    businessRating.text('Rating: ' + data.rating + '⭐');
     loadMoreButton.text('Load More');
+    heartButton.text('❤️');
+    heartButton.css('background-color', 'transparent');
 
     if (data.price === undefined) {
         businessPrice.text('Price: N/A')
@@ -69,6 +84,7 @@ function fetchSearchResults(data) {
     bodyContainer.append(mediaContainer);
     mediaContainer.append(titleContainer);
     bodyContainer.append(contentContainer);
+    bodyContainer.append(heartButton)
     contentContainer.append(phoneNumber);
     contentContainer.append(businessRating);
     contentContainer.append(businessReviews);
@@ -77,8 +93,11 @@ function fetchSearchResults(data) {
     resultCard.append(imgContainer);
     resultCard.append(bodyContainer);
     $foodAndDrinkRec.append(resultCard);
-    $loadMoreContainer.append(loadMoreButton);
+    loadMoreContainer.append(loadMoreButton);    
 }
+
+
+var resultCard = $('<button>');
 
 var offset = 20;
 loadMoreButton.on('click', function() {
@@ -97,7 +116,7 @@ loadMoreButton.on('click', function() {
             offset += 20;
 
             for(var i = 0; i < data.businesses.length; i++) {              
-                var resultCard = $('<div>');
+                var resultCard = $('<button>');
                 var resultTitle = $('<p>');
                 var titleContainer = $('<div>');
                 var imgContainer = $('<div>');
@@ -114,6 +133,7 @@ loadMoreButton.on('click', function() {
                 resultImg.attr('src', cardImg);
                     
                 $foodAndDrinkRec.addClass(['custom-flex'])
+
                 resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
                 resultImg.addClass(['image']);
                 imgFigure.addClass(['image', 'is-4by3'])
@@ -152,6 +172,27 @@ loadMoreButton.on('click', function() {
                 resultCard.append(imgContainer);
                 resultCard.append(bodyContainer);
                 $foodAndDrinkRec.append(resultCard);
+
+            
             }
         }) 
-})
+    })
+    
+    // ADD TO MAIN RESULT
+    // access card elements from result page
+    // var resultsEl = document.getElementsByClassName('custom-card');
+    
+    // function resultCardClick(event) {
+    //     // var cardEl = event.target;
+        
+    //     console.log(event);
+    // }
+    
+    // user clicks on card element containing choices
+    // resultCard.onclick = resultCardClick;    
+    // resultCard.on('click', resultCardClick());    
+
+
+    // resultCard.on('click', function() {
+    //     console.log("clicked");
+    // })
