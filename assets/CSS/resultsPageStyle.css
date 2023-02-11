@@ -18,3 +18,15 @@
 	/* background-size: 400% 400%; */
     animation: gradient 15s ease-in-out infinite;
 }
+
+.custom-heart {
+    font-size: 30px;
+    float: right;
+    background-color: transparent;
+    border: none;
+}
+
+.custom-heart:hover {
+    cursor: pointer;
+    color: red;
+}
