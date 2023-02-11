@@ -344,7 +344,7 @@ footer {
 
 
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 1150px) {
   .forecast-card {
     
     display: none;

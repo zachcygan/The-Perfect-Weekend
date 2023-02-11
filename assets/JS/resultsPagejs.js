@@ -62,12 +62,13 @@ function fetchSearchResults(data) {
     resultTitle.addClass(['title', 'is-5'])
     contentContainer.addClass('content');
     loadMoreButton.addClass(['button', 'is-normal', 'is-focus', 'is-success'])
+    heartButton.addClass(['button', 'is-regular', 'border']);
         
     phoneNumber.text('Phone: ' + data.display_phone);
-    businessRating.text('Rating: ' + data.rating + '⭐')
+    businessRating.text('Rating: ' + data.rating + '⭐');
     loadMoreButton.text('Load More');
-    heartButton.text('❤️')
-    heartButton.css('background-color', 'transparent')
+    heartButton.text('❤️');
+    heartButton.css('background-color', 'transparent');
 
     if (data.price === undefined) {
         businessPrice.text('Price: N/A')
