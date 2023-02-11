@@ -50,7 +50,7 @@ function fetchSearchResults(data) {
     resultImg.attr('src', cardImg);
         
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
+    resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
     //TEST
     // resultCard.add('id'. resultBtn)
     resultImg.addClass(['image']);
@@ -109,13 +109,17 @@ function fetchSearchResults(data) {
 
     heartButton.click({id: data.id}, saveFavorite)
     resultCard.on('click', function(event) {
-        console.log(data)
         var singleCard = data.id;
 
         localStorage.setItem('singleCard', singleCard);
     })
 }
 
+$(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 100) { 
+        console.log('test')
+    }
+});
 
 var resultCard = $('<button>');
 
@@ -218,13 +222,11 @@ loadMoreButton.on('click', function() {
 function saveFavorite(event) {
     // console.log(event)
     var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    console.log(typeof favorites)
     var foundId = false;
     
     if(favorites.length >= 1) {
         for(var i = 0; i < favorites.length; i++) {
             if(event.data.id === favorites[i]) {
-                console.log('found: ' + favorites[i])
                 favorites.splice(i, 1);   
                 foundId = true;
                 
