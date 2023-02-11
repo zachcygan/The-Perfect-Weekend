@@ -1,27 +1,47 @@
-
-var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
+// var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var $resultCard = $('#result')
 
-fetch(url, { 
+
+
+// fetch(url, { 
+//     method: 'GET',
+//     headers: {
+//         accept: 'application/json',
+//         Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+//     }
+// })
+//     .then((response) => response.json())
+//     .then((data) => {
+//         console.log(data)
+//     var i = 1
+
+//             fetchSearchResults(data.businesses[i])
+        
+//     })
+
+
+
+// FETCH FOR BUSINESS INFO 
+var bid_clicked = localStorage.getItem('singleCard');
+var url_info_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked;
+
+const options1 = {
     method: 'GET',
     headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+      accept: 'application/json',
+      Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
     }
-})
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data)
+  };
+  
 
 
-// FIX THIS: Add event lister to update "i" based on user click
-    var i = 1
 
-            fetchSearchResults(data.businesses[i])
-        
-    })
+fetch(url_info_clicked, options1)
+    .then(response => response.json())
+    .then(data => {console.log(data); fetchSearchResults(data)})
+    .catch(err => console.error(err));
 
 function fetchSearchResults(data) {
     var resultCard = $('<div>');
@@ -74,7 +94,7 @@ function fetchSearchResults(data) {
         businessPrice.text('Price: ' + data.price)
     }
     
-    resultTitle.text(data.name);
+    resultTitle.text(data.alias);
 
     imgContainer.append(imgFigure);
     imgFigure.append(resultImg);
@@ -103,7 +123,7 @@ function fetchSearchResults(data) {
 //*************** USE THIS TO PULL REVIEWS BY BUSINESS ID ***************// 
 // replace location fetch result above with business ID fetch 
 // static fetch
-var url_bid = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/9R9odrlCdPfppSuN1nIwuw/reviews?limit=20&sort_by=yelp_sort';
+// var url_bid = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/9R9odrlCdPfppSuN1nIwuw/reviews?limit=20&sort_by=yelp_sort';
 
 // const options = {
 //     method: 'GET',
@@ -119,23 +139,30 @@ var url_bid = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.c
 // .catch(err => console.error(err));
 
 
+// FETCH FOR BUSINESS REVIEWS 
 
+// var bid_clicked = localStorage.getItem('singleCard');
+// console.log(bid_clicked);
 
-// dynamic fetch
-var bid_clicked = '9R9odrlCdPfppSuN1nIwuw' // use: localStorage.getItem('business-id');
-var url_bid_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked + '/reviews?limit=20&sort_by=yelp_sort';
-const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
-    }
-}
+// // dynamic fetch
+// // var bid_clicked = '9R9odrlCdPfppSuN1nIwuw' // use: localStorage.getItem('business-id');
+// var url_bid_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked + '/reviews?limit=20&sort_by=yelp_sort';
+// const options = {
+//     method: 'GET',
+//     headers: {
+//         accept: 'application/json',
+//         Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+//     }
+// }
 
-fetch(url_bid, options)
-.then(response => response.json())
-.then(response => console.log(response))
-.catch(err => console.error(err));
+// fetch(url_bid_clicked, options)
+// .then(response => response.json())
+// .then(data => console.log(data),
+
+// // fetchSearchResults(data.businesses),
+//     // console.log(data.business)
+//     )
+// .catch(err => console.error(err));
 
 
 

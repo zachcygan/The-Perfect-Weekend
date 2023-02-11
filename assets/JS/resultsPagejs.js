@@ -117,6 +117,8 @@ function fetchSearchResults(data) {
         var singleCard = data.id;
 
         localStorage.setItem('singleCard', singleCard);
+        console.log(singleCard);
+
     })
 }
 
