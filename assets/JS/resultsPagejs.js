@@ -177,7 +177,10 @@ loadMoreButton.on('click', function() {
             }
         }) 
     })
+
     
+
+
     // ADD TO MAIN RESULT
     // access card elements from result page
     // var resultsEl = document.getElementsByClassName('custom-card');
