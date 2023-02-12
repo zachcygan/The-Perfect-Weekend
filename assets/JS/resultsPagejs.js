@@ -7,8 +7,8 @@ var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
 var loadMoreContainer = $('#loadMoreButtonContainer')
 var $resultCard = $('#result')
-
-
+var $cityInput = $('#cityInput');
+var $activSearch = $('#activSearch');
 
 fetch(url, {
     method: 'GET',
@@ -24,13 +24,36 @@ fetch(url, {
         for(var i = 0; i < data.businesses.length; i++) {
             fetchSearchResults(data.businesses[i])
         }
-        
-        if(data.businesses.length < 20) {
-            loadMoreContainer.addClass('is-hidden')
-        }
 })
 
+function addHeart(id) {
+    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+    var heartContainer = $('<div>');
+    var heartButton = $('<button>');
+
+    heartContainer.addClass('h-7');
+    heartButton.addClass('custom-heart');
+
+    heartButton.text('♡')
+
+    for(var i = 0; i < favorites.length; i++) {
+        if(id === favorites[i]) {
+            heartButton.text('❤️')
+        }
+    }
+
+    heartButton.attr('id', id)
+
+    heartContainer.append(heartButton);
+
+    heartButton.click({id: id}, saveFavorite);
+
+    return heartContainer;
+}
+
 function fetchSearchResults(data) {
+    var heartContainer = addHeart(data.id)
     var resultCard = $('<button>');
     var resultTitle = $('<p>');
     var titleContainer = $('<div>');
@@ -44,8 +67,7 @@ function fetchSearchResults(data) {
     var businessPrice = $('<div>');
     var contentContainer = $('<div>');
     var businessReviews = $('<div>');
-    var heartContainer = $('<div>');
-    var heartButton = $('<button>');
+    
     var cardImg = data.image_url;
     resultImg.attr('src', cardImg);
         
@@ -62,22 +84,10 @@ function fetchSearchResults(data) {
     mediaContainer.addClass(['media']);
     resultTitle.addClass(['title', 'is-5'])
     contentContainer.addClass('content');
-    loadMoreButton.addClass(['button', 'is-normal', 'is-focus', 'is-success'])
-    heartContainer.addClass('h-7');
-    heartButton.addClass('custom-heart');
+    
         
     phoneNumber.text('Phone: ' + data.display_phone);
     businessRating.text('Rating: ' + data.rating + '⭐');
-    loadMoreButton.text('Load More');
-    heartButton.text('♡')
-
-    var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    
-    for(var i = 0; i < favorites.length; i++) {
-        if(data.id === favorites[i]) {
-            heartButton.text('❤️')
-        }
-    }
 
     if (data.price === undefined) {
         businessPrice.text('Price: N/A')
@@ -88,8 +98,7 @@ function fetchSearchResults(data) {
     businessReviews.text('Number of reviews: ' + data.review_count)
     resultTitle.text(data.name);
     resultCard.attr('id', data.id)
-    heartButton.attr('id', data.id)
-
+    
     imgContainer.append(imgFigure);
     imgFigure.append(resultImg);
     bodyContainer.append(mediaContainer);
@@ -100,14 +109,13 @@ function fetchSearchResults(data) {
     contentContainer.append(businessReviews);
     contentContainer.append(businessPrice);
     titleContainer.append(resultTitle);
-    heartContainer.append(heartButton);
+    
     resultCard.append(imgContainer);
     resultCard.append(bodyContainer);
     resultCard.append(heartContainer);
     $foodAndDrinkRec.append(resultCard);
-    loadMoreContainer.append(loadMoreButton);
 
-    heartButton.click({id: data.id}, saveFavorite)
+    
     resultCard.on('click', function(event) {
         var singleCard = data.id;
 
@@ -116,15 +124,16 @@ function fetchSearchResults(data) {
 }
 
 $(window).scroll(function() {
-    if($(window).scrollTop() + $(window).height() > $(document).height() - 100) { 
-        console.log('test')
+    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+           loadMore();
     }
 });
 
 var resultCard = $('<button>');
 
 var offset = 20;
-loadMoreButton.on('click', function() {
+
+function loadMore() {
     url2 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=' + activity + '&sort_by=best_match&limit=20&offset=' + offset;
     
     fetch(url2, {
@@ -139,7 +148,8 @@ loadMoreButton.on('click', function() {
             console.log(data)
             offset += 20;
 
-            for(var i = 0; i < data.businesses.length; i++) {              
+            for(var i = 0; i < data.businesses.length; i++) {   
+                var heartContainer = addHeart(data.businesses[i].id)
                 var resultCard = $('<button>');
                 var resultTitle = $('<p>');
                 var titleContainer = $('<div>');
@@ -195,10 +205,11 @@ loadMoreButton.on('click', function() {
                 titleContainer.append(resultTitle);
                 resultCard.append(imgContainer);
                 resultCard.append(bodyContainer);
+                resultCard.append(heartContainer);
                 $foodAndDrinkRec.append(resultCard);
             }
         }) 
-    })
+    }
     
     // ADD TO MAIN RESULT
     // access card elements from result page
