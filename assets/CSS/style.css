@@ -235,6 +235,8 @@ footer {
   /* Weather API Styling */
 .City-Weather-ctn {
   height: 100px;
+  display: flex;
+  margin: 10px;
 }
 
 
@@ -264,15 +266,14 @@ footer {
   }
 
   .current-card {
-    float: left;
     display: flex;
-    width: 1050px;
+    width: 550px;
+    align-self: flex-start;
   }
 
-  .fc-ctn {
+  .fc-ctn{
     display: flex;
-    margin: -3em;
-    
+    margin: 10px;
   }
 
   #fc1 {
@@ -291,44 +292,22 @@ footer {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
     text-transform: capitalize;
     color: #000;
     background-color: rgba(253, 249, 249, 0.3);
     border: 1px solid rgb(215, 211, 211);
     border-radius: 30px;
-    height: 260px;
-    width: 300px;
+    width: 250px;
     padding: 1em;
     
-  }
-
-
-  .results-ctns{ 
-    max-width: 90%;
-  }
-
-  .side-forecast{
-    display: flex;
-  }
-
-  .fc-ctn{
-    display: flex;
-    flex-direction: column;
-    margin-left: -193px;
-    margin-top: 50px;
-    align-self: flex-start;
-    height: auto;
-    position: sticky;
-    top: 0;
-
   }
 
 
   .forecast-card h2 {
     float: left;
     color: #000;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: bold;
   }
 
