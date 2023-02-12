@@ -340,5 +340,8 @@ footer {
     display: none;
   }
 
-
+  
+  .side-forecast {
+    display: none;
+  }
 }
