@@ -176,7 +176,7 @@ function loadMore() {
                     
                 $foodAndDrinkRec.addClass(['custom-flex'])
 
-                resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
+                resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'is-size-5-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet', 'is-size-4-tablet']);
                 resultImg.addClass(['image']);
                 imgFigure.addClass(['image', 'is-4by3'])
                 imgContainer.addClass('card-image');
