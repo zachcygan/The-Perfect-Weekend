@@ -1,27 +1,26 @@
-
-var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
+// var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var $resultCard = $('#result')
 
-fetch(url, { 
+
+// **************** FETCH FOR BUSINESS INFO ****************************** //
+var bid_clicked = localStorage.getItem('singleCard');
+var url_info_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked;
+
+const optionsInfo = {
     method: 'GET',
     headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+      accept: 'application/json',
+      Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
     }
-})
-    .then((response) => response.json())
-    .then((data) => {
-        console.log(data)
+  }
+  
 
-
-// FIX THIS: Add event lister to update "i" based on user click
-    var i = 1
-
-            fetchSearchResults(data.businesses[i])
-        
-    })
+fetch(url_info_clicked, optionsInfo)
+    .then(response => response.json())
+    .then(data => {console.log(data); fetchSearchResults(data)})
+    .catch(err => console.error(err));
 
 function fetchSearchResults(data) {
     var resultCard = $('<div>');
@@ -74,7 +73,7 @@ function fetchSearchResults(data) {
         businessPrice.text('Price: ' + data.price)
     }
     
-    resultTitle.text(data.name);
+    resultTitle.text(data.alias);
 
     imgContainer.append(imgFigure);
     imgFigure.append(resultImg);
@@ -99,11 +98,77 @@ function fetchSearchResults(data) {
 }
 
 
+// **************** FETCH FOR BUSINESS REVIEWS ****************************** //
+
+// var bid_clicked = localStorage.getItem('singleCard');
+
+// dynamic fetch
+var url_bid_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked + '/reviews?limit=20&sort_by=yelp_sort';
+
+const optionsRev = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+    }
+}
+
+fetch(url_bid_clicked, optionsRev)
+.then(response => response.json())
+.then(data => {console.log(data);
+
+    console.log(data.reviews[0].text);
+    fetchSearchReviews(data);
+
+    })
+.catch(err => console.error(err));
+
+
+
+function fetchSearchReviews(data) {
+    var reviewCard = $('<div>');
+    var reviewTitle = $('<p>');
+    var reviewUserRating = $('<p>');
+    var reviewText = $('<p>');
+    var reviewDate = $('<p>');
+    
+    reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+    reviewTitle.addClass(['title', 'is-7']);
+    reviewUserRating.addClass(['is-7']);
+    reviewText.addClass(['is-7']);
+    reviewDate.addClass(['is-7']);
+
+    reviewTitle.text('Top Reviews');
+    reviewUserRating.text('Rating: ' + data.reviews[0].rating);
+    reviewText.text('" ' + data.reviews[0].text + ' "' + '   - ' + data.reviews[0].user.name);
+    reviewDate.text( data.reviews[0].time_created);
+ 
+
+    
+    // FIX THIS: Append more business info + create cards for reviews
+    $foodAndDrinkRec.append(reviewCard);
+    reviewCard.append(reviewTitle);
+    reviewCard.append(reviewUserRating);
+    reviewCard.append(reviewText);
+    reviewCard.append(reviewDate);
+}
+
+
+
+
+
+
+
+
+// **************************** NOTES BELOW ****************************** //
+
+
+
 
 //*************** USE THIS TO PULL REVIEWS BY BUSINESS ID ***************// 
 // replace location fetch result above with business ID fetch 
 // static fetch
-var url_bid = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/9R9odrlCdPfppSuN1nIwuw/reviews?limit=20&sort_by=yelp_sort';
+// var url_bid = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/9R9odrlCdPfppSuN1nIwuw/reviews?limit=20&sort_by=yelp_sort';
 
 // const options = {
 //     method: 'GET',
@@ -120,58 +185,6 @@ var url_bid = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.c
 
 
 
-
-// dynamic fetch
-var url_bid_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked + '/reviews?limit=20&sort_by=yelp_sort';
-var bid_clicked = '9R9odrlCdPfppSuN1nIwuw' // use: localStorage.getItem('business-id');
-const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
-    }
-}
-
-fetch(url_bid, options)
-.then(response => response.json())
-.then(response => console.log(response))
-.catch(err => console.error(err));
-
-
-
-
-
-
-
-// vvv ************* ADD TO MAIN RESULT *************** //
-// access card elements from result page
-
-// var resultsEl = document.getElementsByClassName('custom-card');
-
-//     function resultCardClick(event) {
-//         var cardEl = event.target;
-//         var businessId = cardEl.id;
-      
-//         // check if user clicked card w/o business ID
-//         if (!businessId){
-//             return;
-//         } else {
-//           // open detail view
-//           window.location.href = 'main-result-page-detail-view.html';
-//         }
-//     }
-
-// user clicks on card element containing choices
-// resultsEl.onclick = resultCardClick;
-
-// ^^^ ************* ADD TO MAIN RESULT *************** //    
-
-
-
-
-
-
-// **************************** NOTES BELOW ****************************** //
 
 // const options = {
 //     method: 'GET',
