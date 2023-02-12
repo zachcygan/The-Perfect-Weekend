@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&family=Abel:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./assets/CSS/style.css">
     <link rel="stylesheet" type="text/css" href="./assets/CSS/about-style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+
     <link rel="stylesheet" href="./assets/CSS/resultsPageStyle.css">
     <title>The Perfect Weekend - Main Result</title>
 </head>
@@ -54,6 +54,31 @@
 <!-- end nav bar -->
 <br>  
 
+ <!-- search bar with filter -->
+ <div class="city-label">
+  <div class="searchbar">
+    <h4 class="question">Where are you going?</h4>
+    <input type="text" id="cityInput" placeholder="City Name..."/>
+    <input type="text" id="activSearch" placeholder="Activity...">
+    <button type="button" class="btn btn-label" id="searchBtn">Search</button>
+    <label for="touch"><span id="filter-btn">Filter by</span></label>               
+    <input type="checkbox" id="touch"> 
+  
+    <ul class="slide">
+      <li><a href="#" id="li-btn">Price Low - High</a></li> 
+      <li><a href="#" id="li-btn">Price High - Low</a></li>
+      <li><a href="#" id="li-btn">Sort by Ratings</a></li>
+      <li><a href="#" id="li-btn">Sort by Reviews</a></li>
+    </ul>
+  
+    
+    
+
+  </div>
+</div>
+
+
+  <!-- side search bar with filter-->
 <!-- start main result page -->
 
 
@@ -66,86 +91,58 @@
             <div id="currentWeather"></div>
           </div>
         </div>
-      </div>
+    </div>
 
    
-    <!-- Displays current weather and forecast -->
+      <!-- Displays current weather and forecast -->
     
-    <!-- start main result page -->
+     <!-- start main result page -->
       <!-- <div id="resultsPageWeatherForecast" class="columns">
           <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
       </div> -->
-
-      <div class="test">
-          <div class="column is-two-fifths has-background-danger m-3 p-3">Results</div>
-      </div>
-
-
-      <section class="section"></section>
-    
-     <div class="columns is-centered">
-
-        <div class="wrapper">
-          <div class="search_box">
-            <div class="dropdown1">
-              <div class="default_option">Filter</div>
-              <ul>
-                <li>All</li>
-                <li>Recent</li>
-                <li>Popular</li>
-              </ul>
-            </div>
-            <div class="search_field">
-              <input type="text" class="input" placeholder="Search">
-              <i class="fas fa-search"></i>
-            </div>
-          </div>
-        </div>
-        </div>
-        <div class="side-forecast">
-          <section id="foodAndDrinkRec" class="column is-full m-1 results-ctns "></section>
+      <div class="columns">
+        <section id="foodAndDrinkRec" class="column is-four-fifths m-1 results-ctns ">
+        
+        </section>
+        
+        <div class="side-forecast column is-one-fifth">
           <div class="fc-ctn">
-          <div class="forecast-card" id="fc1">
-            <h2 class="fcItems" id="fcDate-1"></h2>
-            <img class="fcItems" id="fcIcon-1">
-            <br>
-            <br>
-            <div class="fcItems" id="fcDescription-1"></div>
-            <div class="fcItems" id="fcTemp-1"></div> 
-          </div>
-  
-          <div class="forecast-card" id="fc2">
+            <div class="forecast-card" id="fc1">
+              <h2 class="fcItems" id="fcDate-1"></h2>
+              <img class="fcItems" id="fcIcon-1">
+              <br>
+              <br>
+              <div class="fcItems" id="fcDescription-1"></div>
+              <div class="fcItems" id="fcTemp-1"></div>
+            </div>
+        
+            <div class="forecast-card" id="fc2">
               <h2 class="fcItems" id="fcDate-2"></h2>
               <img class="fcItems" id="fcIcon-2">
               <br>
               <br>
               <div class="fcItems" id="fcDescription-2"></div>
-              <div class="fcItems" id="fcTemp-2"></div>  
+              <div class="fcItems" id="fcTemp-2"></div>
+            </div>
+            <div class="forecast-card" id="fc3">
+              <h2 class="fcItems" id="fcDate-3"></h2>
+              <img class="fcItems" id="fcIcon-3">
+              <br>
+              <br>
+              <div class="fcItems" id="fcDescription-3"></div>
+              <div class="fcItems" id="fcTemp-3"></div>
+            </div>
           </div>
-          <div class="forecast-card" id="fc3">
-            <h2 class="fcItems" id="fcDate-3"></h2>
-            <img class="fcItems" id="fcIcon-3">
-            <br>
-            <br>
-            <div class="fcItems" id="fcDescription-3"></div>
-            <div class="fcItems" id="fcTemp-3"></div>  
-        </div>
         </div>
       </div>
+      
       <div id="loadMoreButtonContainer" class="columns is-centered p-1">
     
       </div>
-      
-    
-     <!-- Right side search bar with filter -->
-      
-
-    
-      <!-- End Right side search bar with filter-->
     
      
           
-    <footer>
+    <footer class="">
       <section id="contact">
         <div class="contact-wrapper">
           <hr>
@@ -191,10 +188,12 @@
       <script src="https://code.jquery.com/jquery-3.6.3.min.js" 
       integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" 
       crossorigin="anonymous"></script>
+      <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
       <script src="./assets/JS/weatherapi.js"></script>
       <script src="./assets/JS/script.js"></script>
       <script src="./assets/JS/about-contact.js"></script>  
       <script src="./assets/JS/resultsPagejs.js"></script>
+      <script src="./assets/JS/homepagejs.js"></script>
       
   </body>
 </html>
