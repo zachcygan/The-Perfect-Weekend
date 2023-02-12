@@ -32,7 +32,42 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     padding: 70px;
+    margin-left: 27%;
+    display: inline;
 }
+
+/* nav bar */
+#hamburger {
+    display: inline;
+    float: left;
+    width: 80px;
+    margin-left: 20%;
+    margin-top: 40%;
+}
+
+.button {
+  border: none;
+  background-color: transparent;
+
+}
+
+.button:hover{
+  border: none;
+}
+
+.dropdown-content {
+  margin-top: 10%;
+  margin-left: 3%;
+  background-color: transparent;
+}
+
+.dropdown {
+    display: inline;
+    float: right;
+    border-style: none;
+    font-family: 'Ubuntu', 'san serif';
+}
+
 
 /*adding plane animation*/
 .plane {
@@ -91,3 +126,80 @@
 }
       
 
+/* Social Media Icons */
+
+footer {
+    text-align: center;
+    margin: 10%;
+    max-width: 100%;
+  }
+  
+  #contact {
+  max-width: 100%;
+  }
+  
+  .social-media-list {
+    margin-top: 10%;
+    position: relative;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto;
+  
+    /* margin-left: 100px; */
+  
+    padding: 0;
+  }
+  
+  .social-media-list li a {
+    color: rgb(255, 255, 255);
+  }
+  
+  .social-media-list li {
+    position: relative; 
+    display: inline-block;
+    height: 60px;
+    width:60px;
+    margin: 10px 3px;
+    line-height: 60px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: rgb(27,27,27);
+    cursor: pointer; 
+    transition: all .2s ease-in-out;
+  }
+  
+  .social-media-list li:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 50%;
+    opacity: 0;
+    box-shadow: 0 0 0 1px rgb(118, 118, 118);
+    transition: all .2s ease-in-out;
+  }
+  
+  .social-media-list li:hover {
+    background-color: rgb(107, 107, 107); 
+  }
+  
+  .social-media-list li:hover:after {
+    opacity: 1;  
+    transform: scale(1.12);
+    transition-timing-function: cubic-bezier(0.37,0.74,0.15,1.65);
+  }
+  
+  .social-media-list li:hover a {
+    color: #000;
+  }
+  
+  hr {
+    border-color: rgba(255,255,255,.6);
+  
+    /* margin-left: 200px; */
+  
+  }

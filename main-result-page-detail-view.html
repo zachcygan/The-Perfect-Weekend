@@ -5,7 +5,6 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link href="https://fonts.googleapis.com/css2?family=Ubuntu&family=Abel:wght@500&display=swap" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="./assets/CSS/style.css">
@@ -41,11 +40,8 @@
               <a href="./favorite.html" class="dropdown-item ">
                 My favorite
               </a>
-              <a href="#" class="dropdown-item">
-                Something?
-              </a>
               <hr class="dropdown-divider">
-              <a href="#" class="dropdown-item">
+              <a href="./contact.html" class="dropdown-item">
                   Contact Us
               </a>
             </div>
@@ -55,15 +51,29 @@
     <!-- end nav bar -->
     <br>  
 
+    <!-- search bar with filter -->
+ <div class="city-label">
+  <div class="searchbar">
+    <h4 class="question">Where are you going?</h4>
+    <input type="text" id="cityInput" placeholder="City Name..."/>
+    <input type="text" id="activSearch" placeholder="Activity...">
+    <button type="button" class="btn btn-label" id="searchBtn">Search</button>
+    <label for="touch"><span id="filter-btn">Filter by</span></label>               
+    <input type="checkbox" id="touch"> 
+  
+    <ul class="slide">
+      <li><a href="#" id="li-btn" class="best-match">Best Macth</a></li>
+      <li><a href="#" id="li-btn" class="price-low-high">Price Low - High</a></li> 
+      <li><a href="#" id="li-btn" class="price-high-low">Price High - Low</a></li>
+      <li><a href="#" id="li-btn" class="sort-rating">Sort by Ratings</a></li>
+      <li><a href="#" id="li-btn" class="sort-review">Sort by Reviews</a></li>
+    </ul>
+
+  </div>
+</div>
+
     <!-- start main result page -->
-      <div id="resultsPageWeatherForecast" class="columns">
-          <div class="column is-two-fifths has-background-success m-3 p-3 has-text-centered"> City Name & Weather</div>
-      </div>
-
-      <div class="">
-          <div class="column is--fifths has-background-danger m-3 p-3">Food and Drink Recommendation</div>
-      </div>
-
+     
       <div class="columns is-centered">
         <section id="foodAndDrinkRec" class="column is-full m-1">
           
@@ -73,9 +83,9 @@
 
       
       
-      <!-- footer -->
-          
-    <footer>
+     <!-- footer -->
+        
+     <footer>
       <section id="contact">
         <div class="contact-wrapper">
           <hr>
@@ -114,8 +124,6 @@
       </section>
     </footer>
     <!-- end footer -->
-
-  
     
 
       <script src="https://code.jquery.com/jquery-3.6.3.min.js" 

@@ -24,20 +24,22 @@
   padding: 10px;
   display: inline-block;
   margin: 1%;
-  
+  display: inline;
 }
+
+
 
 #hamburger {
     display: inline;
     float: left;
     width: 80px;
     margin-left: 30%;
-    
 }
 
 .button {
   border: none;
   background-color: transparent;
+
 }
 
 .button:hover{
@@ -94,8 +96,6 @@
 }
 
 /* fitter styling */
-li a {text-decoration : none; color : #2d2f31;}
-
 
 #filter-by {
   width : 300px; 
@@ -149,6 +149,12 @@ span::after {
   font-weight: 700;
 }
 
+li a:hover {
+  text-decoration: underline;
+  color: #000;
+  
+}
+
 .slide li {padding : 25px;
 }
 
@@ -156,85 +162,14 @@ span::after {
 
 #touch:checked + .slide {height: 300px;}
 
-/* Social Media Icons */
 
-footer {
-    text-align: center;
-    margin: 10%;
-}
 
-#contact {
-  max-width: 100%;
-}
-.social-media-list {
-    margin-top: 10%;
-    position: relative;
-    font-size: 30px;
-    text-align: center;
-    width: 100%;
-    margin: 0 auto;
-
-    /* margin-left: 100px; */
-
-    padding: 0;
-  }
-  
-  .social-media-list li a {
-    color: rgb(255, 255, 255);
-  }
-  
-  .social-media-list li {
-    position: relative; 
-    display: inline-block;
-    height: 60px;
-    width:60px;
-    margin: 10px 3px;
-    line-height: 60px;
-    border-radius: 50%;
-    color: #fff;
-    background-color: rgb(27,27,27);
-    cursor: pointer; 
-    transition: all .2s ease-in-out;
-  }
-  
-  .social-media-list li:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
-    border-radius: 50%;
-    opacity: 0;
-    box-shadow: 0 0 0 1px rgb(118, 118, 118);
-    transition: all .2s ease-in-out;
-  }
-  
-  .social-media-list li:hover {
-    background-color: rgb(107, 107, 107); 
-  }
-  
-  .social-media-list li:hover:after {
-    opacity: 1;  
-    transform: scale(1.12);
-    transition-timing-function: cubic-bezier(0.37,0.74,0.15,1.65);
-  }
-  
-  .social-media-list li:hover a {
-    color: #000;
-  }
-  
-  hr {
-    border-color: rgba(255,255,255,.6);
-
-    /* margin-left: 200px; */
-
-  }
 
   /* Weather API Styling */
 .City-Weather-ctn {
   height: 100px;
+  display: flex;
+  margin: 10px;
 }
 
 
@@ -264,15 +199,14 @@ footer {
   }
 
   .current-card {
-    float: left;
     display: flex;
-    width: 1050px;
+    width: 550px;
+    align-self: flex-start;
   }
 
-  .fc-ctn {
+  .fc-ctn{
     display: flex;
-    margin: -3em;
-    
+    margin: 10px;
   }
 
   #fc1 {
@@ -291,44 +225,22 @@ footer {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
     text-transform: capitalize;
     color: #000;
     background-color: rgba(253, 249, 249, 0.3);
     border: 1px solid rgb(215, 211, 211);
     border-radius: 30px;
-    height: 260px;
-    width: 300px;
+    width: 250px;
     padding: 1em;
     
-  }
-
-
-  .results-ctns{ 
-    max-width: 90%;
-  }
-
-  .side-forecast{
-    display: flex;
-  }
-
-  .fc-ctn{
-    display: flex;
-    flex-direction: column;
-    margin-left: -193px;
-    margin-top: 50px;
-    align-self: flex-start;
-    height: auto;
-    position: sticky;
-    top: 0;
-
   }
 
 
   .forecast-card h2 {
     float: left;
     color: #000;
-    font-size: 35px;
+    font-size: 25px;
     font-weight: bold;
   }
 
@@ -341,4 +253,86 @@ footer {
   }
 
 
+
 }
+
+/* Social Media Icons */
+
+footer {
+  text-align: center;
+  margin: 10%;
+  max-width: 100%;
+}
+
+#contact {
+max-width: 100%;
+}
+
+.social-media-list {
+  margin-top: 10%;
+  position: relative;
+  font-size: 30px;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+
+  /* margin-left: 100px; */
+
+  padding: 0;
+}
+
+.social-media-list li a {
+  color: rgb(255, 255, 255);
+}
+
+.social-media-list li {
+  position: relative; 
+  display: inline-block;
+  height: 60px;
+  width:60px;
+  margin: 10px 3px;
+  line-height: 60px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: rgb(27,27,27);
+  cursor: pointer; 
+  transition: all .2s ease-in-out;
+}
+
+.social-media-list li:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 0 1px rgb(118, 118, 118);
+  transition: all .2s ease-in-out;
+}
+
+.social-media-list li:hover {
+  background-color: rgb(107, 107, 107); 
+}
+
+.social-media-list li:hover:after {
+  opacity: 1;  
+  transform: scale(1.12);
+  transition-timing-function: cubic-bezier(0.37,0.74,0.15,1.65);
+}
+
+.social-media-list li:hover a {
+  color: #000;
+}
+
+hr {
+  border-color: rgba(255,255,255,.6);
+
+  /* margin-left: 200px; */
+}
+
+.side-forecast {
+    display: none;
+  }
