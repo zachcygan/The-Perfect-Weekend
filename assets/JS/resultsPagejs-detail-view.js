@@ -202,7 +202,7 @@ function fetchSearchReviews2(data) {
         var reviewDate = $('<p>');
         
         
-        reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+        reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card', 'no-hover']);
         reviewTitle.addClass(['title', 'is-7']);
         reviewUserRating.addClass(['is-7']);
         reviewText.addClass(['is-7']);
