@@ -48,10 +48,22 @@ function fetchSearchResults(data) {
     var businessPrice = $('<div>');
     resultImg.attr('src', cardImg);
     var isOpen = $('<p>');
-   
+
+    // adding carousel //
+
+    console.log(data.photos)
+    for ( var i = 0; i < data.photos.length; i++) {
+        console.log(data.photos[i])
+        var carouselImg = document.createElement('img')
+        carouselImg.setAttribute('src', data.photos[i])
+        if(i != 0) {
+            carouselImg.classList.add('is-hidden')
+        }
+        imgContainer.append(carouselImg);
+    }
     
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -86,7 +98,7 @@ function fetchSearchResults(data) {
     
     resultTitle.text(data.alias);
 
-    imgContainer.append(imgFigure);
+    // imgContainer.append(imgFigure);
     imgFigure.append(resultImg);
     bodyContainer.append(mediaContainer);
     mediaContainer.append(titleContainer);
@@ -169,6 +181,7 @@ fetch(url_bid_clicked, optionsRev)
 function fetchSearchReviews2(data) {
 
     for (var i = 0; i < data.reviews.length; i++) {
+
         var reviewCard = $('<div>');
         var reviewTitle = $('<p>');
         var reviewUserRating = $('<p>');
@@ -183,6 +196,7 @@ function fetchSearchReviews2(data) {
         reviewText.addClass(['is-7']);
         reviewDate.addClass(['is-7']);
         
+
 
 
         reviewUserRating.text('Rating: ' + data.reviews[i].rating);
