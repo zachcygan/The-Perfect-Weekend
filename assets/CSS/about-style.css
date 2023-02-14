@@ -43,7 +43,8 @@
 }
 .contact-form .input-block .form-control {
   background-color: transparent;
-  padding: 0;
+  padding-left: 20px;
+  padding-top: 20px;
   border: none;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
