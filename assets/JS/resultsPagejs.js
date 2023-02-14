@@ -325,7 +325,7 @@ var sortBy = function () {
 
             for (var i = 0; i < data.businesses.length; i++) {
                 fetchSearchResults(data.businesses[i])
-                loadMore();
+                
             }
 
         }
