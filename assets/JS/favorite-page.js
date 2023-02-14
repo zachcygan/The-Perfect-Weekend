@@ -61,10 +61,23 @@ fetch(url, {
 
 
 
-    viewBtn.addEventListener('click', )
-    localStorage.setItem('singleCard');
+    // viewBtn.addEventListener('click', )
+    // localStorage.setItem('singleCard');
+    // viewBtn[0].addEventListener('click', function () {
+    //     var bid_clicked = localStorage.setItem('singleCard');
+    //     location.href = '/main-result-page-detail-view.html';
+
+    // })
 
 
+    for(i=0; i < viewBtn.length; i++){
+        var singleCard = favoritesList[i];
+        viewBtn[i].addEventListener('click', function(event){
+            var singleCard = data.id;
+            // location.href = '/main-result-page-detail-view.html'
+            console.log(data)
+        });
+    }
 
 // favCtn = document.querySelector("favorite-ctn");
 
