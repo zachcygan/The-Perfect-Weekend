@@ -129,6 +129,7 @@ function fetchSearchResults(data) {
     })
 }
 
+// grabbed from https://stackoverflow.com/questions/13057910/load-more-content-when-user-scrolls-near-bottom-of-page
 $(window).scroll(function () { 
     if (Math.trunc($(window).scrollTop()) == Math.trunc($(document).height()) - Math.trunc($(window).height())) {
 
