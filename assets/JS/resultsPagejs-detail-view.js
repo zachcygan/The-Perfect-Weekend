@@ -48,7 +48,7 @@ function fetchSearchResults(data) {
    
     
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -174,7 +174,7 @@ function fetchSearchReviews2(data) {
     var reviewDate = $('<p>');
     
     
-    reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+    reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
     reviewTitle.addClass(['title', 'is-7']);
     reviewTitle.text('Top Reviews');
     reviewUserRating.addClass(['is-7']);
