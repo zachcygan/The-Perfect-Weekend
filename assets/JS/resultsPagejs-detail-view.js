@@ -66,9 +66,6 @@ function fetchSearchResults(data) {
     var isOpen = $('<p>');
 
     // adding carousel //
-    var nextBtn = $('#nextPic');
-    var prevBtn = $('#prevPic');
-
     for ( var i = 0; i < data.photos.length; i++) {
         console.log(data.photos[i])
         var carouselImg = document.createElement('img')
@@ -82,7 +79,7 @@ function fetchSearchResults(data) {
     
     
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
+    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-margin']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -214,11 +211,12 @@ function fetchSearchReviews2(data) {
         reviewUserRating.addClass(['is-7']);
         reviewText.addClass(['is-7']);
         reviewDate.addClass(['is-7']);
+
         
 
 
 
-        reviewUserRating.text('Rating: ' + data.reviews[i].rating);
+        reviewUserRating.text('Rating: ' + data.reviews[i].rating + '⭐');
         reviewText.text('" ' + data.reviews[i].text + ' "' + '   - ' + data.reviews[i].user.name);
         reviewDate.text( data.reviews[i].time_created);
 
