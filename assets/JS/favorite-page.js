@@ -4,6 +4,7 @@ var favName = [];
 var favoritesList = []
 var viewBtn = document.querySelectorAll(".viewBtn")
 
+
 favCtn.push(document.getElementById("fav-ctn-1"));
 favName.push(document.getElementById("ctn-name-1"));
 favImg.push(document.getElementById("ctn-photo-1"));
@@ -13,6 +14,12 @@ favImg.push(document.getElementById("ctn-photo-2"));
 favCtn.push(document.getElementById("fav-ctn-3"));
 favName.push(document.getElementById("ctn-name-3"));
 favImg.push(document.getElementById("ctn-photo-3"));
+favCtn.push(document.getElementById("fav-ctn-4"));
+favName.push(document.getElementById("ctn-name-4"));
+favImg.push(document.getElementById("ctn-photo-4"));
+favCtn.push(document.getElementById("fav-ctn-5"));
+favName.push(document.getElementById("ctn-name-5"));
+favImg.push(document.getElementById("ctn-photo-5"));
 
 favoritesList = JSON.parse(localStorage.getItem('favorites'));
 
@@ -42,9 +49,22 @@ fetch(url, {
 
         ctnIndex++
 
-        })
+        if(!data){
+            favCtn.style.display = "none"
+        }
 
+        });
+        
     };
+
+
+
+
+
+    viewBtn.addEventListener('click', )
+    localStorage.setItem('singleCard');
+
+
 
 // favCtn = document.querySelector("favorite-ctn");
 
