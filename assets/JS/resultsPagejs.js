@@ -19,7 +19,7 @@ fetch(url, {
 })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data)
+        // console.log(data)
 
         for (var i = 0; i < data.businesses.length; i++) {
             fetchSearchResults(data.businesses[i])
@@ -155,7 +155,7 @@ function loadMore() {
     })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
+            // console.log(data)
             offset += 20;
 
             for (var i = 0; i < data.businesses.length; i++) {
