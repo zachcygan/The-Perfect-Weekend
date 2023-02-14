@@ -1,8 +1,24 @@
 // var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
 
+var city = localStorage.getItem('searchedCity');
+var activity = localStorage.getItem('searchedActivity')
+
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var $resultCard = $('#result')
+var $searchButton = $('#searchBtn');
+var $city = $('#cityInput');
+var $activity = $('#activSearch')
+var index = 0;
 
+
+$searchButton.on('click', function() {
+    city = $city.val();
+    activity = $activity.val();
+
+    localStorage.setItem('searchedCity', city);
+    localStorage.setItem('searchedActivity', activity);
+    location.href = './main-result-page.html'
+})
 
 // **************** FETCH FOR BUSINESS INFO ****************************** //
 var bid_clicked = localStorage.getItem('singleCard');
@@ -22,15 +38,39 @@ const optionsInfo = {
 
 fetch(url_info_clicked, optionsInfo)
     .then(response => response.json())
-    .then(data => {console.log(data); fetchSearchResults(data)})
+    .then(data => {
+        console.log("fetch - url_info_clicked : ",data);
+        fetchSearchResults(data)
+
+        bulmaCarousel.attach('#card-image-container', {
+            slidesToScroll: 1,
+            slidesToShow: 1,
+            infinite: true
+        })
+
+
+
+        fetch(url_bid_clicked, optionsRev)
+            .then(response => response.json())
+            .then(data => {console.log(data);
+
+                console.log(data.reviews[0].text);
+                fetchSearchReviews2(data);
+
+                })
+            .catch(err => console.error(err));
+    })
     .catch(err => console.error(err));
+
+
+var bodyContainer = $('<div>');
 
 function fetchSearchResults(data) {
     var resultCard = $('<div>');
     var resultTitle = $('<p>');
     var titleContainer = $('<div>');
     var imgContainer = $('<div>');
-    var bodyContainer = $('<div>');
+    var imgCarousel = $('<div>');
     var resultImg = $('<img>');
     var imgFigure = $('<figure>');
 
@@ -50,23 +90,37 @@ function fetchSearchResults(data) {
     var isOpen = $('<p>');
 
     // adding carousel //
-
-    console.log(data.photos)
+    // console.log(data.photos)
     for ( var i = 0; i < data.photos.length; i++) {
         console.log(data.photos[i])
-        var carouselImg = document.createElement('img')
-        carouselImg.setAttribute('src', data.photos[i])
-        if(i != 0) {
-            carouselImg.classList.add('is-hidden')
-        }
-        imgContainer.append(carouselImg);
+        var itemDiv = $('<figure>')
+        itemDiv.addClass(['item-' + (i+1), 'image', 'is-4by3'])
+        itemDiv.css('text-align', 'center');
+        itemDiv.css('width', '100%')
+
+        var carouselImg = $('<img>')
+        carouselImg.attr('src', data.photos[i])
+        carouselImg.css('object-fit', 'cover')
+        // if(i != 0) {
+        //     carouselImg.classList.add('is-hidden')
+        // }
+        itemDiv.append(carouselImg)
+        imgCarousel.append(itemDiv);
     }
+
+    
     
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
+    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-margin']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
-    imgContainer.addClass('card-image');
+
+    imgCarousel.attr('id', 'card-image-container');
+    imgCarousel.addClass('carousel card-image')
+    // imgContainer.addClass('card-image');
+    imgContainer.append(imgCarousel)
+    imgContainer.css('overflow', 'hidden')
+
     bodyContainer.addClass('card-content');
     titleContainer.addClass(['media-content']);
     titleContainer.css('min-height', '30%')
@@ -90,7 +144,7 @@ function fetchSearchResults(data) {
         businessPrice.text('Price: ' + data.price)
     }
 
-    if (!data.is_close) {
+    if (data.is_close === false) {
         isOpen.text('Currently Open: Yes!')
     } else {
         isOpen.text('Currently Open: No')
@@ -100,9 +154,13 @@ function fetchSearchResults(data) {
 
     // imgContainer.append(imgFigure);
     imgFigure.append(resultImg);
-    bodyContainer.append(mediaContainer);
     mediaContainer.append(titleContainer);
-    bodyContainer.append(contentContainer);
+
+    var mediaContentContainer = $('<div>');
+    mediaContentContainer.append(mediaContainer);
+    mediaContentContainer.append(contentContainer);
+    mediaContentContainer.css('margin-bottom', '20px')
+    bodyContainer.append(mediaContentContainer)
     
 // FIX THIS: Append more business info + create cards for reviews
 
@@ -116,9 +174,10 @@ function fetchSearchResults(data) {
     contentContainer.append(isOpen)
 
     titleContainer.append(resultTitle);
+
     resultCard.append(imgContainer);
     resultCard.append(bodyContainer);
-    $foodAndDrinkRec.prepend(resultCard);
+    $foodAndDrinkRec.append(resultCard);
 }
 
 
@@ -195,11 +254,13 @@ function fetchSearchReviews2(data) {
         reviewUserRating.addClass(['is-7']);
         reviewText.addClass(['is-7']);
         reviewDate.addClass(['is-7']);
+
         
 
 
 
-        reviewUserRating.text('Rating: ' + data.reviews[i].rating);
+
+        reviewUserRating.text('Rating: ' + data.reviews[i].rating + '⭐');
         reviewText.text('" ' + data.reviews[i].text + ' "' + '   - ' + data.reviews[i].user.name);
         reviewDate.text( data.reviews[i].time_created);
 
@@ -216,6 +277,7 @@ function fetchSearchReviews2(data) {
         console.log($foodAndDrinkRec.children())
     }
 }
+
 
 
 
