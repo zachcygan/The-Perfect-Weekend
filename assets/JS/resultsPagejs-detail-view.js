@@ -2,6 +2,7 @@
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var $resultCard = $('#result')
+var index = 0;
 
 
 // **************** FETCH FOR BUSINESS INFO ****************************** //
@@ -47,6 +48,8 @@ function fetchSearchResults(data) {
     var isOpen = $('<p>');
 
     // adding carousel //
+    var nextBtn = $('#nextPic');
+    var prevBtn = $('#nextPic');
 
     console.log(data.photos)
     for ( var i = 0; i < data.photos.length; i++) {
@@ -58,6 +61,32 @@ function fetchSearchResults(data) {
         }
         imgContainer.append(carouselImg);
     }
+
+    var carousel = data.photos;
+
+    function navigate(direction) {
+        index = index + direction;
+        if (index < 0) {
+            index = images.length - 1;
+        } else if (index > images.length - 1) {
+            index = 0;
+        }
+        carouselImg = carousel[index];
+        imgContainer.append(carouselImg)
+    }
+
+    nextBtn.on("click", function(event) {
+        event.stopPropagation();
+      
+        navigate(1);
+      });
+
+    prevBtn.on("click", function(event) {
+        event.stopPropagation();
+      
+        navigate(-1);
+      });
+    
     
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
@@ -87,7 +116,7 @@ function fetchSearchResults(data) {
         businessPrice.text('Price: ' + data.price)
     }
 
-    if (!data.is_close) {
+    if (data.is_close === false) {
         isOpen.text('Currently Open: Yes!')
     } else {
         isOpen.text('Currently Open: No')
@@ -211,6 +240,7 @@ function fetchSearchReviews2(data) {
     bodyContainer.append(reviewCard);
     }
 }
+
 
 
 
