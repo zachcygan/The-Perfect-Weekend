@@ -130,8 +130,7 @@ function fetchSearchResults(data) {
 }
 
 $(window).scroll(function () { 
-
-    if (Math.trunc($(window).scrollTop() == math.trunc$(document).height() - math.trunc$(window).height())) {
+    if (Math.trunc($(window).scrollTop()) == Math.trunc($(document).height()) - Math.trunc($(window).height())) {
 
         loadMore();
     }
@@ -145,10 +144,9 @@ var resultCard = $('<button>');
 var offset = 20;
 
 function loadMore() {
-console.log('hello');
-    url2 = getUrl();
+    url = getUrl();
 
-    fetch(url2, {
+    fetch(url + '&offset=' + offset, {
         method: 'GET',
         headers: {
             accept: 'application/json',
@@ -327,6 +325,7 @@ var sortBy = function () {
 
             for (var i = 0; i < data.businesses.length; i++) {
                 fetchSearchResults(data.businesses[i])
+                loadMore();
             }
 
         }
@@ -356,12 +355,14 @@ var sortBy = function () {
         url += `&price=${sortPrice}`
     }
 
-    if(offset){
-        url += `&offset=${offset}`
-    }
-
+    // if(offset){
+    //     url += `&offset=${offset}`
+    // }
 
     url += '&limit=20'
+
+    
+
 
     return url
 
