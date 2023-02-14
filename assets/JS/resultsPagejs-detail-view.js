@@ -67,7 +67,7 @@ var bodyContainer = $('<div>');
 
 function fetchSearchResults(data) {
     var resultCard = $('<div>');
-    var resultTitle = $('<p>');
+    var resultTitle = $('<a>');
     var titleContainer = $('<div>');
     var imgContainer = $('<div>');
     var imgCarousel = $('<div>');
@@ -126,6 +126,7 @@ function fetchSearchResults(data) {
     titleContainer.css('min-height', '30%')
     mediaContainer.addClass(['media']);
     resultTitle.addClass(['title', 'is-4'])
+    resultTitle.attr('href', data.url);
     contentContainer.addClass('content');
     
         
@@ -150,7 +151,7 @@ function fetchSearchResults(data) {
         isOpen.text('Currently Open: No')
     }
     
-    resultTitle.text(data.alias);
+    resultTitle.text(data.name);
 
     // imgContainer.append(imgFigure);
     imgFigure.append(resultImg);
