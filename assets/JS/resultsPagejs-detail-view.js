@@ -44,10 +44,11 @@ function fetchSearchResults(data) {
     var businessRating = $('<div>');
     var businessPrice = $('<div>');
     resultImg.attr('src', cardImg);
+    var isOpen = $('<p>');
    
     
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -57,6 +58,7 @@ function fetchSearchResults(data) {
     mediaContainer.addClass(['media']);
     resultTitle.addClass(['title', 'is-4'])
     contentContainer.addClass('content');
+    
         
     businessAddress.text('Address: ' + data.location.display_address[0] + ' ' + data.location.display_address[1] + ' ' + data.location.display_address[2] )
     phoneNumber.text('Phone: ' + data.display_phone);
@@ -72,6 +74,12 @@ function fetchSearchResults(data) {
     } else {
         businessPrice.text('Price: ' + data.price)
     }
+
+    if (!data.is_close) {
+        isOpen.text('Currently Open: Yes!')
+    } else {
+        isOpen.text('Currently Open: No')
+    }
     
     resultTitle.text(data.alias);
 
@@ -85,11 +93,12 @@ function fetchSearchResults(data) {
 
     contentContainer.append(businessAddress);
     contentContainer.append(phoneNumber);
-    contentContainer.append(businessHours);
-    contentContainer.append(businessWebsite);
+    // contentContainer.append(businessHours);
+    // contentContainer.append(businessWebsite);
     contentContainer.append(businessRating);
     contentContainer.append(businessReviews);
     contentContainer.append(businessPrice);
+    contentContainer.append(isOpen)
 
     titleContainer.append(resultTitle);
     resultCard.append(imgContainer);
@@ -118,7 +127,7 @@ fetch(url_bid_clicked, optionsRev)
 .then(data => {console.log(data);
 
     console.log(data.reviews[0].text);
-    fetchSearchReviews(data);
+    fetchSearchReviews2(data);
 
     })
 .catch(err => console.error(err));
@@ -132,7 +141,7 @@ function fetchSearchReviews(data) {
     var reviewText = $('<p>');
     var reviewDate = $('<p>');
     
-    reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+    reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
     reviewTitle.addClass(['title', 'is-7']);
     reviewUserRating.addClass(['is-7']);
     reviewText.addClass(['is-7']);
@@ -146,13 +155,54 @@ function fetchSearchReviews(data) {
 
     
     // FIX THIS: Append more business info + create cards for reviews
-    $foodAndDrinkRec.append(reviewCard);
+
     reviewCard.append(reviewTitle);
     reviewCard.append(reviewUserRating);
     reviewCard.append(reviewText);
     reviewCard.append(reviewDate);
+    $foodAndDrinkRec.append(reviewCard);
 }
 
+
+
+function fetchSearchReviews2(data) {
+
+
+
+
+    for (var i = 0; i < data.reviews.length; i++) {
+    var reviewCard = $('<div>');
+    var reviewTitle = $('<p>');
+    var reviewUserRating = $('<p>');
+    var reviewText = $('<p>');
+    var reviewDate = $('<p>');
+    
+    
+    reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+    reviewTitle.addClass(['title', 'is-7']);
+    reviewTitle.text('Top Reviews');
+    reviewUserRating.addClass(['is-7']);
+    reviewText.addClass(['is-7']);
+    reviewDate.addClass(['is-7']);
+    
+
+
+    reviewUserRating.text('Rating: ' + data.reviews[i].rating);
+    reviewText.text('" ' + data.reviews[i].text + ' "' + '   - ' + data.reviews[i].user.name);
+    reviewDate.text( data.reviews[i].time_created);
+
+    
+ 
+
+    
+    // FIX THIS: Append more business info + create cards for reviews
+    reviewCard.append(reviewTitle);
+    reviewCard.append(reviewUserRating);
+    reviewCard.append(reviewText);
+    reviewCard.append(reviewDate);
+    $foodAndDrinkRec.append(reviewCard);
+    }
+}
 
 
 
