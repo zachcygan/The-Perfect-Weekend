@@ -11,16 +11,13 @@ var $activity = $('#activSearch')
 var bodyContainer = $('<div>');
 var index = 0;
 
+$city.attr('value', city);
+
 // Business ID set from Main Results Page' JS 
 
 $searchButton.on('click', function() {
     city = $city.val();
     activity = $activity.val();
-
-    if ($activity.val() === undefined || $city.val() === undefined) {
-        city = localStorage.getItem('searchedCity')
-        activity = localStorage.getItem('searchedActivity')
-    }
 
     localStorage.setItem('searchedCity', city);
     localStorage.setItem('searchedActivity', activity);
