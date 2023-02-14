@@ -41,6 +41,10 @@
     margin-bottom: 2rem;
 }
 
+.no-hover {
+    pointer-events: none;
+}
+
 @media screen and (max-width: 768px) {
     .custom-card {
         margin-top: 2rem;
