@@ -8,20 +8,14 @@ var $resultCard = $('#result')
 var $searchButton = $('#searchBtn');
 var $city = $('#cityInput');
 var $activity = $('#activSearch')
+var bodyContainer = $('<div>');
 var index = 0;
 
-
-$searchButton.on('click', function() {
-    city = $city.val();
-    activity = $activity.val();
-
-    localStorage.setItem('searchedCity', city);
-    localStorage.setItem('searchedActivity', activity);
-    location.href = './main-result-page.html'
-})
-
-// **************** FETCH FOR BUSINESS INFO ****************************** //
+// Business ID set from Main Results Page' JS 
 var bid_clicked = localStorage.getItem('singleCard');
+
+
+// **************** FETCH INFO FOR BUSINESS DETAILS ****************************** //
 var url_info_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked;
 
 const optionsInfo = {
@@ -33,28 +27,40 @@ const optionsInfo = {
   }
   
 
+// **************** FETCH INFO FOR BUSINESS REVIEWS ****************************** //
+var url_bid_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked + '/reviews?limit=20&sort_by=yelp_sort';
 
-  
+const optionsRev = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer 81MTt_yJi-cbutBj-F-Eu2SQJV4Xery0YuezPwwgO0gDJaPnfSwTCEPKb8qUYsvY9v9ROD7uaTFyfoNNVhJlZsp9A44gl0mzOkBbeE64f9MCUt6Wnwu2kd2ZoxLrY3Yx'
+    }
+}
 
+
+
+// **************** FETCH CALL FOR DETAIL VIEW  ****************************** //
 fetch(url_info_clicked, optionsInfo)
     .then(response => response.json())
     .then(data => {
-        console.log("fetch - url_info_clicked : ",data);
-        fetchSearchResults(data)
+        //FETCH Single Card - Seaarch Results 
+        console.log(data);
+        fetchSearchResults(data);
 
+       //FETCH Single Card - Images  
         bulmaCarousel.attach('#card-image-container', {
             slidesToScroll: 1,
             slidesToShow: 1,
             infinite: true
-        })
+        });
 
-
-
+       //FETCH Reviews Card - Top 3 Reviews 
         fetch(url_bid_clicked, optionsRev)
             .then(response => response.json())
-            .then(data => {console.log(data);
-
-                console.log(data.reviews[0].text);
+            .then(data => {
+                //FETCH Reviews Card - Top Reviews 
+                console.log(data);
                 fetchSearchReviews2(data);
 
                 })
@@ -63,9 +69,9 @@ fetch(url_info_clicked, optionsInfo)
     .catch(err => console.error(err));
 
 
-var bodyContainer = $('<div>');
-
+// **************** FETCH FUNCTIONS FOR DETAIL VIEW  ****************************** //
 function fetchSearchResults(data) {
+    // CREATES ELEMENTS: Needed for search results in Single Card
     var resultCard = $('<div>');
     var resultTitle = $('<a>');
     var titleContainer = $('<div>');
@@ -77,6 +83,7 @@ function fetchSearchResults(data) {
     // detail-view
     var contentContainer = $('<div>');
     var mediaContainer = $('<div>');
+    var mediaContentContainer = $('<div>');
     var cardImg = data.image_url;
 
     var businessAddress = $('<div>');
@@ -89,10 +96,12 @@ function fetchSearchResults(data) {
     resultImg.attr('src', cardImg);
     var isOpen = $('<p>');
 
+
+    // ADDS TO ELEMENTS: Needed for search results in Single Card
     // adding carousel //
     // console.log(data.photos)
     for ( var i = 0; i < data.photos.length; i++) {
-        console.log(data.photos[i])
+        // console.log(data.photos[i])
         var itemDiv = $('<figure>')
         itemDiv.addClass(['item-' + (i+1), 'image', 'is-4by3'])
         itemDiv.css('text-align', 'center');
@@ -114,7 +123,6 @@ function fetchSearchResults(data) {
     resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-margin']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
-
     imgCarousel.attr('id', 'card-image-container');
     imgCarousel.addClass('carousel card-image')
     // imgContainer.addClass('card-image');
@@ -129,14 +137,13 @@ function fetchSearchResults(data) {
     resultTitle.attr('href', data.url);
     resultTitle.attr('target', 'blank');
     contentContainer.addClass('content');
-    
         
+
+    // POPULATES ELEMENTS:
     businessAddress.text('Address: ' + data.location.display_address[0] + ' ' + data.location.display_address[1] + ' ' + data.location.display_address[2] )
     phoneNumber.text('Phone: ' + data.display_phone);
     businessHours.text('Hours: ' );
     businessWebsite.text('Website: ' );
-    
-
     
     businessRating.text('Rating: ' + data.rating + '⭐')
     businessReviews.text('Number of reviews: ' + data.review_count)
@@ -154,18 +161,19 @@ function fetchSearchResults(data) {
     
     resultTitle.text(data.name);
 
+
+    // APPENDS ELEMENTS:
     // imgContainer.append(imgFigure);
     imgFigure.append(resultImg);
     mediaContainer.append(titleContainer);
 
-    var mediaContentContainer = $('<div>');
+
     mediaContentContainer.append(mediaContainer);
     mediaContentContainer.append(contentContainer);
     mediaContentContainer.css('margin-bottom', '20px')
     bodyContainer.append(mediaContentContainer)
     
-// FIX THIS: Append more business info + create cards for reviews
-
+    // Append more business info + create cards for reviews
     contentContainer.append(businessAddress);
     contentContainer.append(phoneNumber);
     // contentContainer.append(businessHours);
@@ -183,23 +191,60 @@ function fetchSearchResults(data) {
 }
 
 
-// **************** FETCH FOR BUSINESS REVIEWS ****************************** //
+function fetchSearchReviews2(data) {
 
-// var bid_clicked = localStorage.getItem('singleCard');
+    for (var i = 0; i < data.reviews.length; i++) {
 
-// dynamic fetch
-var url_bid_clicked = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + bid_clicked + '/reviews?limit=20&sort_by=yelp_sort';
+        var reviewCard = $('<div>');
+        var reviewTitle = $('<p>');
+        var reviewUserRating = $('<p>');
+        var reviewText = $('<p>');
+        var reviewDate = $('<p>');
+        
+        
+        reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+        reviewTitle.addClass(['title', 'is-7']);
+        reviewUserRating.addClass(['is-7']);
+        reviewText.addClass(['is-7']);
+        reviewDate.addClass(['is-7']);
+        
+        reviewTitle.text('Top Reviews');
+        reviewUserRating.text('Rating: ' + data.reviews[i].rating + '⭐');
+        reviewText.text('" ' + data.reviews[i].text + ' "' + '   - ' + data.reviews[i].user.name);
+        reviewDate.text( data.reviews[i].time_created);
 
-const optionsRev = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer 81MTt_yJi-cbutBj-F-Eu2SQJV4Xery0YuezPwwgO0gDJaPnfSwTCEPKb8qUYsvY9v9ROD7uaTFyfoNNVhJlZsp9A44gl0mzOkBbeE64f9MCUt6Wnwu2kd2ZoxLrY3Yx'
+        
+    
+
+        
+        // FIX THIS: Append more business info + create cards for reviews
+        reviewCard.append(reviewTitle);
+        reviewCard.append(reviewUserRating);
+        reviewCard.append(reviewText);
+        reviewCard.append(reviewDate);
+        $foodAndDrinkRec.append(reviewCard);
+
     }
 }
 
 
+// EVENT LISTENERS 
 
+$searchButton.on('click', function() {
+    city = $city.val();
+    activity = $activity.val();
+
+    localStorage.setItem('searchedCity', city);
+    localStorage.setItem('searchedActivity', activity);
+    location.href = './main-result-page.html'
+})
+
+
+
+
+
+
+// **************************** NOTES BELOW ****************************** //
 // function fetchSearchReviews(data) {
 //     var reviewCard = $('<div>');
 //     var reviewTitle = $('<p>');
@@ -239,60 +284,9 @@ const optionsRev = {
 // .catch(err => console.error(err));
 
 
-function fetchSearchReviews2(data) {
-
-    for (var i = 0; i < data.reviews.length; i++) {
-
-        var reviewCard = $('<div>');
-        var reviewTitle = $('<p>');
-        var reviewUserRating = $('<p>');
-        var reviewText = $('<p>');
-        var reviewDate = $('<p>');
-        
-        
-        reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
-        reviewTitle.addClass(['title', 'is-7']);
-        reviewTitle.text('Top Reviews');
-        reviewUserRating.addClass(['is-7']);
-        reviewText.addClass(['is-7']);
-        reviewDate.addClass(['is-7']);
-
-        
-
-
-
-
-        reviewUserRating.text('Rating: ' + data.reviews[i].rating + '⭐');
-        reviewText.text('" ' + data.reviews[i].text + ' "' + '   - ' + data.reviews[i].user.name);
-        reviewDate.text( data.reviews[i].time_created);
-
-        
-    
-
-        
-        // FIX THIS: Append more business info + create cards for reviews
-        reviewCard.append(reviewTitle);
-        reviewCard.append(reviewUserRating);
-        reviewCard.append(reviewText);
-        reviewCard.append(reviewDate);
-        $foodAndDrinkRec.append(reviewCard);
-        console.log($foodAndDrinkRec.children())
-    }
-}
-
-
-
-
-
-
-
-
-// **************************** NOTES BELOW ****************************** //
-
-
-
 
 //*************** USE THIS TO PULL REVIEWS BY BUSINESS ID ***************// 
+
 // replace location fetch result above with business ID fetch 
 // static fetch
 // var url_bid = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/9R9odrlCdPfppSuN1nIwuw/reviews?limit=20&sort_by=yelp_sort';
