@@ -44,6 +44,7 @@ function fetchSearchResults(data) {
     var businessRating = $('<div>');
     var businessPrice = $('<div>');
     resultImg.attr('src', cardImg);
+    var isOpen = $('<p>');
    
     
     $foodAndDrinkRec.addClass(['custom-flex'])
@@ -57,6 +58,7 @@ function fetchSearchResults(data) {
     mediaContainer.addClass(['media']);
     resultTitle.addClass(['title', 'is-4'])
     contentContainer.addClass('content');
+    
         
     businessAddress.text('Address: ' + data.location.display_address[0] + ' ' + data.location.display_address[1] + ' ' + data.location.display_address[2] )
     phoneNumber.text('Phone: ' + data.display_phone);
@@ -71,6 +73,12 @@ function fetchSearchResults(data) {
         businessPrice.text('Price: N/A')
     } else {
         businessPrice.text('Price: ' + data.price)
+    }
+
+    if (!data.is_close) {
+        isOpen.text('Currently Open: Yes!')
+    } else {
+        isOpen.text('Currently Open: No')
     }
     
     resultTitle.text(data.alias);
@@ -90,6 +98,7 @@ function fetchSearchResults(data) {
     contentContainer.append(businessRating);
     contentContainer.append(businessReviews);
     contentContainer.append(businessPrice);
+    contentContainer.append(isOpen)
 
     titleContainer.append(resultTitle);
     resultCard.append(imgContainer);
@@ -164,17 +173,21 @@ function fetchSearchReviews2(data) {
     var reviewText = $('<p>');
     var reviewDate = $('<p>');
     
+    
     reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
     reviewTitle.addClass(['title', 'is-7']);
     reviewTitle.text('Top Reviews');
     reviewUserRating.addClass(['is-7']);
     reviewText.addClass(['is-7']);
     reviewDate.addClass(['is-7']);
+    
 
 
     reviewUserRating.text('Rating: ' + data.reviews[i].rating);
     reviewText.text('" ' + data.reviews[i].text + ' "' + '   - ' + data.reviews[i].user.name);
     reviewDate.text( data.reviews[i].time_created);
+
+    
  
 
     

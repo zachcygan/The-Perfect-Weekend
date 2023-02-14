@@ -19,7 +19,7 @@ fetch(url, {
 })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data)
+        // console.log(data)
 
         for (var i = 0; i < data.businesses.length; i++) {
             fetchSearchResults(data.businesses[i])
@@ -130,13 +130,7 @@ function fetchSearchResults(data) {
 }
 
 $(window).scroll(function () { 
-    console.log(
-        $(window).scrollTop(),
-        $(document).height(),
-        $(window).height(),
-        "logs here"
-    )
-    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+    if (Math.trunc($(window).scrollTop()) == Math.trunc($(document).height()) - Math.trunc($(window).height())) {
 
         loadMore();
     }
@@ -150,10 +144,9 @@ var resultCard = $('<button>');
 var offset = 20;
 
 function loadMore() {
-console.log('hello');
-    url2 = getUrl();
+    url = getUrl();
 
-    fetch(url2, {
+    fetch(url + '&offset=' + offset, {
         method: 'GET',
         headers: {
             accept: 'application/json',
@@ -162,7 +155,7 @@ console.log('hello');
     })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
+            // console.log(data)
             offset += 20;
 
             for (var i = 0; i < data.businesses.length; i++) {
@@ -365,12 +358,14 @@ var sortBy = function () {
         url += `&price=${sortPrice}`
     }
 
-    if(offset){
-        url += `&offset=${offset}`
-    }
-
+    
 
     url += '&limit=20'
+
+    // if(offset){
+    //     url += `&offset=${offset}`
+    // }
+
 
     return url
 
