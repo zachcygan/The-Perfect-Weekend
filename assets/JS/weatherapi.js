@@ -61,10 +61,6 @@ for(i=0; i <= 16; i=i+8) {
     fcTemp[fcEL].textContent = data.list[i].main.temp + "°F";
 
     fcEL++
-
-    
-
-    console.log(i);
 };
 });
 
