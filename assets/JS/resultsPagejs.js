@@ -186,12 +186,12 @@ function loadMore() {
                 resultImg.addClass(['image']);
                 imgFigure.addClass(['image', 'is-4by3'])
                 imgContainer.addClass('card-image');
-                bodyContainer.addClass('card-content');
+                bodyContainer.addClass(['card-content']);
                 titleContainer.addClass(['media-content']);
                 titleContainer.css('min-height', '30%')
                 mediaContainer.addClass(['media']);
                 resultTitle.addClass(['title', 'is-4'])
-                contentContainer.addClass('content');
+                contentContainer.addClass(['content', 'is-size-2']);
 
                 phoneNumber.text('Phone: ' + data.businesses[i].display_phone);
                 businessRating.text('Rating: ' + data.businesses[i].rating + '⭐')

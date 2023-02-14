@@ -77,7 +77,7 @@ footerItem.append(viewBtnEl);
         viewBtnEl.addEventListener("click", function(e){
 
             localStorage.setItem('singleCard', e.target.dataset.getid);
-            location.href = '/main-result-page-detail-view.html'
+            location.href = './main-result-page-detail-view.html'
         });   
         });
     };
