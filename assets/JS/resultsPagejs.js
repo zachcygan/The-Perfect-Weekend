@@ -72,7 +72,7 @@ function fetchSearchResults(data) {
     resultImg.attr('src', cardImg);
         
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
+    resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'is-size-5-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet', 'is-size-4-tablet']);
     //TEST
     // resultCard.add('id'. resultBtn)
     resultImg.addClass(['image']);
@@ -176,7 +176,7 @@ function loadMore() {
                     
                 $foodAndDrinkRec.addClass(['custom-flex'])
 
-                resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
+                resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'is-size-5-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet', 'is-size-4-tablet']);
                 resultImg.addClass(['image']);
                 imgFigure.addClass(['image', 'is-4by3'])
                 imgContainer.addClass('card-image');
@@ -217,8 +217,12 @@ function loadMore() {
                 $foodAndDrinkRec.append(resultCard);
             }
         }) 
+
     }
+
     
+
+
     // ADD TO MAIN RESULT
     // access card elements from result page
     // var resultsEl = document.getElementsByClassName('custom-card');
@@ -272,5 +276,54 @@ function saveFavorite(event) {
 
 }
 
-   
-    
+// filter function
+var sort;
+var bestMatchBtn = $('.best-match');
+var priceLowBtn = $('.price-low-high');
+var priceHighBtn = $('.price-high-low');
+var byRatingBtn = $('.sort-rating');
+var byReviewBtn = $('.sort-review');
+
+//  re-fetch 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=' + activity + sort + price + '&limit=20' 
+var sortBy = function() {
+
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+        }
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log(data)
+
+    bestMatchBtn.addEventListener('click', ()=> {
+        sort = "&sort_by=best_match";
+        getdata()
+    })
+    priceLowBtn.addEventListener('click', ()=> {
+        sort = "&sort_by=1,2,3,4";
+        getdata()
+    })
+    priceHighBtn.addEventListener('click', ()=> {
+        sort = "&sort_by=4,3,2,1";
+        getdata()
+    })
+    byRatingBtn.addEventListener('click', ()=> {
+        sort = "&sort_by=rating";
+        getdata()
+    })
+    byReviewBtn.addEventListener('click', ()=> {
+        sort = "&sort_by=review_count";
+        getdata()
+    })
+
+}
+)}
+
+// &price=1,2,3,4
+//&sort_by=rating
+//sort_by=review_count
+
+
