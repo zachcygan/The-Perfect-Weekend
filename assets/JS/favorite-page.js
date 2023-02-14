@@ -23,7 +23,7 @@ favImg.push(document.getElementById("ctn-photo-5"));
 
 favoritesList = JSON.parse(localStorage.getItem('favorites'));
 
-for(i=0; i < favoritesList.length; i++){
+for(i=0; i < favoritesList.length; i++) {
 favoritesList = JSON.parse(localStorage.getItem('favorites'));
 ctnIndex = 0;
 var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + favoritesList[i];
@@ -74,5 +74,5 @@ fetch(url, {
         
     }
 
-
+}
  
