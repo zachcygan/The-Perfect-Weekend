@@ -134,33 +134,33 @@ fetch(url_bid_clicked, optionsRev)
 
 
 
-function fetchSearchReviews(data) {
-    var reviewCard = $('<div>');
-    var reviewTitle = $('<p>');
-    var reviewUserRating = $('<p>');
-    var reviewText = $('<p>');
-    var reviewDate = $('<p>');
+// function fetchSearchReviews(data) {
+//     var reviewCard = $('<div>');
+//     var reviewTitle = $('<p>');
+//     var reviewUserRating = $('<p>');
+//     var reviewText = $('<p>');
+//     var reviewDate = $('<p>');
     
-    reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
-    reviewTitle.addClass(['title', 'is-7']);
-    reviewUserRating.addClass(['is-7']);
-    reviewText.addClass(['is-7']);
-    reviewDate.addClass(['is-7']);
+//     reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+//     reviewTitle.addClass(['title', 'is-7']);
+//     reviewUserRating.addClass(['is-7']);
+//     reviewText.addClass(['is-7']);
+//     reviewDate.addClass(['is-7']);
 
-    reviewTitle.text('Top Reviews');
-    reviewUserRating.text('Rating: ' + data.reviews[0].rating);
-    reviewText.text('" ' + data.reviews[0].text + ' "' + '   - ' + data.reviews[0].user.name);
-    reviewDate.text( data.reviews[0].time_created);
+//     reviewTitle.text('Top Reviews');
+//     reviewUserRating.text('Rating: ' + data.reviews[0].rating);
+//     reviewText.text('" ' + data.reviews[0].text + ' "' + '   - ' + data.reviews[0].user.name);
+//     reviewDate.text( data.reviews[0].time_created);
  
 
     
-    // FIX THIS: Append more business info + create cards for reviews
-    reviewCard.append(reviewTitle);
-    reviewCard.append(reviewUserRating);
-    reviewCard.append(reviewText);
-    reviewCard.append(reviewDate);
-    $foodAndDrinkRec.append(reviewCard);
-}
+//     // FIX THIS: Append more business info + create cards for reviews
+//     reviewCard.append(reviewTitle);
+//     reviewCard.append(reviewUserRating);
+//     reviewCard.append(reviewText);
+//     reviewCard.append(reviewDate);
+//     $foodAndDrinkRec.append(reviewCard);
+// }
 
 
 
@@ -196,7 +196,7 @@ function fetchSearchReviews2(data) {
     reviewCard.append(reviewUserRating);
     reviewCard.append(reviewText);
     reviewCard.append(reviewDate);
-    $foodAndDrinkRec.append(reviewCard);
+    bodyContainer.append(reviewCard);
     }
 }
 
