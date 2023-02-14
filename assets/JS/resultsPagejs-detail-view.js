@@ -47,7 +47,7 @@ function fetchSearchResults(data) {
    
     
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -132,7 +132,7 @@ function fetchSearchReviews(data) {
     var reviewText = $('<p>');
     var reviewDate = $('<p>');
     
-    reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+    reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
     reviewTitle.addClass(['title', 'is-7']);
     reviewUserRating.addClass(['is-7']);
     reviewText.addClass(['is-7']);
@@ -146,6 +146,7 @@ function fetchSearchReviews(data) {
 
     
     // FIX THIS: Append more business info + create cards for reviews
+
     reviewCard.append(reviewTitle);
     reviewCard.append(reviewUserRating);
     reviewCard.append(reviewText);
