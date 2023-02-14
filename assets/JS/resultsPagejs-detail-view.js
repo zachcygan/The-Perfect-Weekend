@@ -66,9 +66,6 @@ function fetchSearchResults(data) {
     var isOpen = $('<p>');
 
     // adding carousel //
-    var nextBtn = $('#nextPic');
-    var prevBtn = $('#prevPic');
-
     for ( var i = 0; i < data.photos.length; i++) {
         console.log(data.photos[i])
         var carouselImg = document.createElement('img')
