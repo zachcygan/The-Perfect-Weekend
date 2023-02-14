@@ -10,6 +10,9 @@ var $resultCard = $('#result')
 var $cityInput = $('#cityInput');
 var $activSearch = $('#activSearch');
 
+$cityInput.attr('value', city)
+$activSearch.attr('value', activity)
+
 fetch(url, {
     method: 'GET',
     headers: {

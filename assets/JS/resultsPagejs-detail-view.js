@@ -12,6 +12,7 @@ var bodyContainer = $('<div>');
 var index = 0;
 
 $city.attr('value', city);
+$activity.attr('value', activity)
 
 // Business ID set from Main Results Page' JS 
 
