@@ -11,7 +11,21 @@ var $activity = $('#activSearch')
 var bodyContainer = $('<div>');
 var index = 0;
 
+$city.attr('value', city);
+$activity.attr('value', activity)
+
 // Business ID set from Main Results Page' JS 
+
+$searchButton.on('click', function() {
+    city = $city.val();
+    activity = $activity.val();
+
+    localStorage.setItem('searchedCity', city);
+    localStorage.setItem('searchedActivity', activity);
+    location.href = './main-result-page.html'
+})
+
+// **************** FETCH FOR BUSINESS INFO ****************************** //
 var bid_clicked = localStorage.getItem('singleCard');
 
 
