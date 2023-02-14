@@ -144,7 +144,7 @@ function fetchSearchResults(data) {
         businessPrice.text('Price: ' + data.price)
     }
 
-    if (data.is_close === false) {
+    if (data.is_closed === false) {
         isOpen.text('Currently Open: Yes!')
     } else {
         isOpen.text('Currently Open: No')
