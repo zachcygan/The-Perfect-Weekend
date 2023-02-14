@@ -1,8 +1,24 @@
 // var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
 
+var city = localStorage.getItem('searchedCity');
+var activity = localStorage.getItem('searchedActivity')
+
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var $resultCard = $('#result')
+var $searchButton = $('#searchBtn');
+var $city = $('#cityInput');
+var $activity = $('#activSearch')
+var index = 0;
 
+
+$searchButton.on('click', function() {
+    city = $city.val();
+    activity = $activity.val();
+
+    localStorage.setItem('searchedCity', city);
+    localStorage.setItem('searchedActivity', activity);
+    location.href = './main-result-page.html'
+})
 
 // **************** FETCH FOR BUSINESS INFO ****************************** //
 var bid_clicked = localStorage.getItem('singleCard');
@@ -15,6 +31,9 @@ const optionsInfo = {
       Authorization: 'Bearer 81MTt_yJi-cbutBj-F-Eu2SQJV4Xery0YuezPwwgO0gDJaPnfSwTCEPKb8qUYsvY9v9ROD7uaTFyfoNNVhJlZsp9A44gl0mzOkBbeE64f9MCUt6Wnwu2kd2ZoxLrY3Yx'
     }
   }
+  
+
+
   
 
 fetch(url_info_clicked, optionsInfo)
@@ -71,7 +90,6 @@ function fetchSearchResults(data) {
     var isOpen = $('<p>');
 
     // adding carousel //
-
     // console.log(data.photos)
     for ( var i = 0; i < data.photos.length; i++) {
         console.log(data.photos[i])
@@ -89,9 +107,11 @@ function fetchSearchResults(data) {
         itemDiv.append(carouselImg)
         imgCarousel.append(itemDiv);
     }
+
+    
     
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
+    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-margin']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
 
@@ -124,7 +144,7 @@ function fetchSearchResults(data) {
         businessPrice.text('Price: ' + data.price)
     }
 
-    if (!data.is_close) {
+    if (data.is_close === false) {
         isOpen.text('Currently Open: Yes!')
     } else {
         isOpen.text('Currently Open: No')
@@ -157,7 +177,6 @@ function fetchSearchResults(data) {
 
     resultCard.append(imgContainer);
     resultCard.append(bodyContainer);
-
     $foodAndDrinkRec.append(resultCard);
 }
 
@@ -207,11 +226,21 @@ const optionsRev = {
 //     $foodAndDrinkRec.append(reviewCard);
 // }
 
+fetch(url_bid_clicked, optionsRev)
+.then(response => response.json())
+.then(data => {console.log(data);
+
+    console.log(data.reviews[0].text);
+    fetchSearchReviews2(data);
+
+    })
+.catch(err => console.error(err));
 
 
 function fetchSearchReviews2(data) {
 
     for (var i = 0; i < data.reviews.length; i++) {
+
         var reviewCard = $('<div>');
         var reviewTitle = $('<p>');
         var reviewUserRating = $('<p>');
@@ -219,16 +248,19 @@ function fetchSearchReviews2(data) {
         var reviewDate = $('<p>');
         
         
-        reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
+        reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
         reviewTitle.addClass(['title', 'is-7']);
         reviewTitle.text('Top Reviews');
         reviewUserRating.addClass(['is-7']);
         reviewText.addClass(['is-7']);
         reviewDate.addClass(['is-7']);
+
         
 
 
-        reviewUserRating.text('Rating: ' + data.reviews[i].rating);
+
+
+        reviewUserRating.text('Rating: ' + data.reviews[i].rating + '⭐');
         reviewText.text('" ' + data.reviews[i].text + ' "' + '   - ' + data.reviews[i].user.name);
         reviewDate.text( data.reviews[i].time_created);
 
@@ -241,9 +273,11 @@ function fetchSearchReviews2(data) {
         reviewCard.append(reviewUserRating);
         reviewCard.append(reviewText);
         reviewCard.append(reviewDate);
-        bodyContainer.append(reviewCard);
+        $foodAndDrinkRec.append(reviewCard);
+        console.log($foodAndDrinkRec.children())
     }
 }
+
 
 
 

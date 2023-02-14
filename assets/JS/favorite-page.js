@@ -23,37 +23,37 @@ favImg.push(document.getElementById("ctn-photo-5"));
 
 favoritesList = JSON.parse(localStorage.getItem('favorites'));
 
-for(i=0; i < favoritesList.length; i++) {
-favoritesList = JSON.parse(localStorage.getItem('favorites'));
-ctnIndex = 0;
-var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + favoritesList[i];
-fetch(url, {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer OjW-Lm56D-KhZ97BAFRjRcOTqu_K_s_XeUZHrGKISYgRjgfnlZTJ11XIByBxSENf41wYw31kaZgbjjZRVu7oZpjm_6_hlVRMPE_1snrkW97WgQWkDVFGz0bu0iDrY3Yx'
-    }
-})
-
-    .then((response) => response.json())
-    .then((data) => {
-        // console.log(data)
-        favoritesList += data;
-        var img = data.image_url;
-
-
-        favCtn[ctnIndex].style.display = "block";
-        favName[ctnIndex].innerHTML = data.name;
-        favImg[ctnIndex].src = img;
-        
-        viewBtn[ctnIndex].setAttribute("data-getID", data.id);
-
-
-        ctnIndex++
-
-        if(!data){
-            favCtn.style.display = "none"
+for (i = 0; i < favoritesList.length; i++) {
+    favoritesList = JSON.parse(localStorage.getItem('favorites'));
+    ctnIndex = 0;
+    var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + favoritesList[i];
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            accept: 'application/json',
+            Authorization: 'Bearer OjW-Lm56D-KhZ97BAFRjRcOTqu_K_s_XeUZHrGKISYgRjgfnlZTJ11XIByBxSENf41wYw31kaZgbjjZRVu7oZpjm_6_hlVRMPE_1snrkW97WgQWkDVFGz0bu0iDrY3Yx'
         }
+    })
+
+        .then((response) => response.json())
+        .then((data) => {
+            // console.log(data)
+            favoritesList += data;
+            var img = data.image_url;
+
+
+            favCtn[ctnIndex].style.display = "block";
+            favName[ctnIndex].innerHTML = data.name;
+            favImg[ctnIndex].src = img;
+
+            viewBtn[ctnIndex].setAttribute("data-getID", data.id);
+
+
+            ctnIndex++
+
+            if (!data) {
+                favCtn.style.display = "none"
+            }
 
         });
 }
