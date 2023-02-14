@@ -23,7 +23,7 @@ favImg.push(document.getElementById("ctn-photo-5"));
 
 favoritesList = JSON.parse(localStorage.getItem('favorites'));
 
-for(i=0; i < favoritesList.length; i++){
+for(i=0; i < favoritesList.length; i++) {
 favoritesList = JSON.parse(localStorage.getItem('favorites'));
 ctnIndex = 0;
 var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + favoritesList[i];
@@ -31,7 +31,7 @@ fetch(url, {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: 'Bearer 81MTt_yJi-cbutBj-F-Eu2SQJV4Xery0YuezPwwgO0gDJaPnfSwTCEPKb8qUYsvY9v9ROD7uaTFyfoNNVhJlZsp9A44gl0mzOkBbeE64f9MCUt6Wnwu2kd2ZoxLrY3Yx'
+        Authorization: 'Bearer OjW-Lm56D-KhZ97BAFRjRcOTqu_K_s_XeUZHrGKISYgRjgfnlZTJ11XIByBxSENf41wYw31kaZgbjjZRVu7oZpjm_6_hlVRMPE_1snrkW97WgQWkDVFGz0bu0iDrY3Yx'
     }
 })
 
@@ -56,7 +56,7 @@ fetch(url, {
         }
 
         });
-
+}
 
 
 
