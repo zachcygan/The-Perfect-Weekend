@@ -72,7 +72,7 @@ function fetchSearchResults(data) {
     resultImg.attr('src', cardImg);
 
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'is-size-5-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet', 'is-size-4-tablet']);
+    resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
     //TEST
     // resultCard.add('id'. resultBtn)
     resultImg.addClass(['image']);
@@ -178,7 +178,7 @@ function loadMore() {
 
                 $foodAndDrinkRec.addClass(['custom-flex'])
 
-                resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'is-size-5-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet', 'is-size-4-tablet']);
+                resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
                 resultImg.addClass(['image']);
                 imgFigure.addClass(['image', 'is-4by3'])
                 imgContainer.addClass('card-image');
@@ -218,26 +218,22 @@ function loadMore() {
                 resultCard.append(heartContainer);
                 $foodAndDrinkRec.append(resultCard);
             }
-        }) 
+        })
+}
 
-    }
+// ADD TO MAIN RESULT
+// access card elements from result page
+// var resultsEl = document.getElementsByClassName('custom-card');
 
-    
+// function resultCardClick(event) {
+//     // var cardEl = event.target;
+//     var bid_clicked localStorage.setItem('business-id', businessId); //set
+//     console.log(event);
+// }
 
-
-    // ADD TO MAIN RESULT
-    // access card elements from result page
-    // var resultsEl = document.getElementsByClassName('custom-card');
-    
-    // function resultCardClick(event) {
-    //     // var cardEl = event.target;
-    //     var bid_clicked localStorage.setItem('business-id', businessId); //set
-    //     console.log(event);
-    // }
-    
-    // user clicks on card element containing choices
-    // resultCard.onclick = resultCardClick;    
-    // resultCard.on('click', resultCardClick());    
+// user clicks on card element containing choices
+// resultCard.onclick = resultCardClick;    
+// resultCard.on('click', resultCardClick());    
 
 
 // resultCard.on('click', function() {
@@ -301,11 +297,11 @@ byReviewBtn.on('click', () => {
 })
 
 priceLowBtn.on('click', () => {
-    sortPrice = "1,2,3,4";
+    sortPrice = "1,2";
     sortBy();
 })
 priceHighBtn.on('click', () => {
-    sortPrice = "4,3,2,1";
+    sortPrice = "4,3";
     sortBy();
 })
 
@@ -329,6 +325,7 @@ var sortBy = function () {
 
             for (var i = 0; i < data.businesses.length; i++) {
                 fetchSearchResults(data.businesses[i])
+                loadMore();
             }
 
         }
@@ -358,13 +355,13 @@ var sortBy = function () {
         url += `&price=${sortPrice}`
     }
 
-    
-
-    url += '&limit=20'
-
     // if(offset){
     //     url += `&offset=${offset}`
     // }
+
+    url += '&limit=20'
+
+    
 
 
     return url
