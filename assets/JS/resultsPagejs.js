@@ -93,7 +93,7 @@ function fetchSearchResults(data) {
     businessRating.text('Rating: ' + data.rating + '⭐');
 
     resultCard.on('click', function () {
-        location.href = '/main-result-page-detail-view.html'
+        location.href = './main-result-page-detail-view.html'
     })
 
     if (data.price === undefined) {
@@ -203,7 +203,7 @@ function loadMore() {
                 }
 
                 resultCard.on('click', function () {
-                    location.href = '/main-result-page-detail-view.html'
+                    location.href = './main-result-page-detail-view.html'
                 })
 
                 businessReviews.text('Number of reviews: ' + data.businesses[i].review_count)

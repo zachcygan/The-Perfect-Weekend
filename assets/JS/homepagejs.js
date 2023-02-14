@@ -6,7 +6,12 @@ var cityBaseUrl = 'http://api.openweathermap.org/geo/1.0/direct?q=';
 var city;
 const searchBtn = document.querySelector('#searchBtn');
 const activtyInput = document.querySelector('#activSearch')
-const cityInput = document.querySelector('#cityInput');
+var cityInput = document.querySelector('#cityInput');
+var modal = document.querySelector('#modal-html')
+const modalBg = document.querySelector('#modalBg')
+
+searchBtn.classList.add('js-modal-trigger')
+searchBtn.classList.add()
 
 function getdata() {
     fetch(`${cityBaseUrl}${city}&appid=${apikey}`)
@@ -26,12 +31,27 @@ function getdata() {
 searchBtn.addEventListener('click', () => { 
     city = cityInput.value
     var acitivty = activtyInput.value;
+
+    if (city === undefined) {
+        // openModal(modal)
+        return
+    }
+
     getdata()
     location.href='./main-result-page.html'
     
     localStorage.setItem('searchedCity', city);
     localStorage.setItem('searchedActivity', acitivty);
+        
 });
-    
 
-    
+// console.dir(modal)
+
+// function openModal(el) {
+//     el.classList.add('is-active');
+// }
+
+// function closeModal() {
+//     modal.classList.remove('is-active');
+// }
+
