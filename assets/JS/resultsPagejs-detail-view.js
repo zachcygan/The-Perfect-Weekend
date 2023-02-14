@@ -74,7 +74,7 @@ fetch(url_info_clicked, optionsInfo)
             .then(response => response.json())
             .then(data => {
                 //FETCH Reviews Card - Top Reviews 
-                console.log(data);
+                // console.log(data);
                 fetchSearchReviews2(data);
 
                 })
