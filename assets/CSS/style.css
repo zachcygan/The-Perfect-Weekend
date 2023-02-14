@@ -253,18 +253,6 @@ li a:hover {
     font-weight: bold;
   }
 
-
-
-@media screen and (max-width: 1150px) {
-  .forecast-card {
-    
-    display: none;
-  }
-
-
-
-}
-
 /* Social Media Icons */
 
 footer {
@@ -342,9 +330,32 @@ hr {
   /* margin-left: 200px; */
 }
 
-
+.forecast-card-container {
+  display: flex;
+  margin-left: 120px;
+}
 
   
+@media screen and (max-width: 1500px) {
+  /* .forecast-card {
+    
+    display: none;
+  } */
+
+  .forecast-card-container {
+    transform: scale(.7);
+    margin-left: 0;
+  }
+
+}
+
+@media screen and (max-width: 1200px) {
+  .forecast-card {
+    
+    display: none;
+  }
+
+
 }
 
 /* Favorite Page */
