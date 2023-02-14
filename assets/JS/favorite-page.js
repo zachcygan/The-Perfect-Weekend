@@ -1,31 +1,11 @@
-var favCtn = [];
-var favImg = [];
-var favName = [];
-var favoritesList = []
-var viewBtn = document.querySelectorAll(".viewBtn")
 
-
-favCtn.push(document.getElementById("fav-ctn-1"));
-favName.push(document.getElementById("ctn-name-1"));
-favImg.push(document.getElementById("ctn-photo-1"));
-favCtn.push(document.getElementById("fav-ctn-2"));
-favName.push(document.getElementById("ctn-name-2"));
-favImg.push(document.getElementById("ctn-photo-2"));
-favCtn.push(document.getElementById("fav-ctn-3"));
-favName.push(document.getElementById("ctn-name-3"));
-favImg.push(document.getElementById("ctn-photo-3"));
-favCtn.push(document.getElementById("fav-ctn-4"));
-favName.push(document.getElementById("ctn-name-4"));
-favImg.push(document.getElementById("ctn-photo-4"));
-favCtn.push(document.getElementById("fav-ctn-5"));
-favName.push(document.getElementById("ctn-name-5"));
-favImg.push(document.getElementById("ctn-photo-5"));
+function createFav() {
 
 favoritesList = JSON.parse(localStorage.getItem('favorites'));
+
 
 for(i=0; i < favoritesList.length; i++){
-favoritesList = JSON.parse(localStorage.getItem('favorites'));
-ctnIndex = 0;
+
 var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + favoritesList[i];
 fetch(url, {
     method: 'GET',
@@ -37,42 +17,69 @@ fetch(url, {
 
     .then((response) => response.json())
     .then((data) => {
-        // console.log(data)
+
+ var favCtnEl = document.querySelector(".favorite-ctn");
+ var favCtn = document.createElement("section");
+ var ctn = document.createElement("div");
+ var colMt5 = document.createElement("div");
+ var col3q = document.createElement("div");
+ var card = document.createElement("div");
+ var figImg = document.createElement("figure");
+ var ctnImg = document.createElement("img");
+ var cardContent = document.createElement("div");
+ var ctnName = document.createElement("p");
+ var cardFooter = document.createElement("footer");
+ var footerItem = document.createElement("p");
+ var viewBtnEl = document.createElement("button");
+
+ favCtn.className = "section";
+ favCtn.setAttribute("id", "fav-ctn")
+ ctn.className = "container";
+ colMt5.classList.add("colums", "mt-5", "is-8", "is-variable");
+ col3q.classList.add("column", "is-three-quarters");
+ card.setAttribute("id", "card");
+ card.className = "card";
+figImg.classList.add("image", "is-square", "fav-img");
+ctnImg.className = "image";
+ctnImg.setAttribute("id", "ctn-photo");
+ctnImg.src = "./assets/images/stock.jpg";
+cardContent.className = "card-content";
+ctnName.setAttribute("id", "ctn-name-1");
+ctnName.classList.add("title", "is-size-4", "establish-name");
+ctnName.textContent = "Click the heart Icon to add a favorite!"
+cardFooter.className = "card-footer";
+footerItem.setAttribute("id", "card-footer-item");
+viewBtnEl.classList.add("has-text-grey", "viewBtn");
+viewBtnEl.type = "button";
+viewBtnEl.textContent = "View";
+
+favCtnEl.append(favCtn);
+
+favCtn.append(ctn);
+ctn.append(colMt5);
+colMt5.append(col3q);
+col3q.append(card);
+card.append(figImg, cardContent, cardFooter);
+figImg.append(ctnImg);
+// card.append(cardContent);
+cardContent.append(ctnName);
+// card.append(cardFooter);
+cardFooter.append(footerItem);
+footerItem.append(viewBtnEl);
+
         favoritesList += data;
         var img = data.image_url;
 
-
-        favCtn[ctnIndex].style.display = "block";
-        favName[ctnIndex].innerHTML = data.name;
-        favImg[ctnIndex].src = img;
+        ctnName.innerHTML = data.name;
+        ctnImg.src = img;
         
-        viewBtn[ctnIndex].setAttribute("data-getID", data.id);
+        viewBtnEl.setAttribute("data-getID", data.id);
+        viewBtnEl.addEventListener("click", function(e){
 
-
-        ctnIndex++
-
-        if(!data){
-            favCtn.style.display = "none"
-        }
-
-        });
-
-
-
-
-
-
-    for(i=0; i < viewBtn.length; i++){
-        var singleCard = favoritesList[i];
-        viewBtn[i].addEventListener('click', function(e){
-            // console.dir(e.target)
             localStorage.setItem('singleCard', e.target.dataset.getid);
-            // console.log(typeof e.target.dataset.getid)
             location.href = '/main-result-page-detail-view.html'
-            
+        });   
         });
-        
-    }
-
-
- 
+    };
+};
+createFav();

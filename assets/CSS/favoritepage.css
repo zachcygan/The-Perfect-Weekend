@@ -32,16 +32,21 @@ body {
     width: auto;
 }
 
+.card-footer {
+    display: flex;
 
+    justify-content: center;
+}
 
 .viewBtn {
     background-color: #fff;
     border: none;
     font-size: 20px;
+    text-align: center;
 }
 
 .viewBtn:hover{
-    font-size: 23px;
+    font-size: 22px;
 }
 
 .favorite-ctn{
@@ -49,8 +54,6 @@ body {
     flex-wrap: wrap;
     justify-content: space-between;
 }
-
-
 
 
 
