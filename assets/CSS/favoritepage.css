@@ -2,7 +2,7 @@ body {
     background: linear-gradient(-45deg, #eea791, #f1c7d6, rgb(238, 238, 195), #a9ddf1, #abedde);
     animation: gradient 15s ease-in-out infinite;
     background-size: 400% 400%;
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
@@ -13,25 +13,50 @@ body {
     background-color: rgb(57, 205, 148);
 }
 
-.image{
+/* .image{
    width: auto;
    height: auto;
    max-width: 100%;
    max-height: 100%;
    
+} */
+
+
+.card {
+    height: 500px;
+    width: 400px;
 }
 
-.favorite-food-ctn{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+.fav-img {
+    height: 300px;
+    width: auto;
 }
 
-.favh3 {
-    color: #fff;
+
+
+.viewBtn {
+    background-color: #fff;
+    border: none;
+    font-size: 20px;
 }
-.favorite-act-ctn{
+
+.viewBtn:hover{
+    font-size: 23px;
+}
+
+.favorite-ctn{
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+
+
+
+@media screen and (max-width: 850px) {
+    .favorite-ctn {
+        flex-direction: column;
+    }
+    
 }
