@@ -1,7 +1,7 @@
 var city = localStorage.getItem('searchedCity');
 var activity = localStorage.getItem('searchedActivity')
 
-var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=' + activity + '&sort_by=best_match&limit=20'
+var url = getUrl();
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
@@ -21,10 +21,10 @@ fetch(url, {
     .then((data) => {
         console.log(data)
 
-        for(var i = 0; i < data.businesses.length; i++) {
+        for (var i = 0; i < data.businesses.length; i++) {
             fetchSearchResults(data.businesses[i])
         }
-})
+    })
 
 function addHeart(id) {
     var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
@@ -37,8 +37,8 @@ function addHeart(id) {
 
     heartButton.text('♡')
 
-    for(var i = 0; i < favorites.length; i++) {
-        if(id === favorites[i]) {
+    for (var i = 0; i < favorites.length; i++) {
+        if (id === favorites[i]) {
             heartButton.text('❤️')
         }
     }
@@ -47,7 +47,7 @@ function addHeart(id) {
 
     heartContainer.append(heartButton);
 
-    heartButton.click({id: id}, saveFavorite);
+    heartButton.click({ id: id }, saveFavorite);
 
     return heartContainer;
 }
@@ -67,10 +67,10 @@ function fetchSearchResults(data) {
     var businessPrice = $('<div>');
     var contentContainer = $('<div>');
     var businessReviews = $('<div>');
-    
+
     var cardImg = data.image_url;
     resultImg.attr('src', cardImg);
-        
+
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'is-size-5-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet', 'is-size-4-tablet']);
     //TEST
@@ -84,12 +84,12 @@ function fetchSearchResults(data) {
     mediaContainer.addClass(['media']);
     resultTitle.addClass(['title', 'is-4'])
     contentContainer.addClass('content');
-    
-        
+
+
     phoneNumber.text('Phone: ' + data.display_phone);
     businessRating.text('Rating: ' + data.rating + '⭐');
 
-    resultCard.on('click', function() {
+    resultCard.on('click', function () {
         location.href = '/main-result-page-detail-view.html'
     })
 
@@ -98,11 +98,11 @@ function fetchSearchResults(data) {
     } else {
         businessPrice.text('Price: ' + data.price)
     }
-    
+
     businessReviews.text('Number of reviews: ' + data.review_count)
     resultTitle.text(data.name);
     resultCard.attr('id', data.id)
-    
+
     imgContainer.append(imgFigure);
     imgFigure.append(resultImg);
     bodyContainer.append(mediaContainer);
@@ -113,14 +113,14 @@ function fetchSearchResults(data) {
     contentContainer.append(businessReviews);
     contentContainer.append(businessPrice);
     titleContainer.append(resultTitle);
-    
+
     resultCard.append(imgContainer);
     resultCard.append(bodyContainer);
     resultCard.append(heartContainer);
     $foodAndDrinkRec.append(resultCard);
 
-    
-    resultCard.on('click', function(event) {
+
+    resultCard.on('click', function (event) {
         var singleCard = data.id;
 
         localStorage.setItem('singleCard', singleCard);
@@ -129,11 +129,19 @@ function fetchSearchResults(data) {
     })
 }
 
-$(window).scroll(function() {
-    if($(window).scrollTop() == $(document).height() - $(window).height()) {
-           loadMore();
+$(window).scroll(function () { 
+    console.log(
+        $(window).scrollTop(),
+        $(document).height(),
+        $(window).height(),
+        "logs here"
+    )
+    if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+
+        loadMore();
     }
 });
+
 
 var resultCard = $('<button>');
 
@@ -142,8 +150,9 @@ var resultCard = $('<button>');
 var offset = 20;
 
 function loadMore() {
-    url2 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=' + activity + '&sort_by=best_match&limit=20&offset=' + offset;
-    
+console.log('hello');
+    url2 = getUrl();
+
     fetch(url2, {
         method: 'GET',
         headers: {
@@ -156,7 +165,7 @@ function loadMore() {
             console.log(data)
             offset += 20;
 
-            for(var i = 0; i < data.businesses.length; i++) {   
+            for (var i = 0; i < data.businesses.length; i++) {
                 var heartContainer = addHeart(data.businesses[i].id)
                 var resultCard = $('<button>');
                 var resultTitle = $('<p>');
@@ -173,7 +182,7 @@ function loadMore() {
                 var businessReviews = $('<div>');
                 var cardImg = data.businesses[i].image_url;
                 resultImg.attr('src', cardImg);
-                    
+
                 $foodAndDrinkRec.addClass(['custom-flex'])
 
                 resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'is-size-5-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet', 'is-size-4-tablet']);
@@ -187,7 +196,7 @@ function loadMore() {
                 resultTitle.addClass(['title', 'is-4'])
                 contentContainer.addClass('content');
                 loadMoreButton.add(['button', 'is-normal', 'is-focus', 'is-success'])
-                    
+
                 phoneNumber.text('Phone: ' + data.businesses[i].display_phone);
                 businessRating.text('Rating: ' + data.businesses[i].rating + '⭐')
                 loadMoreButton.text('Load More');
@@ -238,22 +247,22 @@ function loadMore() {
     // resultCard.on('click', resultCardClick());    
 
 
-    // resultCard.on('click', function() {
-    //     console.log("clicked");
-    // })
+// resultCard.on('click', function() {
+//     console.log("clicked");
+// })
 
 function saveFavorite(event) {
     // console.log(event)
     event.stopPropagation();
     var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     var foundId = false;
-    
-    if(favorites.length >= 1) {
-        for(var i = 0; i < favorites.length; i++) {
-            if(event.data.id === favorites[i]) {
-                favorites.splice(i, 1);   
+
+    if (favorites.length >= 1) {
+        for (var i = 0; i < favorites.length; i++) {
+            if (event.data.id === favorites[i]) {
+                favorites.splice(i, 1);
                 foundId = true;
-                
+
 
                 break
             }
@@ -267,7 +276,7 @@ function saveFavorite(event) {
     } else {
         event.currentTarget.textContent = '♡';
     }
-    
+
     console.log(event)
 
     localStorage.setItem('favorites', JSON.stringify(favorites))
@@ -278,15 +287,39 @@ function saveFavorite(event) {
 
 // filter function
 var sort;
+var sortPrice;
 var bestMatchBtn = $('.best-match');
 var priceLowBtn = $('.price-low-high');
 var priceHighBtn = $('.price-high-low');
 var byRatingBtn = $('.sort-rating');
 var byReviewBtn = $('.sort-review');
 
-//  re-fetch 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=' + activity + sort + price + '&limit=20' 
-var sortBy = function() {
+bestMatchBtn.on('click', () => {
+    sort = "best_match";
+    sortBy();
+})
+byRatingBtn.on('click', () => {
+    sort = "rating";
+    sortBy();
+})
+byReviewBtn.on('click', () => {
+    sort = "review_count";
+    sortBy();
+})
 
+priceLowBtn.on('click', () => {
+    sortPrice = "1,2,3,4";
+    sortBy();
+})
+priceHighBtn.on('click', () => {
+    sortPrice = "4,3,2,1";
+    sortBy();
+})
+
+
+var sortBy = function () {
+    var url = getUrl();
+    console.log(url)
     fetch(url, {
         method: 'GET',
         headers: {
@@ -298,32 +331,47 @@ var sortBy = function() {
         .then((data) => {
             console.log(data)
 
-    bestMatchBtn.addEventListener('click', ()=> {
-        sort = "&sort_by=best_match";
-        getdata()
-    })
-    priceLowBtn.addEventListener('click', ()=> {
-        sort = "&sort_by=1,2,3,4";
-        getdata()
-    })
-    priceHighBtn.addEventListener('click', ()=> {
-        sort = "&sort_by=4,3,2,1";
-        getdata()
-    })
-    byRatingBtn.addEventListener('click', ()=> {
-        sort = "&sort_by=rating";
-        getdata()
-    })
-    byReviewBtn.addEventListener('click', ()=> {
-        sort = "&sort_by=review_count";
-        getdata()
-    })
+            $foodAndDrinkRec.empty()
+
+
+            for (var i = 0; i < data.businesses.length; i++) {
+                fetchSearchResults(data.businesses[i])
+            }
+
+        }
+        )
+}
+
+
+
+
+
+ function getUrl(){
+    var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?';
+
+    if(city){
+        url += `location=${city}`;
+    }
+
+    if(activity){
+        url += `&term=${activity}`;
+    }
+
+    if(sort){
+        url += `&sort_by=${sort}`
+    }
+
+    if(sortPrice){
+        url += `&price=${sortPrice}`
+    }
+
+    if(offset){
+        url += `&offset=${offset}`
+    }
+
+
+    url += '&limit=20'
+
+    return url
 
 }
-)}
-
-// &price=1,2,3,4
-//&sort_by=rating
-//sort_by=review_count
-
-
