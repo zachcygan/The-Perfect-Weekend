@@ -52,11 +52,20 @@
   background-color: transparent;
 }
 
+.dropdown-content a {
+  font-size: 20px;
+}
+
 .dropdown {
     display: inline;
     float: right;
     border-style: none;
     font-family: 'Ubuntu', 'san serif';
+    
+}
+
+.dropdown-divider {
+  background-color: #000;
 }
 
 /*searchbar styling for main result page*/
@@ -160,7 +169,7 @@ li a:hover {
 
 #touch {position: absolute; opacity: 0; height: 0px;}    
 
-#touch:checked + .slide {height: 300px;}
+#touch:checked + .slide {height: 370px;}
 
 
 

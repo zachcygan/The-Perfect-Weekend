@@ -52,13 +52,19 @@ fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imp
 
 
 var fcEL = 0;
-for(i=0; i<data.list.length; i=i+8) {
-    fcDate[fcEL].innerHTML = dayjs(data.list[i].dt_txt).format('MM/DD/YY');
+for(i=0; i <= 16; i=i+8) {
+    
+    fcDate[fcEL].textContent = dayjs(data.list[i].dt_txt).format('MM/DD/YY');
+    console.log(dayjs(data.list[i].dt_txt).format('MM/DD/YY'));
     fcIcon[fcEL].src = "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + ".png"
     fcDescription[fcEL].innerHTML = data.list[i].weather[0].description;
     fcTemp[fcEL].textContent = data.list[i].main.temp + "°F";
 
     fcEL++
+
+    
+
+    console.log(i);
 };
 });
 
