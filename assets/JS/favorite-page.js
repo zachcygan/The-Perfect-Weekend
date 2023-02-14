@@ -45,6 +45,8 @@ fetch(url, {
         favCtn[ctnIndex].style.display = "block";
         favName[ctnIndex].innerHTML = data.name;
         favImg[ctnIndex].src = img;
+        
+        viewBtn[ctnIndex].setAttribute("data-getID", data.id);
 
 
         ctnIndex++
@@ -54,46 +56,20 @@ fetch(url, {
         }
 
         });
-        
+
     };
 
+    for(i=0; i < viewBtn.length; i++){
+        var singleCard = favoritesList[i];
+        viewBtn[i].addEventListener('click', function(e){
+            // console.dir(e.target)
+            localStorage.setItem('singleCard', e.target.dataset.getid);
+            // console.log(typeof e.target.dataset.getid)
+            location.href = '/main-result-page-detail-view.html'
+            
+        });
+        
+    }
 
-
-
-
-    viewBtn.addEventListener('click', )
-    localStorage.setItem('singleCard');
-
-
-
-// favCtn = document.querySelector("favorite-ctn");
-
-// var section = document.createElement("section");
-// var container = document.createElement("div");
-// var colMt5 = document.createElement("div");
-// var col3Q = document.createElement("div");
-// var card1 = document.createElement("div");
-// var img = document.createElement("img");
-// var cardContent = document.createElement("div");
-// var ctnName = document.createElement("p");
-// var footer = document.createElement("footer");
-// var viewFooter = document.createElement("p");
-
-// section.className = "section";
-// section.innerHTML = "HEY"
-// section.setAttribute("id", "fav-ctn-1");
-// container.className = "container";
-// colMt5.className = "colums mt-5 is-8 is-variable"
-// col3Q.className = "column is-three-quarters";
-// card1.setAttribute("id", "card-1");
-// card1.className = "card";
-// img.className = "image";
-// img.setAttribute("id", "ctn-photo-1");
-// cardContent.className = "card-content";
-// ctnName.setAttribute("id", "ctn-name-1");
-// ctnName.className = "title is-size-2 establish-name";
-// footer.className = "card-footer";
-// viewFooter.className = "has-text-grey";
-// viewFooter.innerText = "View";
 
  
