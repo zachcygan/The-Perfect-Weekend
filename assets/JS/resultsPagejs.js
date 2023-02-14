@@ -297,11 +297,11 @@ byReviewBtn.on('click', () => {
 })
 
 priceLowBtn.on('click', () => {
-    sortPrice = "1,2,3,4";
+    sortPrice = "1,2";
     sortBy();
 })
 priceHighBtn.on('click', () => {
-    sortPrice = "4,3,2,1";
+    sortPrice = "4,3";
     sortBy();
 })
 
