@@ -313,7 +313,7 @@ var sortBy = function () {
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer 81MTt_yJi-cbutBj-F-Eu2SQJV4Xery0YuezPwwgO0gDJaPnfSwTCEPKb8qUYsvY9v9ROD7uaTFyfoNNVhJlZsp9A44gl0mzOkBbeE64f9MCUt6Wnwu2kd2ZoxLrY3Yx'
+            Authorization: 'Bearer OjW-Lm56D-KhZ97BAFRjRcOTqu_K_s_XeUZHrGKISYgRjgfnlZTJ11XIByBxSENf41wYw31kaZgbjjZRVu7oZpjm_6_hlVRMPE_1snrkW97WgQWkDVFGz0bu0iDrY3Yx'
         }
     })
         .then((response) => response.json())
@@ -325,7 +325,7 @@ var sortBy = function () {
 
             for (var i = 0; i < data.businesses.length; i++) {
                 fetchSearchResults(data.businesses[i])
-                
+
             }
 
         }
