@@ -57,7 +57,10 @@ fetch(url, {
 
         });
 
-    };
+
+
+
+
 
     for(i=0; i < viewBtn.length; i++){
         var singleCard = favoritesList[i];

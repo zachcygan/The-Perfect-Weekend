@@ -12,7 +12,7 @@ const optionsInfo = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+      Authorization: 'Bearer 81MTt_yJi-cbutBj-F-Eu2SQJV4Xery0YuezPwwgO0gDJaPnfSwTCEPKb8qUYsvY9v9ROD7uaTFyfoNNVhJlZsp9A44gl0mzOkBbeE64f9MCUt6Wnwu2kd2ZoxLrY3Yx'
     }
   }
   
@@ -48,7 +48,7 @@ function fetchSearchResults(data) {
    
     
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
+    resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
     resultImg.addClass(['image']);
     imgFigure.addClass(['image', 'is-4by3'])
     imgContainer.addClass('card-image');
@@ -118,7 +118,7 @@ const optionsRev = {
     method: 'GET',
     headers: {
         accept: 'application/json',
-        Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
+        Authorization: 'Bearer 81MTt_yJi-cbutBj-F-Eu2SQJV4Xery0YuezPwwgO0gDJaPnfSwTCEPKb8qUYsvY9v9ROD7uaTFyfoNNVhJlZsp9A44gl0mzOkBbeE64f9MCUt6Wnwu2kd2ZoxLrY3Yx'
     }
 }
 
@@ -134,41 +134,37 @@ fetch(url_bid_clicked, optionsRev)
 
 
 
-function fetchSearchReviews(data) {
-    var reviewCard = $('<div>');
-    var reviewTitle = $('<p>');
-    var reviewUserRating = $('<p>');
-    var reviewText = $('<p>');
-    var reviewDate = $('<p>');
+// function fetchSearchReviews(data) {
+//     var reviewCard = $('<div>');
+//     var reviewTitle = $('<p>');
+//     var reviewUserRating = $('<p>');
+//     var reviewText = $('<p>');
+//     var reviewDate = $('<p>');
     
-    reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
-    reviewTitle.addClass(['title', 'is-7']);
-    reviewUserRating.addClass(['is-7']);
-    reviewText.addClass(['is-7']);
-    reviewDate.addClass(['is-7']);
+//     reviewCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered', 'custom-card']);
+//     reviewTitle.addClass(['title', 'is-7']);
+//     reviewUserRating.addClass(['is-7']);
+//     reviewText.addClass(['is-7']);
+//     reviewDate.addClass(['is-7']);
 
-    reviewTitle.text('Top Reviews');
-    reviewUserRating.text('Rating: ' + data.reviews[0].rating);
-    reviewText.text('" ' + data.reviews[0].text + ' "' + '   - ' + data.reviews[0].user.name);
-    reviewDate.text( data.reviews[0].time_created);
+//     reviewTitle.text('Top Reviews');
+//     reviewUserRating.text('Rating: ' + data.reviews[0].rating);
+//     reviewText.text('" ' + data.reviews[0].text + ' "' + '   - ' + data.reviews[0].user.name);
+//     reviewDate.text( data.reviews[0].time_created);
  
 
     
-    // FIX THIS: Append more business info + create cards for reviews
-
-    reviewCard.append(reviewTitle);
-    reviewCard.append(reviewUserRating);
-    reviewCard.append(reviewText);
-    reviewCard.append(reviewDate);
-    $foodAndDrinkRec.append(reviewCard);
-}
+//     // FIX THIS: Append more business info + create cards for reviews
+//     reviewCard.append(reviewTitle);
+//     reviewCard.append(reviewUserRating);
+//     reviewCard.append(reviewText);
+//     reviewCard.append(reviewDate);
+//     $foodAndDrinkRec.append(reviewCard);
+// }
 
 
 
 function fetchSearchReviews2(data) {
-
-
-
 
     for (var i = 0; i < data.reviews.length; i++) {
     var reviewCard = $('<div>');
@@ -200,7 +196,7 @@ function fetchSearchReviews2(data) {
     reviewCard.append(reviewUserRating);
     reviewCard.append(reviewText);
     reviewCard.append(reviewDate);
-    $foodAndDrinkRec.append(reviewCard);
+    bodyContainer.append(reviewCard);
     }
 }
 
@@ -252,79 +248,3 @@ function fetchSearchReviews2(data) {
 //     }
 //   };
   
-
-
-
-
-// var offset = 20;
-//     url2 = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20&offset=' + offset;
-    
-//     fetch(url2, {
-//         method: 'GET',
-//         headers: {
-//             accept: 'application/json',
-//             Authorization: 'Bearer 4HSUlXQrk6K2CdfXtepX9Kd9bTmVhrT7OOi_0m7xJzj92B7XSuHTEwp93qkzz2LZ0PfvapAxEQnB3E6NsThaOAgtJP-myli-rvN0M-a9vhmpwldwJPIJ7rA9aCLgY3Yx'
-//         }
-//     })
-//         .then((response) => response.json())
-//         .then((data) => {
-//             console.log(data)
-//             offset += 20;
-
-//             for(var i = 0; i < data.businesses.length; i++) {              
-//                 var resultCard = $('<div>');
-//                 var resultTitle = $('<p>');
-//                 var titleContainer = $('<div>');
-//                 var imgContainer = $('<div>');
-//                 var bodyContainer = $('<div>');
-//                 var resultImg = $('<img>');
-//                 var imgFigure = $('<figure>');
-//                 var phoneNumber = $('<div>');
-//                 var businessRating = $('<div>');
-//                 var mediaContainer = $('<div>');
-//                 var businessPrice = $('<div>');
-//                 var contentContainer = $('<div>');
-//                 var businessReviews = $('<div>');
-//                 var cardImg = data.businesses[i].image_url;
-//                 resultImg.attr('src', cardImg);
-                    
-//                 $foodAndDrinkRec.addClass(['custom-flex'])
-//                 resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
-//                 resultImg.addClass(['image']);
-//                 imgFigure.addClass(['image', 'is-4by3'])
-//                 imgContainer.addClass('card-image');
-//                 bodyContainer.addClass('card-content');
-//                 titleContainer.addClass(['media-content']);
-//                 titleContainer.css('min-height', '30%')
-//                 mediaContainer.addClass(['media']);
-//                 resultTitle.addClass(['title', 'is-4'])
-//                 contentContainer.addClass('content');
-                    
-//                 phoneNumber.text('Phone: ' + data.businesses[i].display_phone);
-//                 businessRating.text('Rating: ' + data.businesses[i].rating + '⭐')
-//                 loadMoreButton.text('Load More');
-
-//                 if (data.businesses[i].price === undefined) {
-//                     businessPrice.text('Price: N/A')
-//                 } else {
-//                     businessPrice.text('Price: ' + data.businesses[i].price)
-//                 }
-
-//                 businessReviews.text('Number of reviews: ' + data.businesses[i].review_count)
-//                 resultTitle.text(data.businesses[i].name);
-
-//                 imgContainer.append(imgFigure);
-//                 imgFigure.append(resultImg);
-//                 bodyContainer.append(mediaContainer);
-//                 mediaContainer.append(titleContainer);
-//                 bodyContainer.append(contentContainer);
-//                 contentContainer.append(phoneNumber);
-//                 contentContainer.append(businessRating);
-//                 contentContainer.append(businessReviews);
-//                 contentContainer.append(businessPrice);
-//                 titleContainer.append(resultTitle);
-//                 resultCard.append(imgContainer);
-//                 resultCard.append(bodyContainer);
-//                 $foodAndDrinkRec.append(resultCard);
-//             }
-//         }) 
