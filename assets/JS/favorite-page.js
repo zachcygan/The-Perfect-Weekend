@@ -3,6 +3,7 @@ function createFav() {
 
 favoritesList = JSON.parse(localStorage.getItem('favorites'));
 
+
 for(i=0; i < favoritesList.length; i++){
 
 var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/' + favoritesList[i];
@@ -74,6 +75,7 @@ footerItem.append(viewBtnEl);
         
         viewBtnEl.setAttribute("data-getID", data.id);
         viewBtnEl.addEventListener("click", function(e){
+
             localStorage.setItem('singleCard', e.target.dataset.getid);
             location.href = '/main-result-page-detail-view.html'
         });   

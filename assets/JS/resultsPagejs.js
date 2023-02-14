@@ -188,17 +188,19 @@ function loadMore() {
                 mediaContainer.addClass(['media']);
                 resultTitle.addClass(['title', 'is-4'])
                 contentContainer.addClass('content');
-                loadMoreButton.add(['button', 'is-normal', 'is-focus', 'is-success'])
 
                 phoneNumber.text('Phone: ' + data.businesses[i].display_phone);
                 businessRating.text('Rating: ' + data.businesses[i].rating + '⭐')
-                loadMoreButton.text('Load More');
 
                 if (data.businesses[i].price === undefined) {
                     businessPrice.text('Price: N/A')
                 } else {
                     businessPrice.text('Price: ' + data.businesses[i].price)
                 }
+
+                resultCard.on('click', function () {
+                    location.href = '/main-result-page-detail-view.html'
+                })
 
                 businessReviews.text('Number of reviews: ' + data.businesses[i].review_count)
                 resultTitle.text(data.businesses[i].name);
@@ -324,8 +326,7 @@ var sortBy = function () {
 
 
             for (var i = 0; i < data.businesses.length; i++) {
-                fetchSearchResults(data.businesses[i])
-                loadMore();
+                fetchSearchResults(data.businesses[i]);
             }
 
         }
