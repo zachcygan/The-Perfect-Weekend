@@ -72,7 +72,7 @@ function fetchSearchResults(data) {
     resultImg.attr('src', cardImg);
 
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
+    resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'is-size-5-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet', 'is-size-4-tablet']);
     //TEST
     // resultCard.add('id'. resultBtn)
     resultImg.addClass(['image']);
@@ -185,7 +185,7 @@ console.log('hello');
 
                 $foodAndDrinkRec.addClass(['custom-flex'])
 
-                resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
+                resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'is-size-5-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet', 'is-size-4-tablet']);
                 resultImg.addClass(['image']);
                 imgFigure.addClass(['image', 'is-4by3'])
                 imgContainer.addClass('card-image');
@@ -225,22 +225,26 @@ console.log('hello');
                 resultCard.append(heartContainer);
                 $foodAndDrinkRec.append(resultCard);
             }
-        })
-}
+        }) 
 
-// ADD TO MAIN RESULT
-// access card elements from result page
-// var resultsEl = document.getElementsByClassName('custom-card');
+    }
 
-// function resultCardClick(event) {
-//     // var cardEl = event.target;
-//     var bid_clicked localStorage.setItem('business-id', businessId); //set
-//     console.log(event);
-// }
+    
 
-// user clicks on card element containing choices
-// resultCard.onclick = resultCardClick;    
-// resultCard.on('click', resultCardClick());    
+
+    // ADD TO MAIN RESULT
+    // access card elements from result page
+    // var resultsEl = document.getElementsByClassName('custom-card');
+    
+    // function resultCardClick(event) {
+    //     // var cardEl = event.target;
+    //     var bid_clicked localStorage.setItem('business-id', businessId); //set
+    //     console.log(event);
+    // }
+    
+    // user clicks on card element containing choices
+    // resultCard.onclick = resultCardClick;    
+    // resultCard.on('click', resultCardClick());    
 
 
 // resultCard.on('click', function() {

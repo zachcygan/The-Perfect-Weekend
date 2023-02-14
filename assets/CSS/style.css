@@ -262,6 +262,7 @@ li a:hover {
   }
 
 
+
 }
 
 /* Social Media Icons */
@@ -339,5 +340,8 @@ hr {
   border-color: rgba(255,255,255,.6);
 
   /* margin-left: 200px; */
-
 }
+
+.side-forecast {
+    display: none;
+  }
