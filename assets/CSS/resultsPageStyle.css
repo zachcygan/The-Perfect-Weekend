@@ -40,3 +40,9 @@
 .custom-margin {
     margin-bottom: 2rem;
 }
+
+@media screen and (max-width: 768px) {
+    .custom-card {
+        margin-top: 2rem;
+    }
+  }
