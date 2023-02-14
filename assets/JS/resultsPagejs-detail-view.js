@@ -127,6 +127,7 @@ function fetchSearchResults(data) {
     mediaContainer.addClass(['media']);
     resultTitle.addClass(['title', 'is-4'])
     resultTitle.attr('href', data.url);
+    resultTitle.attr('target', 'blank');
     contentContainer.addClass('content');
     
         
