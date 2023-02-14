@@ -1,8 +1,24 @@
 // var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
 
+var city = localStorage.getItem('searchedCity');
+var activity = localStorage.getItem('searchedActivity')
+
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var $resultCard = $('#result')
+var $searchButton = $('#searchBtn');
+var $city = $('#cityInput');
+var $activity = $('#activSearch')
+var index = 0;
 
+
+$searchButton.on('click', function() {
+    city = $city.val();
+    activity = $activity.val();
+
+    localStorage.setItem('searchedCity', city);
+    localStorage.setItem('searchedActivity', activity);
+    location.href = './main-result-page.html'
+})
 
 // **************** FETCH FOR BUSINESS INFO ****************************** //
 var bid_clicked = localStorage.getItem('singleCard');
@@ -50,8 +66,9 @@ function fetchSearchResults(data) {
     var isOpen = $('<p>');
 
     // adding carousel //
+    var nextBtn = $('#nextPic');
+    var prevBtn = $('#prevPic');
 
-    console.log(data.photos)
     for ( var i = 0; i < data.photos.length; i++) {
         console.log(data.photos[i])
         var carouselImg = document.createElement('img')
@@ -61,6 +78,8 @@ function fetchSearchResults(data) {
         }
         imgContainer.append(carouselImg);
     }
+
+    
     
     $foodAndDrinkRec.addClass(['custom-flex'])
     resultCard.addClass(['card', 'column', 'is-three-fifths', 'is-centered']);
@@ -90,7 +109,7 @@ function fetchSearchResults(data) {
         businessPrice.text('Price: ' + data.price)
     }
 
-    if (!data.is_close) {
+    if (data.is_close === false) {
         isOpen.text('Currently Open: Yes!')
     } else {
         isOpen.text('Currently Open: No')
@@ -216,6 +235,7 @@ function fetchSearchReviews2(data) {
         console.log($foodAndDrinkRec.children())
     }
 }
+
 
 
 
