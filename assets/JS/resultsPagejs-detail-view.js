@@ -226,15 +226,15 @@ const optionsRev = {
 //     $foodAndDrinkRec.append(reviewCard);
 // }
 
-fetch(url_bid_clicked, optionsRev)
-.then(response => response.json())
-.then(data => {console.log(data);
+// fetch(url_bid_clicked, optionsRev)
+// .then(response => response.json())
+// .then(data => {console.log(data);
 
-    console.log(data.reviews[0].text);
-    fetchSearchReviews2(data);
+//     console.log(data.reviews[0].text);
+//     fetchSearchReviews2(data);
 
-    })
-.catch(err => console.error(err));
+//     })
+// .catch(err => console.error(err));
 
 
 function fetchSearchReviews2(data) {
