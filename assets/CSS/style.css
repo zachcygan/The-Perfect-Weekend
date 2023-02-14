@@ -345,3 +345,16 @@ footer {
     display: none;
   }
 }
+
+/* Favorite Page */
+
+#fav-ctn-1 {
+ display: none;
+}
+#fav-ctn-2 {
+  display: none;
+ }
+
+#ctn-name-1{
+  
+}

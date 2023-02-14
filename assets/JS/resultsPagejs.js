@@ -1,7 +1,7 @@
 var city = localStorage.getItem('searchedCity');
 var activity = localStorage.getItem('searchedActivity')
 
-var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=Irvine&term=sushi&sort_by=best_match&limit=20'
+var url = 'https://afternoon-badlands-11870.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=' + city + '&term=' + activity + '&sort_by=best_match&limit=20'
 
 var $foodAndDrinkRec = $('#foodAndDrinkRec');
 var loadMoreButton = $('<button>')
@@ -19,7 +19,7 @@ fetch(url, {
 })
     .then((response) => response.json())
     .then((data) => {
-        console.log(data)
+        // console.log(data)
 
         for(var i = 0; i < data.businesses.length; i++) {
             fetchSearchResults(data.businesses[i])
@@ -153,7 +153,7 @@ function loadMore() {
     })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data)
+            // console.log(data)
             offset += 20;
 
             for(var i = 0; i < data.businesses.length; i++) {   
@@ -176,7 +176,7 @@ function loadMore() {
                     
                 $foodAndDrinkRec.addClass(['custom-flex'])
 
-                resultCard.addClass(['card', 'column', 'is-one-fifth', 'm-1', 'custom-card']);
+                resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
                 resultImg.addClass(['image']);
                 imgFigure.addClass(['image', 'is-4by3'])
                 imgContainer.addClass('card-image');
@@ -240,6 +240,7 @@ function loadMore() {
 
 function saveFavorite(event) {
     // console.log(event)
+    event.stopPropagation();
     var favorites = JSON.parse(localStorage.getItem('favorites')) || [];
     var foundId = false;
     
