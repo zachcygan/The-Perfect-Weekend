@@ -321,8 +321,8 @@ var sortBy = function () {
             accept: 'application/json',
             Authorization: 'Bearer 81MTt_yJi-cbutBj-F-Eu2SQJV4Xery0YuezPwwgO0gDJaPnfSwTCEPKb8qUYsvY9v9ROD7uaTFyfoNNVhJlZsp9A44gl0mzOkBbeE64f9MCUt6Wnwu2kd2ZoxLrY3Yx'
         }
-    })
-        .then((response) => response.json())
+    })\
+            .then((response) => response.json())
         .then((data) => {
             console.log(data)
 
