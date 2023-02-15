@@ -121,6 +121,7 @@
   background-color: #efefef;
   border-style: solid;
   border-width: 1px;
+  position: static;
 }
 
 
