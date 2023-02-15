@@ -27,7 +27,14 @@
   display: inline;
 }
 
+#resultsPageWeatherForecast{
+  justify-content: center;
+}
 
+#city-label-cnr{
+  justify-content: center;
+  margin-bottom: 30px;
+}
 
 #hamburger {
     display: inline;
@@ -183,15 +190,15 @@ li a:hover {
 
 
   #cityName {
-    text-align: flex-start;
+    text-align: center;
     padding: 15px;
     color: #485fc7;
     font-size: 60px;
     font-weight: bold;
-    text-shadow: -1px 1px 2px #000,
-				  1px 1px 2px #000,
-				  1px -1px 0 #000,
-				  -1px -1px 0 #000;
+    text-shadow: -1px 1px 2px #48484a,
+				  1px 1px 2px #48484a,
+				  1px -1px 0 #48484a,
+				  -1px -1px 0 #48484a;
   }
 
   #weatherIcon {
