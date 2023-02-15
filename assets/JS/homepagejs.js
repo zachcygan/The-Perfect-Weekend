@@ -32,11 +32,6 @@ searchBtn.addEventListener('click', () => {
     city = cityInput.value
     var acitivty = activtyInput.value;
 
-    if (city === undefined) {
-        // openModal(modal)
-        return
-    }
-
     getdata()
     location.href='./main-result-page.html'
     
