@@ -191,7 +191,7 @@ function loadMore() {
                 titleContainer.css('min-height', '30%')
                 mediaContainer.addClass(['media']);
                 resultTitle.addClass(['title', 'is-4'])
-                contentContainer.addClass(['content', 'is-size-2']);
+                contentContainer.addClass(['content']);
 
                 phoneNumber.text('Phone: ' + data.businesses[i].display_phone);
                 businessRating.text('Rating: ' + data.businesses[i].rating + '⭐')
