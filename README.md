@@ -19,8 +19,8 @@ The webpage is available at https://zachcygan.github.io/The-Perfect-Weekend/inde
     - Open Weather API
 
 ## Instructions
-
 To begin searching for activities enter a city and an activity, then click the search button. 20 results will be displayed per search, but more may be loaded when the user scrolls to the bottom of the page, if there are more results. Any activity or point of interest may be saved and viewed at any time on the favorites page. Activities that are favorited will have a red heart on the bottom right of the search results. To remove the activity from your favorites, simply click the heart icon and it will be removed. Additionally, the searched cities current weather and 3 day forecast will be displayed at the top of the screen. The forecast cards are hidden on smaller devices. Users may filter their search results by best match, prices, ratings, and reviews. Each time more results are loaded, they will be sorted in their fetch call respectively. This means that the page will not resort previously loaded results. 
+
 
 ## Screenshots
 
