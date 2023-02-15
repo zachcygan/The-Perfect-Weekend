@@ -143,7 +143,74 @@ $(window).scroll(function () {
 
 var resultCard = $('<button>');
 
+function getData(data) {
+    var heartContainer = addHeart(data.id)
+    var resultCard = $('<button>');
+    var resultTitle = $('<p>');
+    var titleContainer = $('<div>');
+    var imgContainer = $('<div>');
+    var bodyContainer = $('<div>');
+    var resultImg = $('<img>');
+    var imgFigure = $('<figure>');
+    var phoneNumber = $('<div>');
+    var businessRating = $('<div>');
+    var mediaContainer = $('<div>');
+    var businessPrice = $('<div>');
+    var contentContainer = $('<div>');
+    var businessReviews = $('<div>');
+    var cardImg = data.image_url;
+    resultImg.attr('src', cardImg);
 
+    $foodAndDrinkRec.addClass(['custom-flex'])
+
+    resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
+    resultImg.addClass(['image']);
+    imgFigure.addClass(['image', 'is-4by3'])
+    imgContainer.addClass('card-image');
+    bodyContainer.addClass(['card-content']);
+    titleContainer.addClass(['media-content']);
+    titleContainer.css('min-height', '30%')
+    mediaContainer.addClass(['media']);
+    resultTitle.addClass(['title', 'is-4'])
+    contentContainer.addClass(['content']);
+
+    phoneNumber.text('Phone: ' + data.display_phone);
+    businessRating.text('Rating: ' + data.rating + '⭐')
+
+    if (data.price === undefined) {
+        businessPrice.text('Price: N/A')
+    } else {
+        businessPrice.text('Price: ' + data.price)
+    }
+
+    
+
+    businessReviews.text('Number of reviews: ' + data.review_count)
+    resultTitle.text(data.name);
+
+    imgContainer.append(imgFigure);
+    imgFigure.append(resultImg);
+    bodyContainer.append(mediaContainer);
+    mediaContainer.append(titleContainer);
+    bodyContainer.append(contentContainer);
+    contentContainer.append(phoneNumber);
+    contentContainer.append(businessRating);
+    contentContainer.append(businessReviews);
+    contentContainer.append(businessPrice);
+    titleContainer.append(resultTitle);
+    resultCard.append(imgContainer);
+    resultCard.append(bodyContainer);
+    resultCard.append(heartContainer);
+    $foodAndDrinkRec.append(resultCard);
+
+    resultCard.on('click', function (event) {
+        var singleCard = data.id;
+
+        localStorage.setItem('singleCard', singleCard);
+        console.log(singleCard);
+        location.href = './main-result-page-detail-view.html'
+    })
+}
 
 var offset = 20;
 
@@ -163,66 +230,7 @@ function loadMore() {
             offset += 20;
 
             for (var i = 0; i < data.businesses.length; i++) {
-                var heartContainer = addHeart(data.businesses[i].id)
-                var resultCard = $('<button>');
-                var resultTitle = $('<p>');
-                var titleContainer = $('<div>');
-                var imgContainer = $('<div>');
-                var bodyContainer = $('<div>');
-                var resultImg = $('<img>');
-                var imgFigure = $('<figure>');
-                var phoneNumber = $('<div>');
-                var businessRating = $('<div>');
-                var mediaContainer = $('<div>');
-                var businessPrice = $('<div>');
-                var contentContainer = $('<div>');
-                var businessReviews = $('<div>');
-                var cardImg = data.businesses[i].image_url;
-                resultImg.attr('src', cardImg);
-
-                $foodAndDrinkRec.addClass(['custom-flex'])
-
-                resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
-                resultImg.addClass(['image']);
-                imgFigure.addClass(['image', 'is-4by3'])
-                imgContainer.addClass('card-image');
-                bodyContainer.addClass(['card-content']);
-                titleContainer.addClass(['media-content']);
-                titleContainer.css('min-height', '30%')
-                mediaContainer.addClass(['media']);
-                resultTitle.addClass(['title', 'is-4'])
-                contentContainer.addClass(['content']);
-
-                phoneNumber.text('Phone: ' + data.businesses[i].display_phone);
-                businessRating.text('Rating: ' + data.businesses[i].rating + '⭐')
-
-                if (data.businesses[i].price === undefined) {
-                    businessPrice.text('Price: N/A')
-                } else {
-                    businessPrice.text('Price: ' + data.businesses[i].price)
-                }
-
-                resultCard.on('click', function () {
-                    location.href = './main-result-page-detail-view.html'
-                })
-
-                businessReviews.text('Number of reviews: ' + data.businesses[i].review_count)
-                resultTitle.text(data.businesses[i].name);
-
-                imgContainer.append(imgFigure);
-                imgFigure.append(resultImg);
-                bodyContainer.append(mediaContainer);
-                mediaContainer.append(titleContainer);
-                bodyContainer.append(contentContainer);
-                contentContainer.append(phoneNumber);
-                contentContainer.append(businessRating);
-                contentContainer.append(businessReviews);
-                contentContainer.append(businessPrice);
-                titleContainer.append(resultTitle);
-                resultCard.append(imgContainer);
-                resultCard.append(bodyContainer);
-                resultCard.append(heartContainer);
-                $foodAndDrinkRec.append(resultCard);
+                getData(data.businesses[i]);
             }
         })
 }
