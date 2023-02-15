@@ -45,6 +45,10 @@
     pointer-events: none;
 }
 
+.custom-search {
+    margin-left: 2rem;
+}
+
 @media screen and (max-width: 768px) {
     .custom-card {
         margin-top: 2rem;
