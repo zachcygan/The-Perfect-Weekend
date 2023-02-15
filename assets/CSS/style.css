@@ -3,7 +3,7 @@
 * {
     max-width: auto;
     max-height: fit-content;
-    margin: auto;
+    /* margin: auto; */
     padding: auto;
     box-sizing: border-box;
     
@@ -69,15 +69,39 @@
 }
 
 /*searchbar styling for main result page*/
-.searchbar {
+/* .searchbar {
   color: #5072A7;
   margin: 5px;
   padding: 5px;
+} */
+
+/* BY SL: searchbar styling*/
+.searchbar {
+  color: #5072A7;
+  margin-right: 5px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-top: 20px;
+  z-index: 2;
+  
+  /* BY SL  */
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.city-label {
+/* .city-label {
   display: flex;
   align-items:start;
+  
+} */
+  /* BY SL  */
+  .city-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .question {
@@ -85,23 +109,93 @@
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
 }
+  /* BY SL  */
 
-#searchBtn {
+
+
+/* #searchBtn {
   color: #5072A7;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-weight: bold;
   padding: 5px;
   font-size: 20px;
+} */
+  /* BY SL  */
+  #searchBtn {
+    color: #485fc7;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: bold;
+    padding: 5px;
+    font-size: 20px;
+
+     /* BY SL  */
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #fb2900;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 2px;
+
+    transition: all 0.3s ease;
+    padding: 0 60px;
+    height: 45px;
+    border: none;
+    width: auto;
+    margin-right: 20px;
+  
 }
 
-#cityInput {
+/* #cityInput {
   padding: auto;
   font-size: 20px;
+} */
+  /* BY SL  */
+  #cityInput {
+    padding: auto;
+    font-size: 20px;
+
+    /* BY SL  */
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    height: 100%;
+    width: 30%;
+    margin-right: 30px;
+    position: relative;
+    z-index: 2;
+    color: #11162e;
 }
+
 #activSearch {
   padding: auto;
   font-size: 20px;
   width: 130px;
+}
+  /* BY SL  */
+  #activSearch {
+    padding: auto;
+    font-size: 20px;
+    
+    /* BY SL  */
+    font-size: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    height: 100%;
+    width: 30%;
+    margin-right: 30px;
+    position: relative;
+    z-index: 2;
+    color: #11162e;
 }
 
 /* fitter styling */
@@ -109,7 +203,7 @@
 #filter-by {
   width : 300px; 
   background: #d9d9d9;
-  margin : 40px auto; 
+  margin : 40px ; 
 }
 
 #filter-btn {
@@ -121,16 +215,41 @@
   background-color: #efefef;
   border-style: solid;
   border-width: 1px;
+
+  /* BY SL */
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #fb2900;
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  padding: 0 60px;
+  height: 45px;
+  border: none;
+  width: auto;
+  margin: 0px;
+}
+
+ul.slide{
+  position: relative;
+}
+
+#resultsPageWeatherForecast {
+  justify-content: center;
 }
 
 
+  /* BY SL TESTING FILTER BUTTON STYLING  */
+
 span {
-  padding : 30px;
+  /* padding : 30px; */
   color : white;
   font-size : 20px;
   font-variant : small-caps;
   cursor : pointer;
-  display: inline;
+  /* display: inline; */
 }
 
 span::after {
@@ -144,13 +263,17 @@ span::after {
   width:fit-content;
   position:relative;
   margin: 1%;
-  left:65%;
+  /* left:65%; */
   height:0px;
   overflow: hidden;
   text-align: center;
   background-color: #efefef;
   border-style: solid;
   transition: height .4s ease;
+}
+
+#label-cnr{
+  justify-content: center;
 }
 
 #li-btn {
@@ -183,15 +306,15 @@ li a:hover {
 
 
   #cityName {
-    text-align: flex-start;
+    text-align: center;
     padding: 15px;
     color: #485fc7;
     font-size: 60px;
-    font-weight: bold;
-    text-shadow: -1px 1px 2px #000,
+    font-weight: 700;
+    /* text-shadow: -1px 1px 2px #000,
 				  1px 1px 2px #000,
 				  1px -1px 0 #000,
-				  -1px -1px 0 #000;
+				  -1px -1px 0 #000; */
   }
 
   #weatherIcon {

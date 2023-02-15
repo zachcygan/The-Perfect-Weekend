@@ -31,9 +31,12 @@
     font-weight: bold;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align: center;
-    padding: 70px;
-    margin-left: 27%;
-    display: inline;
+    /* padding: 70px;
+    margin-left: 27%; */
+    /* display: inline; */
+    justify-content: center;
+    padding-top: 70px;
+
 }
 
 /* nav bar */
@@ -99,8 +102,13 @@
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 10px;
-    margin-top: 200px;
+    margin-top: 20px;
     z-index: 2;
+    
+    /* BY SL  */
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .city-label {
@@ -114,24 +122,76 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     text-align: center;
+    color: #485fc7;
+
+    /* BY SL  */
+    /* position: fixed; */
 }
 
 #searchBtn {
-    color: #5072A7;
+    color: #485fc7;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: bold;
     padding: 5px;
     font-size: 20px;
+
+     /* BY SL  */
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #fb2900;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 2px;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+    padding: 0 60px;
+    height: 45px;
+    border: none;
+    width: auto;
+  
 }
 
 #cityInput {
     padding: auto;
     font-size: 20px;
+
+    /* BY SL  */
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    height: 100%;
+    width: 30%;
+    margin-right: 30px;
+    position: relative;
+    z-index: 2;
+    color: #11162e;
 }
 #activSearch {
     padding: auto;
     font-size: 20px;
-    width: 130px;
+    
+    /* BY SL  */
+    font-size: 20px;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    height: 100%;
+    width: 30%;
+    margin-right: 30px;
+    position: relative;
+    z-index: 2;
+    color: #11162e;
 }
       
 
