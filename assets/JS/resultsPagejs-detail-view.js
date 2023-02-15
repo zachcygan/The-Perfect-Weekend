@@ -22,7 +22,7 @@ $searchButton.on('click', function() {
 
     localStorage.setItem('searchedCity', city);
     localStorage.setItem('searchedActivity', activity);
-    location.href = './main-result-page.html'
+    location.href = 'The-Perfect-Weekend/main-result-page.html'
 })
 
 // **************** FETCH FOR BUSINESS INFO ****************************** //
