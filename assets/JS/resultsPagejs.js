@@ -10,6 +10,9 @@ var $resultCard = $('#result')
 var $cityInput = $('#cityInput');
 var $activSearch = $('#activSearch');
 
+$cityInput.attr('value', city)
+$activSearch.attr('value', activity)
+
 fetch(url, {
     method: 'GET',
     headers: {
@@ -72,7 +75,7 @@ function fetchSearchResults(data) {
     resultImg.attr('src', cardImg);
 
     $foodAndDrinkRec.addClass(['custom-flex'])
-    resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-full-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
+    resultCard.addClass(['card', 'column', 'is-one-fifth-desktop', 'm-1', 'custom-card', 'is-four-fifths-mobile', 'is-size-2-mobile', 'is-two-fifths-tablet']);
     //TEST
     // resultCard.add('id'. resultBtn)
     resultImg.addClass(['image']);
@@ -90,7 +93,7 @@ function fetchSearchResults(data) {
     businessRating.text('Rating: ' + data.rating + '⭐');
 
     resultCard.on('click', function () {
-        location.href = '/main-result-page-detail-view.html'
+        location.href = './main-result-page-detail-view.html'
     })
 
     if (data.price === undefined) {
@@ -129,6 +132,7 @@ function fetchSearchResults(data) {
     })
 }
 
+// grabbed from https://stackoverflow.com/questions/13057910/load-more-content-when-user-scrolls-near-bottom-of-page
 $(window).scroll(function () { 
     if (Math.trunc($(window).scrollTop()) == Math.trunc($(document).height()) - Math.trunc($(window).height())) {
 
@@ -182,12 +186,12 @@ function loadMore() {
                 resultImg.addClass(['image']);
                 imgFigure.addClass(['image', 'is-4by3'])
                 imgContainer.addClass('card-image');
-                bodyContainer.addClass('card-content');
+                bodyContainer.addClass(['card-content']);
                 titleContainer.addClass(['media-content']);
                 titleContainer.css('min-height', '30%')
                 mediaContainer.addClass(['media']);
                 resultTitle.addClass(['title', 'is-4'])
-                contentContainer.addClass('content');
+                contentContainer.addClass(['content', 'is-size-2']);
 
                 phoneNumber.text('Phone: ' + data.businesses[i].display_phone);
                 businessRating.text('Rating: ' + data.businesses[i].rating + '⭐')
@@ -199,7 +203,7 @@ function loadMore() {
                 }
 
                 resultCard.on('click', function () {
-                    location.href = '/main-result-page-detail-view.html'
+                    location.href = './main-result-page-detail-view.html'
                 })
 
                 businessReviews.text('Number of reviews: ' + data.businesses[i].review_count)
